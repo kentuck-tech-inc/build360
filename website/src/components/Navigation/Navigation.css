@@ -1,0 +1,28 @@
+.Navigation ul {
+  display: flex;
+  margin: 0;
+  padding: 32px;
+  list-style: none;
+}
+
+.Navigation ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.Navigation ul li+li {
+  padding-left: 32px;
+}
+
+.Navigation ul li a {
+  font-size: 1.5em;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: border-color 0.25s ease-in-out;
+  border-bottom: 3px solid transparent;
+  border-radius: 3px;
+}
+
+.Navigation ul li a:hover {
+  border-color: var(--accent-color);
+}
