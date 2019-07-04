@@ -11,13 +11,13 @@ class BuilderSearchPage extends React.Component {
     const query = params.get('query')
     return (
       <>
+        <BuilderSearchForm />
         {
           query &&
           <p>
             Looking for: {query}
           </p>
         }
-        <BuilderSearchForm />
       </>
     )
   }

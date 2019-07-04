@@ -1,3 +1,5 @@
+@import "./generated/colors.css";
+
 .App.test {
   --primary-color: black;
   --secondary-color: white;
@@ -22,4 +24,17 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.App .content {
+  margin: 0 32px;
+}
+@media (min-width: 512px) {
+  .App .content {
+    margin: 0 64px;
+  }
+}
+@media (min-width: 1024px) {
+  .App .content {
+  margin: 0 128px;
+  }
+}
 

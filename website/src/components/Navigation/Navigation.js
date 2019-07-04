@@ -50,7 +50,9 @@ class Navigation extends React.Component {
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>
               {
-                themes.map((theme, index) => <option key={index}>{theme}</option>)
+                themes.map(({name, value}, index) => (
+                  <option key={index} value={value}>{name}</option>)
+                )
               }
             </select>
           </li>

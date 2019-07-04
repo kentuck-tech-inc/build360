@@ -3,15 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import cx from 'classnames'
 
 import { Navigation, routes } from './components/Navigation/Navigation'
-import { HomePage } from './pages/HomePage/HomePage'
-import { LoginPage } from './pages/LoginPage/LoginPage'
-import { BuilderSearchPage } from './pages/BuilderSearchPage/BuilderSearchPage'
+import themes from './generated/color-options.json'
 import './App.css'
-
-const themes = [
-  'test',
-  'fest'
-]
 
 class App extends React.Component {
   state = {
@@ -29,11 +22,13 @@ class App extends React.Component {
         <main className={cx('App', theme)}>
           <Navigation onThemeChange={this.handleThemeChange} themes={themes} />
 
-          {
-            routes
-              .filter(({component}) => Boolean(component))
-              .map(({path, to, exact, component}) => <Route path={path || to} exact={exact} component={component} />)
-          }
+          <section className="content">
+            {
+              routes
+                .filter(({component}) => Boolean(component))
+                .map(({path, to, exact, component}) => <Route path={path || to} exact={exact} component={component} />)
+            }
+          </section>
         </main>
       </Router>
     )

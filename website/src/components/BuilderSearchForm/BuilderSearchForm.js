@@ -14,10 +14,12 @@ class BuilderSearchForm extends React.Component {
 
   render () {
     return (
-      <form action="/builders">
+      <form className="BuilderSearchForm" action="/builders">
         <label htmlFor="BuilderSearch">Research your next builder now.</label>
-        <input id="BuilderSearch" type="search" name="query" placeholder="🔍 Builder Name or Zip Code" />
-        <button>Search</button>
+        <div className="input-wrapper">
+          <input id="BuilderSearch" type="search" name="query" placeholder="🔍 Builder Name or Zip Code" />
+          <button>Search</button>
+        </div>
       </form>
     )
   }
