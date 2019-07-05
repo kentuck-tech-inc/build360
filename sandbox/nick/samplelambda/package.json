@@ -4,8 +4,9 @@
   "description": "",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "claudia-dev": "claudia create --region us-east-1 --api-module api --profile claudia-services"
+    "test": "mocha",
+    "claudia-dev": "claudia create --region us-east-1 --versoin dev --api-module api --profile claudia-services",
+    "claudia-promote": "claudia set-version --version prod"
   },
   "keywords": [],
   "author": "",
