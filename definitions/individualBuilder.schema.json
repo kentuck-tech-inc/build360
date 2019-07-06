@@ -35,10 +35,34 @@
       "type": "array",
       "items": [
         {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "blueprint_id": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "blueprint_id",
+            "orderId"
+          ]
         },
         {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "blueprint_id": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "blueprint_id",
+            "orderId"
+          ]
         }
       ]
     },

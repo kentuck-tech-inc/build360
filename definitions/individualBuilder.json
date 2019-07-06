@@ -6,7 +6,11 @@
   "yearEstablished": 1999,
   "builderDescription" : "Hi, my name is Bob Builder, Central Kentuck's most elite...",
   "bbbRating":"A",
-  "builderPortfolio" : ["blueprintUUID1", "blueprintUUID2"],
+  "builderPortfolio" : [
+    {"blueprint_id":"blueprintUUID1",
+      "orderId": 1},
+    {"blueprint_id":"blueprintUUID2",
+      "orderId": 2}],
  "builderContactInfo" : 
   {
    "addressStreet1" : "1234 High Rise Avenue",
