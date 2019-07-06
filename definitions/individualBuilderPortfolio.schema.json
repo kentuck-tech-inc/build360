@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "builderUUID": {
+      "type": "string"
+    },
+    "builderPortfolio": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "blueprintUUID": {
+              "type": "string"
+            },
+            "blueprintName": {
+              "type": "string"
+            },
+            "blueprintDescription": {
+              "type": "string"
+            },
+            "blueprintImages": {
+              "type": "object",
+              "properties": {
+                "thumbnail": {
+                  "type": "string"
+                },
+                "highres": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "thumbnail",
+                "highres"
+              ]
+            },
+            "blueprintSpecs": {
+              "type": "object",
+              "properties": {
+                "startingPrice": {
+                  "type": "integer"
+                },
+                "baseSquareFootage": {
+                  "type": "integer"
+                },
+                "baseFloorNumber": {
+                  "type": "integer"
+                },
+                "baseBathNumber": {
+                  "type": "number"
+                },
+                "baseBedroomNumber": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "startingPrice",
+                "baseSquareFootage",
+                "baseFloorNumber",
+                "baseBathNumber",
+                "baseBedroomNumber"
+              ]
+            }
+          },
+          "required": [
+            "blueprintUUID",
+            "blueprintName",
+            "blueprintDescription",
+            "blueprintImages",
+            "blueprintSpecs"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "builderUUID",
+    "builderPortfolio"
+  ]
+}

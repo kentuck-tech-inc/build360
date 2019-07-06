@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "builderUUID": {
+      "type": "string"
+    },
+    "builderCompanyName": {
+      "type": "string"
+    },
+    "builderOwner": {
+      "type": "string"
+    },
+    "associations": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "yearEstablished": {
+      "type": "integer"
+    },
+    "builderDescription": {
+      "type": "string"
+    },
+    "bbbRating": {
+      "type": "string"
+    },
+    "builderPortfolio": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "blueprint_id": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "blueprint_id",
+            "orderId"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "blueprint_id": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "blueprint_id",
+            "orderId"
+          ]
+        }
+      ]
+    },
+    "builderContactInfo": {
+      "type": "object",
+      "properties": {
+        "addressStreet1": {
+          "type": "string"
+        },
+        "adressStreet2": {
+          "type": "string"
+        },
+        "addressCity": {
+          "type": "string"
+        },
+        "addressState": {
+          "type": "string"
+        },
+        "addressZip": {
+          "type": "integer"
+        },
+        "primaryPhone": {
+          "type": "string"
+        },
+        "primaryEmail": {
+          "type": "string"
+        },
+        "socialMedia": {
+          "type": "object",
+          "properties": {
+            "twitter": {
+              "type": "string"
+            },
+            "facebook": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "twitter",
+            "facebook"
+          ]
+        }
+      },
+      "required": [
+        "addressStreet1",
+        "adressStreet2",
+        "addressCity",
+        "addressState",
+        "addressZip",
+        "primaryPhone",
+        "primaryEmail",
+        "socialMedia"
+      ]
+    },
+    "builderFeedback": {
+      "type": "object",
+      "properties": {
+        "communication": {
+          "type": "number"
+        },
+        "professionalism": {
+          "type": "number"
+        },
+        "job site cleanliness": {
+          "type": "number"
+        },
+        "budget mindful": {
+          "type": "number"
+        },
+        "quality of materials": {
+          "type": "number"
+        },
+        "deadlines": {
+          "type": "number"
+        },
+        "quality of worksmanship": {
+          "type": "number"
+        },
+        "finished product": {
+          "type": "number"
+        },
+        "accuracy of quote and allowances": {
+          "type": "number"
+        },
+        "overall": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "communication",
+        "professionalism",
+        "job site cleanliness",
+        "budget mindful",
+        "quality of materials",
+        "deadlines",
+        "quality of worksmanship",
+        "finished product",
+        "accuracy of quote and allowances",
+        "overall"
+      ]
+    }
+  },
+  "required": [
+    "builderUUID",
+    "builderCompanyName",
+    "builderOwner",
+    "associations",
+    "yearEstablished",
+    "builderDescription",
+    "bbbRating",
+    "builderPortfolio",
+    "builderContactInfo",
+    "builderFeedback"
+  ]
+}
