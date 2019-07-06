@@ -1,0 +1,22 @@
+{
+ "builderUUID" : "???",
+  "builderPortfolio" : 
+  [{
+    "blueprintUUID" : "???",
+    "blueprintName" : "the rancher",
+    "blueprintDescription" : "",
+    "blueprintImages" :
+    {
+     "thumbnail" : "amazon.com/s3/builderUUID/blueprints/builderPortfolioUUID/thumbnail.jpg",
+     "highres" : "amazon.com/s3/builderUUID/blueprints/builderPortfolioUUID/highres.jpg"
+    },
+    "blueprintSpecs":
+    {
+     "startingPrice" : 100000,
+      "baseSquareFootage" : 1500,
+      "baseFloorNumber" : 2,
+      "baseBathNumber" : 3.5,
+      "baseBedroomNumber" : 3      
+    }
+  }]
+}
