@@ -32,6 +32,18 @@ const colorSchemes = [
     inputBG: '#a16f4c',
     input: '#c4adb9'
   },
+  {
+    name: 'Plum',
+    primary: '#41264a',
+    secondary: '#dbd5dc',
+    accent: '#86738b'
+  },
+  {
+    name: 'Fire',
+    primary: '#643f13',
+    secondary: '#ffffff',
+    accent: '#d18010'
+  }
   // {
   //   name: '',
   //   primary: '',

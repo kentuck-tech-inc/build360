@@ -27,3 +27,15 @@
   --secondary-color: #c4adb9;
   --accent-color: #3d2a2a;
 }
+
+.App.Plum {
+  --primary-color: #41264a;
+  --secondary-color: #dbd5dc;
+  --accent-color: #86738b;
+}
+
+.App.Fire {
+  --primary-color: #643f13;
+  --secondary-color: #ffffff;
+  --accent-color: #d18010;
+}
