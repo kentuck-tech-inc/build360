@@ -1,0 +1,41 @@
+.App.Cyan-Magenta-Lime {
+  --primary-color: #1BAAE3;
+  --secondary-color: #E31BAA;
+  --accent-color: #AAE31B;
+}
+
+.App.Blue-Red-Green {
+  --primary-color: #1B47E3;
+  --secondary-color: #E31B47;
+  --accent-color: #47E31B;
+}
+
+.App.Green-Red-Blue {
+  --primary-color: #1BE32E;
+  --secondary-color: #E32E1B;
+  --accent-color: #2E1BE3;
+}
+
+.App.Green-Red-Blue-Desaturated {
+  --primary-color: #3BCA40;
+  --secondary-color: #CA403B;
+  --accent-color: #403BCA;
+}
+
+.App.Asher-Test {
+  --primary-color: #5a7327;
+  --secondary-color: #c4adb9;
+  --accent-color: #3d2a2a;
+}
+
+.App.Plum {
+  --primary-color: #41264a;
+  --secondary-color: #dbd5dc;
+  --accent-color: #86738b;
+}
+
+.App.Fire {
+  --primary-color: #643f13;
+  --secondary-color: #ffffff;
+  --accent-color: #d18010;
+}

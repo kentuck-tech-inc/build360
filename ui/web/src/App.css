@@ -1,0 +1,41 @@
+@import "./generated/colors.css";
+
+.App.test {
+  --primary-color: black;
+  --secondary-color: white;
+  --accent-color: red;
+}
+
+.App.fest {
+  --primary-color: #333333;
+  --secondary-color: lightgreen;
+  --accent-color: red;
+}
+
+.App {
+  --primary-color: #282828;
+  --secondary-color: #ffffff;
+  --accent-color: #b2b2b2;
+}
+
+.App {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+.App .content {
+  margin: 0 32px;
+}
+@media (min-width: 512px) {
+  .App .content {
+    margin: 0 64px;
+  }
+}
+@media (min-width: 1024px) {
+  .App .content {
+  margin: 0 128px;
+  }
+}
+
