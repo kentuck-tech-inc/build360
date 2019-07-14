@@ -13,7 +13,7 @@ phases:
     commands:
       # copy the contents of /build to S3
       #- aws s3 cp --recursive --acl public-read ./build s3://${DeployBucket}/
-      - aws s3 cp build/ s3://Build360.io/ --recursive
+      - aws s3 cp build/ s3://build360.io/ --recursive
       # set the cache-control headers for service-worker.js to prevent
       # browser caching
       #- >
