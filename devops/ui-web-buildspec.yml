@@ -34,4 +34,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build
+  base-directory: ui/web/build
