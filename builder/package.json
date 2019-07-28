@@ -1,0 +1,26 @@
+{
+  "name": "samplelambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "mocha",
+    "claudia-init": "claudia create --region us-east-1 --versoin dev --api-module api --profile claudia-services",
+    "claudia-dev": "claudia update --regino us-east-1 --version dev --api module api --profile claudia-services",
+    "claudia-promote": "claudia set-version --version prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "claudia": "^5.5.0",
+    "jasmine-core": "^3.4.0",
+    "karma-jasmine": "^2.0.1",
+    "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.488.0",
+    "claudia-api-builder": "^4.1.2",
+    "uuid": "^3.3.2"
+  }
+}
