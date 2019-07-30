@@ -26,7 +26,7 @@ class App extends React.Component {
             {
               routes
                 .filter(({component}) => Boolean(component))
-                .map(({path, to, exact, component}) => <Route path={path || to} exact={exact} component={component} />)
+                .map(({path, to, exact, component}, index) => <Route key={index} path={path || to} exact={exact} component={component} />)
             }
           </section>
         </main>
