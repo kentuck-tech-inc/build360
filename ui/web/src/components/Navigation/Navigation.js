@@ -1,10 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { Link } from "react-router-dom"
 import './Navigation.css'
-import { HomePage } from '../../pages/HomePage/HomePage';
-import { LoginPage } from '../../pages/LoginPage/LoginPage';
-import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage';
-import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage';
+import { HomePage } from '../../pages/HomePage/HomePage'
+import { LoginPage } from '../../pages/LoginPage/LoginPage'
+import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
+import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
+import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
 
 const routes = [
   {
@@ -29,6 +30,10 @@ const routes = [
     component: BuilderSearchPage
   },
   {
+    to: '/builder/:slug/:id',
+    component: BuilderPage
+  },
+  {
     to: '/buyers',
     display: 'Buyers',
     component: ComingSoonPage
@@ -36,7 +41,10 @@ const routes = [
   {
     to: '/login',
     display: 'Log in',
-    component: LoginPage
+    component: () => {
+      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=https://build360.io`
+      return <LoginPage />
+    }
   }
 ]
 
@@ -57,13 +65,15 @@ class Navigation extends React.Component {
             </select>
           </li>
           {
-            routes.map(({to, display}) => (
-              <li>
-                <Link to={to}>
-                  {display}
-                </Link>
-              </li>
-            ))
+            routes
+              .filter(({display}) => Boolean(display))
+              .map(({to, display}, index) => (
+                <li key={index}>
+                  <Link to={to}>
+                    {display}
+                  </Link>
+                </li>
+              ))
           }
         </ul>
       </nav>
