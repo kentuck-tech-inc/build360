@@ -1,0 +1,24 @@
+.ThankYouPage {
+  padding: 0 32px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 512px) {
+  .ThankYouPage {
+    font-size: 2rem;
+  }
+}
+
+.ThankYouPage .thank-you {
+  margin-top: 0;
+  padding-top: 32px;
+}
+
+.ThankYouPage .details-soon {
+
+}
+
+.ThankYouPage .social-media {
+
+}

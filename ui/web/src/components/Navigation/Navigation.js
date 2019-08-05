@@ -42,7 +42,8 @@ const routes = [
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=https://build360.io`
+      const redirect = encodeURIComponent(`http://build360.io`)
+      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=${redirect}`
       return <LoginPage />
     }
   }
