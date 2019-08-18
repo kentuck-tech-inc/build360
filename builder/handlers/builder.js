@@ -7,41 +7,46 @@ const pool = mariadb.createPool({host: process.env.DB_HOST,
                                  password: process.env.DB_PASS, 
                                  connectionLimit: 5});
                                  
-exports.GetBuilders = function(zipCode){
+exports.GetBuilders = function(){
     pool.getConnection()
         .then(conn => {
         
-          conn.query("SELECT 1 as val")
+          conn.query("SELECT * from builder.builderEntity")
             .then((res) => {
               console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
               conn.end();
+              return res;
             })
             .catch(err => {
               //handle error
               conn.end();
+              return err;
             })
             
         }).catch(err => {
           //not connected
+          return err;
         });
 }
 
 exports.GetBuilderByName = function(builderName){
     pool.getConnection()
-        .then(conn => {
-        
-          conn.query("SELECT 1 as val")
+        .then(conn => {        
+            conn.query("SELECT * from builder.builderEntity where CompanyName= ?",[builderName])
             .then((rows) => {
               console.log(rows); //[ {val: 1}, meta: ... ]
               conn.end();
+              return rows;
             })
             .catch(err => {
               //handle error
               conn.end();
+              return err;
             })
             
         }).catch(err => {
           //not connected
+          return err;
         });
 }
 

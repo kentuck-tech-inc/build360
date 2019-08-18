@@ -7,7 +7,8 @@
     "test": "mocha",
     "claudia-init": "claudia create --region us-east-1 --versoin dev --api-module api --profile claudia-services",
     "claudia-dev": "claudia update --regino us-east-1 --version dev --api module api --profile claudia-services",
-    "claudia-promote": "claudia set-version --version prod"
+    "claudia-promote": "claudia set-version --version prod",
+    "start": "node express.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "aws-sdk": "^2.488.0",
     "claudia-api-builder": "^4.1.2",
     "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "mariadb": "^2.1.0",
     "uuid": "^3.3.2"
   }

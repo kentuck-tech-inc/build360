@@ -1,7 +1,3 @@
-function healthcheckGET(){
-
-    return Date.now();
-
+exports.healthcheckGET = function(){
+    return Date.now().toString();
 }
-
-module.exports = healthcheckGET
