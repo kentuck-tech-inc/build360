@@ -1,11 +1,11 @@
 {
   "lambda": {
-    "role": "samplelambda-executor",
-    "name": "samplelambda",
+    "role": "builderService-executor",
+    "name": "builderService",
     "region": "us-east-1"
   },
   "api": {
-    "id": "da71bnds1f",
+    "id": "ug1lj61mpc",
     "module": "api"
   }
 }
