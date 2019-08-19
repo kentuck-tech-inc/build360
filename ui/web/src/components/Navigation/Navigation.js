@@ -54,7 +54,7 @@ class Navigation extends React.Component {
     return (
       <nav className="Navigation">
         <ul>
-          <li>
+          {/* <li>
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>
               {
@@ -63,7 +63,7 @@ class Navigation extends React.Component {
                 )
               }
             </select>
-          </li>
+          </li> */}
           {
             routes
               .filter(({display}) => Boolean(display))

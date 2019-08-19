@@ -10,7 +10,7 @@ class BuilderSearchPage extends React.Component {
     const params = new URLSearchParams(this.props.location.search)
     const query = params.get('query')
     return (
-      <>
+      <section className="BuilderSearchPage">
         <BuilderSearchForm />
         {
           query &&
@@ -18,7 +18,7 @@ class BuilderSearchPage extends React.Component {
             Looking for: {query}
           </p>
         }
-      </>
+      </section>
     )
   }
 }

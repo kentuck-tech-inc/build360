@@ -1,3 +1,12 @@
+.Navigation {
+  z-index: 2;
+  position: fixed;
+  background-color: #00000080;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .Navigation ul {
   display: flex;
   align-items: center;
@@ -17,13 +26,13 @@
 
 .Navigation ul li a {
   font-size: 1.5em;
-  color: var(--accent-color);
+  color: var(--secondary-color);
   text-decoration: none;
-  transition: border-color 0.25s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
   border-bottom: 3px solid transparent;
   border-radius: 3px;
 }
 
 .Navigation ul li a:hover {
-  border-color: var(--accent-color);
+  border-color: var(--secondary-color);
 }

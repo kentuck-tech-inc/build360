@@ -1,5 +1,22 @@
 @import "./generated/colors.css";
 
+:root {
+  --header-height: 92px;
+  --gutter-width: 32px;
+}
+
+@media (min-width: 512px) {
+  :root {
+    --gutter-width: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter-width: 128px;
+  }
+}
+
 .App.test {
   --primary-color: black;
   --secondary-color: white;
@@ -25,17 +42,49 @@
   min-height: 100vh;
 }
 
-.App .content {
-  margin: 0 32px;
-}
-@media (min-width: 512px) {
-  .App .content {
-    margin: 0 64px;
-  }
-}
-@media (min-width: 1024px) {
-  .App .content {
-  margin: 0 128px;
-  }
+.App > .content {
+  padding-top: var(--header-height);
+  margin-left: var(--gutter-width);
+  margin-right: var(--gutter-width);
 }
 
+/*
+* Utils and things that need to become components
+* ===============================================
+*/
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+button {
+  transform: translateY(0);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: solid 1px white;
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 3px white;
+  transition: all 0.1s ease-in;
+}
+
+button:hover, button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 5px white;
+  background-color: #00000080;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px white;
+  background-color: #000000ff;
+}

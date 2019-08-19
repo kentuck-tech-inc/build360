@@ -1,13 +1,35 @@
 .HomePage {
-  
+
+}
+
+.HomePage .top-content {
+  position: relative;
+}
+
+.HomePage .hover-content {
+  margin-top: calc(var(--gutter-width) / 2);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: calc(var(--gutter-width) / 2);
+}
+
+.HomePage-img {
+  width: calc(100% + (var(--gutter-width) * 2));
+  margin: 0 calc(-1 * var(--gutter-width));
 }
 
 .HomePage .tagline {
+  margin-top: 0;
   font-size: 1rem;
   line-height: 1.5;
 }
 
 .HomePage .signup {
+  margin-bottom: 0;
   display: block;
   font-size: 0.75em;
   text-align: center;
@@ -21,4 +43,15 @@
   .HomePage .signup {
     font-size: 1.25em;
   }
+}
+
+.HomePage .content-grid {
+  margin-top: calc(var(--gutter-width) / 2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: calc(var(--gutter-width) / 2);
+}
+
+.HomePage .content-grid .Card form {
+  margin-top: auto;
 }
