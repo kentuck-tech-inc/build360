@@ -8,7 +8,9 @@
     "claudia-init": "claudia create --region us-east-1 --versoin dev --api-module api --profile claudia-services",
     "claudia-dev": "claudia update --regino us-east-1 --version dev --api module api --profile claudia-services",
     "claudia-promote": "claudia set-version --version prod",
-    "start": "node express.js"
+    "start": "node express.js",
+    "start-def":"node -r dotenv/config express.js",
+    "primedb": "node -r dotenv/config ./data/primeDB.js dotenv_config_path=./.env"
   },
   "keywords": [],
   "author": "",

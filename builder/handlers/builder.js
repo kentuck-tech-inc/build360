@@ -1,7 +1,11 @@
 const mockData = require('../data/mock1.json')
 const mariadb = require('mariadb');                            
 const uuidv5 = require('uuid/v5');
-const uuidNamespace = 'http://www.build360.io'
+const uuidv4 = require('uuid/v4');
+const uuidNamespace = process.env.APP_GUID;
+
+console.log('DB_HOST - ' + process.env.DB_HOST);
+
 const pool = mariadb.createPool({host: process.env.DB_HOST,
                                  user: process.env.DB_USER,
                                  password: process.env.DB_PASS, 
@@ -29,9 +33,50 @@ exports.GetBuilders = function(){
         });
 }
 
-exports.GetBuilderByName = function(builderName){
+exports.GetBuilderByUUID = function(builderUUID){
+  console.log('builder.getBuilderByUUID entered');
     pool.getConnection()
-        .then(conn => {        
+    .then(conn => {    
+        console.log('builder.GetBuilderByUUID - ' + builderUUID);    
+        conn.query("SELECT * from builder.builderEntity where UUID=unhex(?)",[builderUUID])
+        .then((rows) => {
+          console.log(rows); //[ {val: 1}, meta: ... ]
+          console.log(rows[0].CompanyName)
+          conn.end();
+          return rows;
+        })
+        .catch(err => {
+          //handle error
+          conn.end();
+          console.log(err);
+          return err;
+        })
+        
+    }).catch(err => {
+      //not connected
+      console.log(err);
+      return err;
+    });
+}
+
+exports.GetBuilderByName = function(builderName, convertToUUID=false){
+    pool.getConnection()
+        .then(conn => {     
+            if(convertToUUID){  
+              var uid  = uuidv5(builderName.toLowerCase().replace(/\s+/g, ''), uuidNamespace).replace(/-/gi,'');
+              conn.query("SELECT * from builder.builderEntity where UUID= unhex(?)",[uid])
+              .then((rows) => {
+                console.log(rows); //[ {val: 1}, meta: ... ]
+                conn.end();
+                return rows;
+              })
+              .catch(err => {
+                //handle error
+                conn.end();
+                return err;
+              })
+            }
+            else{  
             conn.query("SELECT * from builder.builderEntity where CompanyName= ?",[builderName])
             .then((rows) => {
               console.log(rows); //[ {val: 1}, meta: ... ]
@@ -43,40 +88,42 @@ exports.GetBuilderByName = function(builderName){
               conn.end();
               return err;
             })
-            
+          }
         }).catch(err => {
           //not connected
           return err;
         });
 }
 
-exports.GetBuilderById = function(builderId){
-    return mockData;
-}
-
-exports.InsertBuilder = function(builderName,
+exports.InsertBuilder = function(builderName="",
                                  builderOwner,
                                  builderBBBRating,
-                                 builderAssociations){
+                                 builderAssociations=""){
     pool.getConnection()
     .then(conn => {
-        var uid  = uuidv5(uuidNamespace, uuidv5.URL);
+        console.log('builder.InsertBuilder starting');
+        var uid  = uuidv5(builderName.toLowerCase().replace(/\s+/g, ''), uuidNamespace).replace(/-/gi,'');
+        console.log('builder UUID generated - ' + uid);
         var pURI = '/builder/' + uid + '/portfolio/';
         var cURI = '/builder/' + uid + '/contact/';
         var lURI = '/builder/' + uid + '/location/';
         var fURI = '/builder/' + uid + '/feedback/';
-        conn.query("INSERT INTO builderEntity (UUID, CompanyName, OwnerName, BBBRating, Associations, PortfolioURI, ContactInfoURI, LocationInfoURI, FeedbackURI) values (?, ?, ?, ?, ?, ?, ?, ?)", 
+        
+        conn.query("INSERT INTO builder.builderEntity (UUID, CompanyName, OwnerName, BBBRating, Associations, PortfolioURI, ContactInfoURI, LocationInfoURI, FeedbackURI) values (unhex(?), ?, ?, ?, ?, ?, ?, ?, ?)", 
             [uid,builderName, builderOwner, builderBBBRating, builderAssociations, 
             pURI, cURI, lURI, fURI])
         .then((res) => {
             console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
             conn.end();
+            return uid;
         })
         .catch(err => {
             //handle error
+            console.log(err);
             conn.end();
         })        
     }).catch(err => {
+        console.log(err);s
         //not connected
     });
 }
