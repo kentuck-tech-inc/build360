@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "blueprintService-executor",
+    "name": "blueprintService",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "d8zwbjo2i6",
+    "module": "api"
+  }
+}

@@ -5,13 +5,14 @@ console.log('DB_HOST - ' + process.env.DB_HOST);
 const dbpool = mariadb.createPool({host: process.env.DB_HOST,
                                    user: process.env.DB_USER,
                                    password: process.env.DB_PASS,
+                                   port: process.env.DB_PORT,
                                    connectionLimit: 5
                                 });
 
 exports.GetBlueprints = () => {
-    pool.getConnection()
+     return dbpool.getConnection()
         .then(conn => {
-            conn.query("SELECT * from blueprint.blueprintEntity")
+            return conn.query("SELECT * from blueprint.blueprintEntity")
             .then((res) => {
                 console.log(res);
                 conn.end();
@@ -21,7 +22,8 @@ exports.GetBlueprints = () => {
                 conn.end();
                 return err;
             })
-        }).catch(err => {
-            return err;
         })
+        .catch(err => {
+            return err;
+        });
 }
