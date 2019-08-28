@@ -13,8 +13,8 @@ const port = 3000
 //     let tmp = await blueprint.GetBlueprints();
 //     res.status(200).send(tmp)
 // });
-app.get('/blueprints', () => {
-    return new Promise(
+app.get('/blueprints', (req, res) => {
+    const getData = new Promise(
         (resolve, reject) => {
             loadDatabase()
             .then((db) => {
@@ -24,6 +24,14 @@ app.get('/blueprints', () => {
                 reject( `Ok, something went seriously wrong...\n ${ex.message}`);
             });
     });
+    getData
+    .then(
+        (blueprints) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(blueprints));
+        });
+
+
 });
 
 app.get('/health', (req, res) => res.status(200).send(healthCheck.healthcheck()))
