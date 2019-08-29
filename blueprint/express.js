@@ -2,17 +2,12 @@ const express = require('express')
 require('dotenv').config()
 var mariadb = require('mariadb');
 var {Op, Sequelize } = require('sequelize');
-//const blueprint = require('./handlers/blueprint')
 
 const healthCheck = require('./handlers/healthcheck')
 
 const app = express()
 const port = 3000
 
-// app.get('/builder', async (req, res) => {
-//     let tmp = await blueprint.GetBlueprints();
-//     res.status(200).send(tmp)
-// });
 app.get('/blueprints', (req, res) => {
     const getData = new Promise(
         (resolve, reject) => {
@@ -30,7 +25,26 @@ app.get('/blueprints', (req, res) => {
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify(blueprints));
         });
+});
 
+app.get('/blueprints/search', (req, res) => {
+    const getData = new Promise(
+        (resolve, reject) => {
+            loadDatabase()
+            .then((db) => {
+                resolve(searchBlueprints(db, req));
+            })
+            .catch((ex) => {
+                reject( `Ok, something went seriously wrong...\n ${ex.message}`);
+            });
+        }
+    );
+    getData
+    .then(
+        (blueprints) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(blueprints));
+        });
 
 });
 
@@ -78,6 +92,32 @@ function getBlueprints(db) {
     return new Promise(
         (resolve, reject) => {
             db.blueprints.findAll().then((result) => {
+                db.sequelize.connectionManager.close();
+                resolve(result);
+            }).error((err) => {
+                console.log("Error:" + err);
+                reject(err);
+            });
+    });
+}
+
+function searchBlueprints(db, res) {
+    var whereStatement = {};
+    if (res.query.id)
+        whereStatement.id = res.query.id;
+    if (res.query.bedrooms)
+        whereStatement.bedrooms = { [Op.gte]: res.query.bedrooms };
+    if (res.query.bathrooms)
+        whereStatement.bathrooms = {[Op.gte]: res.query.bathrooms};
+    if (res.query.floors)
+        whereStatement.floors = {[Op.gte]: res.query.floors};
+    if (res.query.sqft)
+        whereStatement.totalSqFeet = {[Op.gte]: res.query.sqft};
+    return new Promise(
+        (resolve, reject) => {
+            db.blueprints.findAll({
+                where: whereStatement
+            }).then((result) => {
                 db.sequelize.connectionManager.close();
                 resolve(result);
             }).error((err) => {

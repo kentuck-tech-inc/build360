@@ -84,6 +84,32 @@ function getBlueprints(db) {
     });
 }
 
+function searchBlueprints(db, res) {
+    var whereStatement = {};
+    if (res.queryString.id)
+        whereStatement.id = res.queryString.id;
+    if (res.queryString.bedrooms)
+        whereStatement.bedrooms = { [Op.gte]: res.queryString.bedrooms };
+    if (res.queryString.bathrooms)
+        whereStatement.bathrooms = {[Op.gte]: res.queryString.bathrooms};
+    if (res.queryString.floors)
+        whereStatement.floors = {[Op.gte]: res.queryString.floors};
+    if (res.queryString.sqft)
+        whereStatement.totalSqFeet = {[Op.gte]: res.queryString.sqft};
+    return new Promise(
+        (resolve, reject) => {
+            db.blueprints.findAll({
+                where: whereStatement
+            }).then((result) => {
+                db.sequelize.connectionManager.close();
+                resolve(result);
+            }).error((err) => {
+                console.log("Error:" + err);
+                reject(err);
+            });
+    });
+}
+
 // api.get('/', () => Date.now())
 
 // api.get('/builder', async () => { return await blueprint.GetBlueprints()})
