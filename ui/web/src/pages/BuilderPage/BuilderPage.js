@@ -22,10 +22,16 @@ class BuilderPage extends React.Component {
         })
       }, 1000)
     })
+
+    fetch('https://d8zwbjo2i6.execute-api.us-east-1.amazonaws.com/latest/blueprints').then(data => {
+      this.setState({
+        blueprints: data
+      })
+    })
   }
 
   render () {
-    const { loading, builder } = this.state
+    const { loading, builder, blueprints } = this.state
 
     return loading
       ? <article className="BuilderPage"><h2>Loading builder...</h2></article>

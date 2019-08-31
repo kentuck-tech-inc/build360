@@ -6,6 +6,7 @@ import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
+import logo from '../../assets/build360-logo.svg'
 
 const routes = [
   {
@@ -54,6 +55,7 @@ class Navigation extends React.Component {
     return (
       <nav className="Navigation">
         <ul>
+          <li><img src={logo} alt="Build360 logo" className="icon-xl" /></li>
           {/* <li>
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>

@@ -1,7 +1,7 @@
 .Navigation {
   z-index: 2;
   position: fixed;
-  background-color: #00000080;
+  background-color: #000000ff;
   top: 0;
   left: 0;
   right: 0;
@@ -10,6 +10,7 @@
 .Navigation ul {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   margin: 0;
   padding: 32px;
   list-style: none;

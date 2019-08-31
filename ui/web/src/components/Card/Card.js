@@ -12,7 +12,7 @@ class Card extends React.Component {
     const childrenWithClasses = React.Children.map(children, (child, index) =>
       React.isValidElement(child)
         ? React.cloneElement(child, {
-          className: classnames(child.classname, {
+          className: classnames(child.className, {
             'first': index === 0,
             'last': index === (childrenLength - 1)
           })
@@ -21,7 +21,8 @@ class Card extends React.Component {
     )
     return (
       <section className={classnames("Card", {'dark': dark, 'light': !dark}, className)}>
-        {childrenWithClasses}
+        {children}
+        {/* {childrenWithClasses} */}
       </section>
     )
   }
