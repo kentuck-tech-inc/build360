@@ -1,0 +1,34 @@
+{
+  "name": "blueprintService",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "mocha",
+    "claudia-init": "claudia create --region us-east-1 --versoin dev --api-module api --profile claudia-services",
+    "claudia-dev": "claudia update --region us-east-1 --version dev --api module api --profile claudia-services",
+    "claudia-deploy": "claudia update --use-local-dependencies --profile build360-publish",
+    "claudia-promote": "claudia set-version --version prod",
+    "start": "node express.js",
+    "debug": "nodemon --inspect express.js",
+    "start-def": "node -r dotenv/config express.js",
+    "primedb": "node -r dotenv/config ./data/primeDB.js dotenv_config_path=./.env"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.517.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "claudia": "^5.7.0",
+    "claudia-api-builder": "^4.1.2",
+    "jasmine-core": "^3.4.0",
+    "karma-jasmine": "^2.0.1",
+    "mariadb": "^2.1.0",
+    "mocha": "^6.2.0",
+    "sequelize": "^5.16.0"
+  }
+}
