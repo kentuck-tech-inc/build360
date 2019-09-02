@@ -69,10 +69,10 @@ exports.GetBuilderByUUID = function(builderUUID){
           b.Description = rows[0].Description;
           b.bbbRating = rows[0].BBBRating;
 
-          b.portfolioURI = "/builders/" + builderUUID + "/portfolio";
-          b.contactURI = "/builders/" + builderUUID + "/contact";
-          b.feedbackURI = "/builders/" + builderUUID + "/feedback";
-          b.location = "/builders/" + builderUUID + "/location";
+          b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
+          b.contactURI = "/builder/" + builderUUID + "/contact";
+          b.feedbackURI = "/builder/" + builderUUID + "/feedback";
+          b.location = "/builder/" + builderUUID + "/location";
           console.log(b);
 
           conn.end();
@@ -109,10 +109,10 @@ exports.GetBuilderByName = function(builderName, convertToUUID=false){
                 b.Description = rows[0].Description;
                 b.bbbRating = rows[0].BBBRating;
 
-                b.portfolioURI = "/builders/" + builderUUID + "/portfolio";
-                b.contactURI = "/builders/" + builderUUID + "/contact";
-                b.feedbackURI = "/builders/" + builderUUID + "/feedback";
-                b.location = "/builders/" + builderUUID + "/location";
+                b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
+                b.contactURI = "/builder/" + builderUUID + "/contact";
+                b.feedbackURI = "/builder/" + builderUUID + "/feedback";
+                b.location = "/builder/" + builderUUID + "/location";
                 console.log(b);
 
                 conn.end();
