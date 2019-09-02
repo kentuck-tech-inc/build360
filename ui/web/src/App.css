@@ -1,7 +1,7 @@
 @import "./generated/colors.css";
 
 :root {
-  --header-height: 92px;
+  --header-height: 105px;
   --gutter-width: 32px;
 }
 
@@ -46,6 +46,12 @@
   padding-top: var(--header-height);
   margin-left: var(--gutter-width);
   margin-right: var(--gutter-width);
+  min-height: 100vh;
+}
+
+.App > .footer {
+  padding-left: var(--gutter-width);
+  padding-right: var(--gutter-width);
 }
 
 /*

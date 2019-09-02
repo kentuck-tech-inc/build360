@@ -11,6 +11,7 @@ import builderSVG from '../../assets/builder.svg'
 import blueprintSVG from '../../assets/blueprint.svg'
 import moneySVG from '../../assets/money.svg'
 import logo from '../../assets/build360-logo.svg'
+import feedback from '../../assets/feedback.jpg'
 import './HomePage.css'
 
 class HomePage extends React.Component {
@@ -20,16 +21,16 @@ class HomePage extends React.Component {
         <div className="top-content">
           <img className="HomePage-img" src={cozyHouse} />
           <Card className="hover-content">
-            <h2>Smarter Building... Simplified.</h2>
+            <p className="flex justify-center my-4">
+              <img src={logo} alt="Build360 logo" className="w-64" />
+            </p>
+            <h2>Smarter Building. Simplified.</h2>
+            <BuilderSearchForm advancedSearch={false} />
             <p className="tagline">
               Don't settle on life's largest investment.<br />
               Pair your perfect plan with your favorite builder.
             </p>
-            <BuilderSearchForm advancedSearch={false} />
-            <h2 className="mt-32">Finally, a solution to make your home building process easy.</h2>
-            <p className="flex justify-center">
-              <img src={logo} alt="Build360 logo" className="w-64" />
-            </p>
+            <h2 className="mt-4">Finally, a solution to make your home building process easy.</h2>
           </Card>
         </div>
         <FadeInOnVisible className="content-grid">
@@ -88,16 +89,18 @@ class HomePage extends React.Component {
           <h2 id="recieve-quotes">Recieve quotes</h2>
           <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. Quote come back high, easily go back to that plan to make changes to get that quote in your budget.</p>
         </FadeInOnVisible>
-        <FadeInOnVisible className="next-section">
-          <h2>Happy homeowners</h2>
-          <p>feedback from home owners</p>
+        <FadeInOnVisible className="next-section grid-column-2">
+          <Image src={feedback} alt="feedback image" />
+          <section>
+            <h2>Client Feedback</h2>
+            <p>feedback from home owners</p>
+          </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section">
           <h2>Blog</h2>
           <p>Three posts with read more</p>
           <Link to="/blog">View more posts</Link>
         </FadeInOnVisible>
-        <footer>footer with contact info</footer>
       </section>
     )
   }

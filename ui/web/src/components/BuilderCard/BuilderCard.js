@@ -1,6 +1,13 @@
 
 import React from 'react'
 import './BuilderCard.css'
+import builderDefault from '../../assets/builder-default.jpg'
+import { Image } from '../Image/Image'
+import { Link } from '../Link/Link'
+
+function slug(name) {
+  return encodeURIComponent(name.split(' ').join('-'));
+}
 
 class BuilderCard extends React.Component {
   generateContactInfo = (builder) => {
@@ -52,17 +59,30 @@ class BuilderCard extends React.Component {
   }
 
   render() {
-    const { builder } = this.props
+    const { builder, isLink } = this.props
     return builder ? (
-      <section className="BuilderCard">
-        <img
+      <section className="BuilderCard mt-8">
+        <Image
           className="BuilderCard-profile-img"
-          src="http://placekitten.com/500/500"
+          defaultSrc={builderDefault}
+          src={builderDefault}
           alt=""
         />
-        <h2 className="BuilderCard-companyName">
-          {builder.companyName}
-        </h2>
+        { 
+          isLink
+            ? (
+              <Link to={`/builder/${slug(builder.companyName)}/${builder.id}`}>
+                <h2 className="BuilderCard-companyName">
+                  {builder.companyName}
+                </h2>
+              </Link>
+            )
+            : (
+              <h2 className="BuilderCard-companyName">
+                {builder.companyName}
+              </h2>
+            )
+        }
         <address className="BuilderCard-contactInfo">
           {this.generateContactInfo(builder)}
         </address>

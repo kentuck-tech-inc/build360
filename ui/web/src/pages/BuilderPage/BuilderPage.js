@@ -3,25 +3,25 @@ import { BuilderCard } from '../../components/BuilderCard/BuilderCard'
 import { BuilderDetails } from '../../components/BuilderDetails/BuilderDetails'
 import { BuilderGallary } from '../../components/BuilderGallary/BuilderGallary'
 import { BuilderRating } from '../../components/BuilderRating/BuilderRating'
+import { getBuilder } from '../../api/Builder'
 import './BuilderPage.css'
-import mockData from './mockData.json'
 
 class BuilderPage extends React.Component {
   state = {
-    builder: {}
+    builder: {},
+    loading: true
   }
 
   componentDidMount() {
-    this.setState({
-      loading: true
-    }, () => {
-      setTimeout(() => {
+    const { id } = this.props.match.params
+    if(id) {
+      getBuilder(id).then(builder => {
         this.setState({
-          builder: mockData,
+          builder,
           loading: false
         })
-      }, 1000)
-    })
+      })
+    }
 
     fetch('https://d8zwbjo2i6.execute-api.us-east-1.amazonaws.com/latest/blueprints').then(data => {
       this.setState({

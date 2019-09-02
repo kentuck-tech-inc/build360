@@ -7,3 +7,11 @@ export function searchBuilders(query) {
     }, 1000)
   })
 }
+
+export function getBuilder(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(buildersById[id])
+    }, 1000)
+  })
+}
