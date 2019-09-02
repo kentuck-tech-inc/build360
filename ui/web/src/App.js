@@ -34,17 +34,24 @@ class App extends React.Component {
             }
           </section>
 
-          <footer className="footer flex items-center justify-between bg-black py-4 mt-8">
+          <footer className="footer flex items-center justify-between bg-black py-2 mt-8">
             <SocialMedia size="m" className="inline-flex justify-start -ml-2" />
             <Link anchor to="mailto::kentucktech@gmail.com">
               kentucktech@gmail.com
             </Link>
             <img src={logo} alt="Build360 logo" className="w-32" />
           </footer>
+          <div className="Legal bg-black pb-2 flex justify-center text-xs">
+            © 2018-2019 Kentuck Tech, Inc. All Rights Reserved. Patent Pending. 
+          </div>
         </main>
       </Router>
     )
   }
 }
+
+/**
+ * Center legal copy and email
+ */
 
 export default App

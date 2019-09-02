@@ -32,9 +32,9 @@ class BuilderPage extends React.Component {
       : (
         <article className="BuilderPage">
           <BuilderCard builder={builder} />
-          <BuilderDetails builder={builder} />
-          <BuilderGallary builder={builder} />
-          <BuilderRating builder={builder} />
+          <BuilderDetails className="mt-8" builder={builder} />
+          <BuilderGallary className="mt-8" builder={builder} />
+          <BuilderRating className="mt-8" builder={builder} />
         </article>
       )
   }

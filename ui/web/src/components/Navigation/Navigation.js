@@ -83,4 +83,11 @@ class Navigation extends React.Component {
   }
 }
 
+/**
+ * Change navigation to be a side nav
+ * Builders should go to a page for builders
+ * Buyers -> Homeowners
+ * remove about and services, about is already on homepage, there are no services
+ */
+
 export { Navigation, routes }

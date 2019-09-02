@@ -6,7 +6,8 @@
 .BuilderSearchForm .input-wrapper {
   display: flex;
   width: 100%;
-  margin: 2em 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .BuilderSearchForm input {

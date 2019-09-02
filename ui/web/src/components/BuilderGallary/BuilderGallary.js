@@ -3,6 +3,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { getBlueprints } from '../../api/Blueprint'
 import { Image } from '../Image/Image'
+import defaultFloorplan from '../../assets/default-floorplan.jpg'
 import './BuilderGallary.css'
 
 class BuilderGallary extends React.Component {
@@ -45,16 +46,14 @@ class BuilderGallary extends React.Component {
       </p>
     }
 
-    console.log(blueprints)
-
     return (
       <section className={classname}>
-        <h2>Blueprints</h2>
+        <h2 className="mb-2">Floor Plans</h2>
         <ul className="flex overflow-x-auto">
           {
             blueprints.map((blueprint, index) => (
               <li key={index} className="BlueprintCard">
-                <Image src={blueprint.thumbnailUrl} />
+                <Image src={defaultFloorplan} />
                 <h3>Bedrooms:</h3><strong>{blueprint.bedrooms}</strong>
                 <h3>Bathrooms:</h3><strong>{blueprint.bathrooms}</strong>
                 <h3>Floors:</h3><strong>{blueprint.floors}</strong>
@@ -66,5 +65,11 @@ class BuilderGallary extends React.Component {
     )
   }
 }
+
+/**
+ * Download different home pictures
+ * build a random house component
+ * use for gallary
+ */
 
 export {BuilderGallary}

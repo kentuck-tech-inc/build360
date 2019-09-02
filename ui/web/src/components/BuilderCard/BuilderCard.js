@@ -91,4 +91,8 @@ class BuilderCard extends React.Component {
   }
 }
 
+/**
+ * User random image component to get random builder images
+ */
+
 export {BuilderCard}
