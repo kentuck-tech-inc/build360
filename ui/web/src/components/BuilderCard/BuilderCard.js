@@ -58,6 +58,7 @@ class BuilderCard extends React.Component {
         <img
           className="BuilderCard-profile-img"
           src="http://placekitten.com/500/500"
+          alt=""
         />
         <h2 className="BuilderCard-companyName">
           {builder.companyName}

@@ -4,6 +4,7 @@ import cx from 'classnames'
 
 import { Navigation, routes } from './components/Navigation/Navigation'
 import themes from './generated/color-options.json'
+import './tailwind.css';
 import './App.css'
 
 class App extends React.Component {

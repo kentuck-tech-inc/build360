@@ -55,7 +55,7 @@ class Navigation extends React.Component {
     return (
       <nav className="Navigation">
         <ul>
-          <li><img src={logo} alt="Build360 logo" className="icon-xl" /></li>
+          <li><img src={logo} alt="Build360 logo" className="w-32" /></li>
           {/* <li>
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>
