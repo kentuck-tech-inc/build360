@@ -2,6 +2,7 @@ const mockData = require('../data/mock1.json')
 const mariadb = require('mariadb');                            
 const uuidv5 = require('uuid/v5');
 const uuidv4 = require('uuid/v4');
+
 const uuidNamespace = process.env.APP_GUID;
 
 console.log('DB_HOST - ' + process.env.DB_HOST);
@@ -11,8 +12,26 @@ const pool = mariadb.createPool({host: process.env.DB_HOST,
                                  password: process.env.DB_PASS, 
                                  connectionLimit: 5});
                                  
+const builder = {
+  UUID : "",
+  CompanyName : "",
+  Owner : "",
+  Associations : [],
+  Description : "",
+  bbbRating : "",
+  portfolioURI : "",
+  contactURI:"",
+  feedbackURI:"",
+  locationURI:"",
+
+  contactInfo: null,
+  feedback:null,
+  portfolio:null,
+  location:null
+}
+                                 
 exports.GetBuilders = function(){
-    pool.getConnection()
+  return pool.getConnection()
         .then(conn => {
         
           conn.query("SELECT * from builder.builderEntity")
@@ -35,13 +54,27 @@ exports.GetBuilders = function(){
 
 exports.GetBuilderByUUID = function(builderUUID){
   console.log('builder.getBuilderByUUID entered');
-    pool.getConnection()
+  return pool.getConnection()
     .then(conn => {    
         console.log('builder.GetBuilderByUUID - ' + builderUUID);    
-        conn.query("SELECT * from builder.builderEntity where UUID=unhex(?)",[builderUUID])
+        conn.query("SELECT hex(UUID) as UUID, CompanyName, OwnerName, BBBRating, Associations, PortfolioURI, ContactInfoURI, LocationInfoURI, FeedbackURI from builder.builderEntity where UUID=unhex(?)",[builderUUID])
         .then((rows) => {
           console.log(rows); //[ {val: 1}, meta: ... ]
-          console.log(rows[0].CompanyName)
+
+          b = Object.create(builder)
+          b.CompanyName = rows[0].CompanyName;
+          b.UUID = rows[0].UUID;
+          b.Owner = rows[0].OwnerName;
+          b.Associations = rows[0].Associations.split(",");
+          b.Description = rows[0].Description;
+          b.bbbRating = rows[0].BBBRating;
+
+          b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
+          b.contactURI = "/builder/" + builderUUID + "/contact";
+          b.feedbackURI = "/builder/" + builderUUID + "/feedback";
+          b.location = "/builder/" + builderUUID + "/location";
+          console.log(b);
+
           conn.end();
           return rows;
         })
@@ -60,13 +93,28 @@ exports.GetBuilderByUUID = function(builderUUID){
 }
 
 exports.GetBuilderByName = function(builderName, convertToUUID=false){
-    pool.getConnection()
+  return pool.getConnection()
         .then(conn => {     
             if(convertToUUID){  
               var uid  = uuidv5(builderName.toLowerCase().replace(/\s+/g, ''), uuidNamespace).replace(/-/gi,'');
               conn.query("SELECT * from builder.builderEntity where UUID= unhex(?)",[uid])
               .then((rows) => {
                 console.log(rows); //[ {val: 1}, meta: ... ]
+                
+                b = Object.create(builder)
+                b.CompanyName = rows[0].CompanyName;
+                b.UUID = rows[0].UUID;
+                b.Owner = rows[0].OwnerName;
+                b.Associations = rows[0].Associations.split(",");
+                b.Description = rows[0].Description;
+                b.bbbRating = rows[0].BBBRating;
+
+                b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
+                b.contactURI = "/builder/" + builderUUID + "/contact";
+                b.feedbackURI = "/builder/" + builderUUID + "/feedback";
+                b.location = "/builder/" + builderUUID + "/location";
+                console.log(b);
+
                 conn.end();
                 return rows;
               })
@@ -99,7 +147,7 @@ exports.InsertBuilder = function(builderName="",
                                  builderOwner,
                                  builderBBBRating,
                                  builderAssociations=""){
-    pool.getConnection()
+  return  pool.getConnection()
     .then(conn => {
         console.log('builder.InsertBuilder starting');
         var uid  = uuidv5(builderName.toLowerCase().replace(/\s+/g, ''), uuidNamespace).replace(/-/gi,'');
