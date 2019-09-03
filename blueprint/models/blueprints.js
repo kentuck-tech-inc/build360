@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
         thumbnailUrl: {
             field: 'thumbnail_url',
             type:DataTypes.STRING
-        }
+        },
+        style: DataTypes.INTEGER
     },
     {
         freezeTableName: true,
