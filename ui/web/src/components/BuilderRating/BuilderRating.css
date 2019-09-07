@@ -1,0 +1,39 @@
+
+.BuilderRating {
+
+}
+
+.RatingGroup {
+  display: inline-block;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border-radius: 4px;
+  background-color: black;
+}
+
+.RatingWrapper {
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.RatingWrapper + .RatingWrapper {
+  margin-left: 0.5rem;
+}
+
+.Rating input {
+  display: none;
+}
+
+.Rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: black;
+  clip-path: polygon(50.00% 0.00%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50.00% 0.00%, 37.95% 36.17%, 0.00% 36.17%, 30.22% 59.32%, 16.67% 100.00%, 50% 74.47%, 83.33% 100%, 69.77% 59.32%, 100% 36.17%, 62.05% 36.17%);
+  /* clip-path: polygon(50.00% 0.00%, 16.67% 100.00%, 100.00% 36.17%, 0.00% 36.17%, 83.33% 100.00%); */
+  /* 50.00% 0.00%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50.00% 0.00%, 37.95% 36.17%, 0.00% 36.17%, 30.22% 59.32%, 16.67% 100.00%, 50% 74.47%, 83.33% 100%, 69.77% 59.32%, 100% 36.17%, 62.05% 36.17% */
+}

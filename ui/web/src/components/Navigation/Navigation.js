@@ -6,6 +6,7 @@ import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
+import logo from '../../assets/build360-logo.svg'
 
 const routes = [
   {
@@ -54,7 +55,8 @@ class Navigation extends React.Component {
     return (
       <nav className="Navigation">
         <ul>
-          <li>
+          <li><img src={logo} alt="Build360 logo" className="w-32" /></li>
+          {/* <li>
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>
               {
@@ -63,7 +65,7 @@ class Navigation extends React.Component {
                 )
               }
             </select>
-          </li>
+          </li> */}
           {
             routes
               .filter(({display}) => Boolean(display))
@@ -80,5 +82,12 @@ class Navigation extends React.Component {
     )
   }
 }
+
+/**
+ * Change navigation to be a side nav
+ * Builders should go to a page for builders
+ * Buyers -> Homeowners
+ * remove about and services, about is already on homepage, there are no services
+ */
 
 export { Navigation, routes }

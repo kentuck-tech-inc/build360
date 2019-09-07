@@ -1,0 +1,24 @@
+
+.BuilderGallary {
+
+}
+
+.BlueprintCard {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 0.5rem;
+  background: #00000080;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.BlueprintCard + .BlueprintCard {
+  margin-left: 1rem;
+}
+
+.BlueprintCard img {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  max-width: 256px;
+}
