@@ -4,8 +4,9 @@ import './Image.css'
 
 class Image extends React.Component {
   render() {
+    const {defaultSrc, ...props} = this.props
     return (
-      <img {...this.props} className={classnames("Image", this.props.className)} />
+      <img {...props} className={classnames("Image", this.props.className)} />
     )
   }
 }

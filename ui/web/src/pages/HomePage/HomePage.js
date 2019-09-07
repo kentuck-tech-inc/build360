@@ -99,7 +99,7 @@ class HomePage extends React.Component {
         <FadeInOnVisible className="next-section grid-column-2">
           <section>
             <h2 id="receive-quotes">Recieve quotes</h2>
-            <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. Quote come back high, easily go back to that plan to make changes to get that quote in your budget.</p>
+            <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. If your quote comes back high, easily go back to that plan to make changes to get that quote in your budget.</p>
           </section>
           <Image src={receiveQuotes} alt="Quote image" />
         </FadeInOnVisible>
@@ -109,7 +109,7 @@ class HomePage extends React.Component {
             <h2>Client Feedback</h2>
             <p className="mt-4">
               Read reviews from clients of the builders and view their Build360 Score™ to see how they rank against their peers.
-              Builders are graded on communication, professionalism, honesty, budget conscious, billing and finances.
+              Builders are graded on communication, professionalism, budget conscious, billing, finances, and <Link>more</Link>.
             </p>
           </section>
         </FadeInOnVisible>

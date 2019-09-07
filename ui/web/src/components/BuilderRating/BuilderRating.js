@@ -3,15 +3,23 @@ import classnames from 'classnames'
 import './BuilderRating.css'
 
 class BuilderRating extends React.Component {
+  state = {
+    rating: undefined
+  }
+
+  handleRatingChange = (amount) => (event) => {
+    this.setState({ rating: amount * 100 })
+  }
+
   render() {
+    const { rating: setRating } = this.state
     const {builder, className} = this.props
     const classname = classnames(
       'BuilderRating',
       className
     )
 
-    const rating = parseFloat(builder.rating.replace('%', ''))
-    console.log(rating);
+    const rating = setRating || parseFloat(builder.rating.replace('%', ''))
 
     return (
       <section className={classname}>
@@ -25,12 +33,11 @@ class BuilderRating extends React.Component {
               const fillAmount = fullAmount > decimalRating
                 ? (decimalRating - baseAmount * i) / baseAmount
                 : 1
-              console.log(fillAmount)
               const style = {
                 backgroundImage: `linear-gradient(to right, gold, gold ${fillAmount * 100}%, transparent ${fillAmount * 100}%, transparent 100%)`
               }
               return (
-                <div className="RatingWrapper" key={i} style={style}>
+                <div className="RatingWrapper" key={i} style={style} onClick={this.handleRatingChange(fullAmount)}>
                   <label className="Rating">
                     <input
                       type="radio"
