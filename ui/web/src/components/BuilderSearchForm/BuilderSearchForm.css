@@ -12,7 +12,7 @@
 
 .BuilderSearchForm input {
   flex-grow: 1;
-  font-size: 1em;
+  font-size: 1.5rem;
   border: none;
   background-color: white;
   color: black;
@@ -23,8 +23,8 @@
   border-bottom-left-radius: 4px;
 }
 
-.BuilderSearchForm button {
-  font-size: 1em;
+.BuilderSearchForm button.btn {
+  font-size: 1.5rem;
   box-shadow: none;
   color: white;
   padding: 0 32px;
@@ -32,7 +32,7 @@
   border-bottom-left-radius: 0;
 }
 
-.BuilderSearchForm button:hover, .BuilderSearchForm button:focus {
+.BuilderSearchForm button.btn:hover, .BuilderSearchForm button.btn:focus {
   transform: translateY(0);
   box-shadow: none;
 }

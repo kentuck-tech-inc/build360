@@ -1,13 +1,14 @@
 import React from 'react'
 
 import { BuilderSearchForm } from '../../components/BuilderSearchForm/BuilderSearchForm'
-import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisible'
 import { Card } from '../../components/Card/Card'
+import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisible'
 import { Image } from '../../components/Image/Image'
 import { Link } from '../../components/Link/Link'
-import cozyHouse from '../../assets/cozy-house.jpg'
-import house1 from '../../assets/house-1.jpg'
-import house2 from '../../assets/houses/house-2.jpg'
+import { RandomImage } from '../../components/RandomImage/RandomImage'
+import { Tabs } from '../../components/Tabs/Tabs'
+import house1 from '../../assets/houses/modern/house-1.jpg'
+import house2 from '../../assets/houses/contemporary/house-2.jpg'
 import builder1 from '../../assets/builders/builder-1.jpg'
 import floorplan from '../../assets/default-floorplan.jpg'
 import receiveQuotes from '../../assets/receive-quotes.jpg'
@@ -71,7 +72,7 @@ class HomePage extends React.Component {
               </p>
               <form className="mt-8" action="/register">
                 <input hidden name="type" value="user"/>
-                <button>Sign Up Now</button>
+                <button className="btn">Sign Up Now</button>
               </form>
             </section>
           </div>
@@ -90,10 +91,24 @@ class HomePage extends React.Component {
             <h2 id="view-plans">View Plans</h2>
             <p className="mt-4">Search thousands of house plans for free. Found a favorite, but not "just right"? Customize that plan in virtual reality to get the exact features you want! Taller ceilings, larger master bath, bigger garage, the list goes on.</p>
             <div className="mt-4">
-              Image grid with tabs
-              <ul><li>contemporary</li><li>traditional</li><li>modern</li></ul>
+              <Tabs
+                tabs={[
+                  'Contemporary',
+                  'Traditional',
+                  'Modern'
+                ]}
+                content={
+                  ['contemporary', 'traditional', 'modern'].map((type, groupIndex) => (
+                    <div key={groupIndex} className="grid-column-2 grid-gap-4">
+                      {
+                        new Array(4).fill().map((_, index) => <RandomImage index={index} key={`${groupIndex}-${index}`} from={type}/>)
+                      }
+                    </div>
+                  ))
+                }
+              />
             </div>
-            <Link to="/blueprints">View more plans</Link>
+            <Link className="block mt-4" to="/blueprints">View more plans</Link>
           </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">

@@ -3,6 +3,7 @@ import React from 'react'
 import './BuilderCard.css'
 import builderDefault from '../../assets/builder-default.jpg'
 import { Image } from '../Image/Image'
+import { RandomImage } from '../RandomImage/RandomImage'
 import { Link } from '../Link/Link'
 
 function slug(name) {
@@ -62,11 +63,10 @@ class BuilderCard extends React.Component {
     const { builder, isLink } = this.props
     return builder ? (
       <section className="BuilderCard mt-8">
-        <Image
+        <RandomImage
           className="BuilderCard-profile-img"
-          defaultSrc={builderDefault}
-          src={builderDefault}
-          alt=""
+          index={parseInt(builder.id)}
+          from="builders"
         />
         { 
           isLink
