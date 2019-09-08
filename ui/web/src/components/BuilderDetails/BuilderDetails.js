@@ -34,7 +34,6 @@ class BuilderDetails extends React.Component {
 
     return (
       <p className={classname}>
-        <i className="block text-xs">need to show locations somewhere</i>
         {bio}
       </p>
     )

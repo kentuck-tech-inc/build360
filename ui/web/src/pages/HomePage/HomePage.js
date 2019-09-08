@@ -86,7 +86,7 @@ class HomePage extends React.Component {
           <Image src={builder1} alt="builder image" />
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
-          <Image src={floorplan} alt="floorplan image" />
+          <Image className="self-center" src={floorplan} alt="floorplan image" />
           <section>
             <h2 id="view-plans">View Plans</h2>
             <p className="mt-4">Search thousands of house plans for free. Found a favorite, but not "just right"? Customize that plan in virtual reality to get the exact features you want! Taller ceilings, larger master bath, bigger garage, the list goes on.</p>

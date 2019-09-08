@@ -8,7 +8,7 @@ import {
   constructionType,
   family,
   idea,
-  money,
+  dollar,
   rating
 } from '../../assets/icons'
 import { Image } from '../Image/Image'
@@ -45,7 +45,7 @@ class BuilderCard extends React.Component {
           />
         </WithLink>
         <div className="BuilderCard-info">
-          <table className="inline-block -m-2 mr-4" cellSpacing={0} cellPadding="8px">
+          <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
             <tbody>
               <tr>
                 <td><Image src={rating} className="icon-m"/></td>
@@ -77,7 +77,7 @@ class BuilderCard extends React.Component {
                 <td>{currentYear - parseInt(builder.founded)}</td>
               </tr>
               <tr>
-                <td><Image src={money} className="icon-m"/></td>
+                <td><Image src={dollar} className="icon-m"/></td>
                 <td>Price Per Square Foot:</td>
                 <td><b>need data</b></td>
               </tr>
