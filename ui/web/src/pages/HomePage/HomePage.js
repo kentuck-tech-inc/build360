@@ -81,7 +81,7 @@ class HomePage extends React.Component {
           <section>
             <h2 id="browse-builders">Browse Builders</h2>
             <p className="mt-4">View all home builders that currently build homes in your neighborhoods. Search by name, business name, zip code and filter by BBB Rating, Build360 Score, Year Established and more! Every builder showcases their work on their profile, full of client feedback, photos of their jobs, a short biography of them and house plans they have built.</p>
-            <Link className="mt-4" to="/builders">Search for builders</Link>
+            <Link className="block mt-4" to="/builders">Search for builders</Link>
           </section>
           <Image src={builder1} alt="builder image" />
         </FadeInOnVisible>
@@ -130,16 +130,12 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section">
           <h2>Blog</h2>
-          <p>Three posts with read more</p>
+          <p><i>Three posts with read more</i></p>
           <Link to="/blog">View more posts</Link>
         </FadeInOnVisible>
       </section>
     )
   }
 }
-
-/**
- * Make sure to put tabbed images of houses on view plans in a grid
- */
 
 export { HomePage }

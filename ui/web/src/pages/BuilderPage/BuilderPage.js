@@ -30,7 +30,7 @@ class BuilderPage extends React.Component {
     return loading
       ? <article className="BuilderPage"><h2>Loading builder...</h2></article>
       : (
-        <article className="BuilderPage">
+        <article className="BuilderPage mt-8">
           <BuilderCard builder={builder} />
           <BuilderDetails className="mt-8" builder={builder} />
           <BuilderGallary className="mt-8" builder={builder} />

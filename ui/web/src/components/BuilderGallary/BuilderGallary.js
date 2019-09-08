@@ -2,8 +2,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { getBlueprints } from '../../api/Blueprint'
-import { Image } from '../Image/Image'
-import defaultFloorplan from '../../assets/default-floorplan.jpg'
+import { RandomImage } from '../RandomImage/RandomImage'
 import './BuilderGallary.css'
 
 class BuilderGallary extends React.Component {
@@ -49,11 +48,11 @@ class BuilderGallary extends React.Component {
     return (
       <section className={classname}>
         <h2 className="mb-2">Floor Plans</h2>
-        <ul className="flex overflow-x-auto">
+        <ul className="flex overflow-x-auto pb-4">
           {
             blueprints.map((blueprint, index) => (
               <li key={index} className="BlueprintCard">
-                <Image src={defaultFloorplan} />
+                <RandomImage index={index} from="houses" />
                 <h3>Bedrooms:</h3><strong>{blueprint.bedrooms}</strong>
                 <h3>Bathrooms:</h3><strong>{blueprint.bathrooms}</strong>
                 <h3>Floors:</h3><strong>{blueprint.floors}</strong>

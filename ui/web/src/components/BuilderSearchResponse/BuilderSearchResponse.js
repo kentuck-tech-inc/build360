@@ -10,8 +10,7 @@ class BuilderSearchResponse extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mounted BuilderSearchPage with query: ', this.query)
-    searchBuilders(this.query).then(builders => {
+    searchBuilders(this.props.query).then(builders => {
       this.setState({ builders, loading: false, error: false })
     })
     .catch(() => {
@@ -47,7 +46,7 @@ class BuilderSearchResponse extends React.Component {
       {
         builders.map(builder => (
           <li>
-            <BuilderCard isLink builder={builder}/>
+            <BuilderCard key={builder.id} isLink builder={builder}/>
           </li>
         ))
       }

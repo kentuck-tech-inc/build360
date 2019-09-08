@@ -21,11 +21,6 @@ const routes = [
     component: ComingSoonPage
   },
   {
-    to: '/services',
-    display: 'Services',
-    component: ComingSoonPage
-  },
-  {
     to: '/builders',
     display: 'Builders',
     component: BuilderSearchPage
@@ -35,15 +30,15 @@ const routes = [
     component: BuilderPage
   },
   {
-    to: '/buyers',
-    display: 'Buyers',
+    to: '/homeowners',
+    display: 'Homeowners',
     component: ComingSoonPage
   },
   {
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=https://build360.io`
+      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=http://build360.io`
       return <LoginPage />
     }
   }
