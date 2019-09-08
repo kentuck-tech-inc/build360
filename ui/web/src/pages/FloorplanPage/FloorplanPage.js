@@ -1,6 +1,7 @@
 import React from 'react'
 import { FloorplanCard } from '../../components/FloorplanCard/FloorplanCard'
 import { getBlueprint } from '../../api/Blueprint'
+import { Link } from '../../components/Link/Link';  
 import './FloorplanPage.css'
 
 class FloorplanPage extends React.Component {
@@ -33,7 +34,8 @@ class FloorplanPage extends React.Component {
     if(loading) {
       return (
         <section className="FloorplanPage mt-8">
-          <h2>Loading floorplan...</h2>
+          <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
+          <h2 className="mt-8">Loading floorplan...</h2>
         </section>
       )
     }
@@ -41,7 +43,8 @@ class FloorplanPage extends React.Component {
     if(error) {
       return (
         <section className="FloorplanPage mt-8">
-          <p>
+          <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
+          <p className="mt-8">
             There was a problem while loading this floorplan,
             please try again later.
           </p>
@@ -51,7 +54,9 @@ class FloorplanPage extends React.Component {
 
     return (
       <section className="FloorplanPage mt-8">
+        <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
         <FloorplanCard floorplan={floorplan} />
+        <Link className="block mt-8" anchor to={floorplan.imageUrl}>View plan source</Link>
       </section>
     )
   }

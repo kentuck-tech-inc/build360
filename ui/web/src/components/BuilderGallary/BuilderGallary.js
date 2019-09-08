@@ -2,6 +2,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { getBlueprints } from '../../api/Blueprint'
+import { Link } from '../Link/Link'
 import { RandomImage } from '../RandomImage/RandomImage'
 import './BuilderGallary.css'
 
@@ -52,7 +53,9 @@ class BuilderGallary extends React.Component {
           {
             blueprints.map((blueprint, index) => (
               <li key={index} className="BlueprintCard">
-                <RandomImage index={index} from="houses" />
+                <Link className="image-wrapper" to={`/floorplan/${blueprint.id}`}>
+                  <RandomImage index={index} from="houses" />
+                </Link>
                 <h3>Bedrooms:</h3><strong>{blueprint.bedrooms}</strong>
                 <h3>Bathrooms:</h3><strong>{blueprint.bathrooms}</strong>
                 <h3>Floors:</h3><strong>{blueprint.floors}</strong>

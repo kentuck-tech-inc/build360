@@ -4,12 +4,14 @@ import { BuilderDetails } from '../../components/BuilderDetails/BuilderDetails'
 import { BuilderGallary } from '../../components/BuilderGallary/BuilderGallary'
 import { BuilderRating } from '../../components/BuilderRating/BuilderRating'
 import { getBuilder } from '../../api/Builder'
+import { Link } from '../../components/Link/Link'
 import './BuilderPage.css'
 
 class BuilderPage extends React.Component {
   state = {
-    builder: {},
-    loading: true
+    loading: true,
+    error: false,
+    builder: {}
   }
 
   componentDidMount() {
@@ -20,23 +22,49 @@ class BuilderPage extends React.Component {
           builder,
           loading: false
         })
+      }).catch(() => {
+        this.setState({
+          loading: false,
+          error: true
+        })
       })
     }
   }
 
   render () {
-    const { loading, builder } = this.state
+    const { loading, error, builder } = this.state
 
-    return loading
-      ? <article className="BuilderPage"><h2>Loading builder...</h2></article>
-      : (
+    if(loading) {
+      return (
         <article className="BuilderPage mt-8">
-          <BuilderCard builder={builder} />
-          <BuilderDetails className="mt-8" builder={builder} />
-          <BuilderGallary className="mt-8" builder={builder} />
-          <BuilderRating className="mt-8" builder={builder} />
+          <Link to="/builders" className="text-l">Search for more builders</Link>
+          <h2 className="mt-8">Loading builder...</h2>
         </article>
       )
+    }
+
+    if(error) {
+      return (
+        <article className="BuilderPage mt-8">
+          <Link to="/builders" className="text-l">Search for more builders</Link>
+          <p className="mt-8">
+            There was a problem while loading this builder,
+            please try again later.
+          </p>
+        </article>
+      )
+    }
+
+
+    return (
+      <article className="BuilderPage mt-8">
+        <Link to="/builders" className="text-l">Search for more builders</Link>
+        <BuilderCard className="mt-8" builder={builder} />
+        <BuilderDetails className="mt-8" builder={builder} />
+        <BuilderGallary className="mt-8" builder={builder} />
+        <BuilderRating className="mt-8" builder={builder} />
+      </article>
+    )
   }
 }
 

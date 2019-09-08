@@ -16,7 +16,7 @@
   margin-left: 1rem;
 }
 
-.BlueprintCard img {
+.BlueprintCard .image-wrapper {
   grid-column-start: 1;
   grid-column-end: 3;
   width: 100%;
