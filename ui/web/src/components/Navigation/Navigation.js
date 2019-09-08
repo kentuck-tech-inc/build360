@@ -6,6 +6,8 @@ import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
+import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
+import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -37,6 +39,15 @@ const routes = [
   {
     to: '/builder/:slug/:id',
     component: BuilderPage
+  },
+  {
+    to: '/floorplans',
+    display: 'Floorplans',
+    component: FloorplanSearchPage
+  },
+  {
+    to: '/floorplan/:id',
+    component: FloorplanPage
   },
   {
     to: '/homeowners',

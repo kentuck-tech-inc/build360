@@ -1,0 +1,25 @@
+.FloorplanSearchForm .inputs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -2rem;
+  margin-top: -1rem;
+}
+
+.FloorplanSearchForm .Input {
+  display: block;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  color: black;
+  background-color: white;
+  font-size: 1rem;
+  
+}
+
+.FloorplanSearchForm label {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}

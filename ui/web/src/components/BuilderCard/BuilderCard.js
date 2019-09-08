@@ -13,17 +13,11 @@ import {
 } from '../../assets/icons'
 import { Image } from '../Image/Image'
 import { RandomImage } from '../RandomImage/RandomImage'
-import { Link } from '../Link/Link'
+import { WithLink } from '../WithLink/WithLink'
 
 function slug(name) {
   return encodeURIComponent(name.split(' ').join('-'));
 }
-
-const WithLink = ({isLink, children, ...props}) => isLink
-  ? <Link {...props}>
-      {children}
-    </Link>
-  : children
 
 class BuilderCard extends React.Component {
   render() {

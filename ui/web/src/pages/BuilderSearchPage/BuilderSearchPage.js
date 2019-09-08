@@ -14,10 +14,12 @@ class BuilderSearchPage extends React.Component {
   }
 
   render () {
+    const hasQuery = Boolean(this.query)
     return (
       <section className="BuilderSearchPage">
         <BuilderSearchForm />
-        <BuilderSearchResponse query={this.query} />
+        <hr className="my-8"/>
+        { hasQuery && <BuilderSearchResponse query={this.query} /> }
       </section>
     )
   }
