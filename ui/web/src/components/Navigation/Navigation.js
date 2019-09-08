@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
 import { LoginPage } from '../../pages/LoginPage/LoginPage'
@@ -8,11 +8,20 @@ import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
 import logo from '../../assets/build360-logo.svg'
 
+const MailChimpRedirect = () => {
+  window.location = 'https://mailchi.mp/97cbc6715227/build360io'
+  return null
+}
+
 const routes = [
   {
     to: '/',
-    display: 'Home',
     exact: true,
+    component: MailChimpRedirect
+  },
+  {
+    to: '/debut',
+    display: 'Home',
     component: HomePage
   },
   {

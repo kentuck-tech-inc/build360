@@ -4,9 +4,10 @@ export function searchBuilders(query) {
   return new Promise((resolve, reject) => {
     console.log(`searching with query: ${query}`)
     const matchingBuilders = builders.filter(({companyName, owner, locations}) => {
-      return companyName.indexOf(query) > -1
-        || owner.indexOf(query) > -1
-        || locations.indexOf(query) > -1
+      const upperQuery = query.toUpperCase()
+      return companyName.toUpperCase().indexOf(upperQuery) > -1
+        || owner.toUpperCase().indexOf(upperQuery) > -1
+        || locations.toUpperCase().indexOf(upperQuery) > -1
     })
     setTimeout(() => {
       resolve(matchingBuilders)

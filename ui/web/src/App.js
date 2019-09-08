@@ -28,7 +28,10 @@ class App extends React.Component {
             {
               routes
                 .filter(({component}) => Boolean(component))
-                .map(({path, to, exact, component}, index) => <Route key={index} path={path || to} exact={exact} component={component} />)
+                .map(({path, to, exact, component, render}, index) => component
+                  ? <Route key={index} path={path || to} exact={exact} component={component} />
+                  : <Route key={index} path={path || to} exact={exact} render={render} />
+                )
             }
           </section>
           <Footer />
