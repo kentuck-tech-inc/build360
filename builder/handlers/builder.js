@@ -29,15 +29,94 @@ const builder = {
   portfolio:null,
   location:null
 }
-                                 
+
+const kvp = {
+  key : "",
+  value: ""
+}
+
+const feedback = {
+  BuilderUUID:"",
+       CommunicationPercent:0.0,
+       ProfessionalismPercent:0.0,
+       JobSiteCleanlinessPercent:0.0,
+       BudgetMindfulPercent:0.0,
+       QualityOfMaterialPercent:0.0,
+       DeadlinesPercent:0.0,
+       QualityOfWorkmanshipPercent:0.0,
+       FinishedProductPercent:0.0,
+       AccuracyOfQuoteAllowancePercent:0.0,
+       OverallPercent:0.0
+}
+                         
+exports.GetBuildersByZipcode = function(zipcode=40272){
+  return pool.getConnection()
+        .then(conn => {
+        
+          conn.query("SELECT * from builder.servicingZipcodes inner join builder.builderEntity on builder.servicingZipcodes.builderUUID = bilder.builderEntity.builderUUID  where zipcode=(?)",[zipcode])
+            .then((res) => {
+              var builders = [];
+              console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
+              conn.end();
+
+              res.forEach(element => {
+                var b = Object.create(builder)
+                b.CompanyName = res.CompanyName;
+                b.UUID = res.UUID;
+                b.Owner = res.OwnerName;
+                b.Associations = res.Associations.split(",");
+                b.Description = res.Description;
+                b.bbbRating = res.BBBRating;
+
+                b.portfolioURI = "/builder/" + b.UUID  + "/portfolio";
+                b.contactURI = "/builder/" + b.UUID  + "/contact";
+                b.feedbackURI = "/builder/" + b.UUID  + "/feedback";
+                b.location = "/builder/" + b.UUID  + "/location";
+
+                builders.push(b);
+              });
+
+              return res;
+            })
+            .catch(err => {
+              //handle error
+              conn.end();
+              return err;
+            })
+            
+        }).catch(err => {
+          //not connected
+          return err;
+        });
+}
+
 exports.GetBuilders = function(){
   return pool.getConnection()
         .then(conn => {
         
           conn.query("SELECT * from builder.builderEntity")
             .then((res) => {
-              console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
+              var builders = [];
+              console.log(res);
               conn.end();
+
+              res.forEach(element => {
+                var b = Object.create(builder)
+                b.CompanyName = res.CompanyName;
+                b.UUID = res.UUID;
+                b.Owner = res.OwnerName;
+                b.Associations = res.Associations.split(",");
+                b.Description = res.Description;
+                b.bbbRating = res.BBBRating;
+
+                b.portfolioURI = "/builder/" + b.UUID  + "/portfolio";
+                b.contactURI = "/builder/" + b.UUID  + "/contact";
+                b.feedbackURI = "/builder/" + b.UUID  + "/feedback";
+                b.location = "/builder/" + b.UUID  + "/location";
+
+                builders.push(b);
+              });
+
               return res;
             })
             .catch(err => {
@@ -141,6 +220,88 @@ exports.GetBuilderByName = function(builderName, convertToUUID=false){
           //not connected
           return err;
         });
+}
+
+exports.GetBuilderContact = function(builderUUID){
+  console.log('builder.GetBuilderContact entered');
+  return pool.getConnection()
+    .then(conn => {    
+        console.log('builder.GetBuilderContact - ' + builderUUID);    
+        conn.query("SELECT * from builder.builderContact where UUID=unhex(?)",[builderUUID])
+        .then((rows) => {
+          var contacts = [];
+          console.log(rows); //[ {val: 1}, meta: ... ]
+
+          rows.forEach(element => {
+            var b = Object.create(kvp)
+            b.key = element.ContactMethod;
+            b.value = element.Value;
+            console.log(b);
+            contacts.push(b);
+          });
+
+          conn.end();
+          return contacts;
+        })
+        .catch(err => {
+          //handle error
+          conn.end();
+          console.log(err);
+          return err;
+        })
+        
+    }).catch(err => {
+      //not connected
+      console.log(err);
+      return err;
+    });
+}
+
+exports.GetBuilderFeedback = function(builderUUID){
+  console.log('builder.GetBuilderFeedback entered');
+  return pool.getConnection()
+    .then(conn => {    
+        console.log('builder.GetBuilderFeedback - ' + builderUUID);    
+        
+        conn.query("SELECT * from builder.builderFeedback where UUID=unhex(?)",[builderUUID])
+        .then((rows) => {
+          var feedback = [];
+          console.log(rows); //[ {val: 1}, meta: ... ]
+
+          rows.forEach(element => {
+            var b = Object.create(feedback);
+
+            b.BuilderUUID = element.BuilderUUID;
+            b.CommunicationPercent = element.CommunicationPercent;
+            b.ProfessionalismPercent = element.ProfessionalismPercent;
+            b.JobSiteCleanlinessPercent = element.JobSiteCleanlinessPercent;
+            b.BudgetMindfulPercent = element.BudgetMindfulPercent;
+            b.QualityOfMaterialPercent = element.QualityOfMaterialPercent;
+            b.DeadlinesPercent = element.DeadlinesPercent;
+            b.QualityOfWorkmanshipPercent = element.QualityOfWorkmanshipPercent;
+            b.FinishedProductPercent = element.FinishedProductPercent;
+            b.AccuracyOfQuoteAllowancePercent = element.AccuracyOfQuoteAllowancePercent;
+            b.OverallPercent = element.OverallPercent;
+
+            console.log(b);
+            feedback.push(b);
+          });
+
+          conn.end();
+          return feedback;
+        })
+        .catch(err => {
+          //handle error
+          conn.end();
+          console.log(err);
+          return err;
+        })
+        
+    }).catch(err => {
+      //not connected
+      console.log(err);
+      return err;
+    });
 }
 
 exports.InsertBuilder = function(builderName="",
