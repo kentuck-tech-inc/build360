@@ -1,0 +1,21 @@
+
+.FadeInOnVisible > .fade-in {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+
+.FadeInOnVisible > .visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .FadeInOnVisible > .fade-in {
+    transform: none;
+  }
+
+  .FadeInOnVisible > .visible {
+    transform: none;
+  }
+}

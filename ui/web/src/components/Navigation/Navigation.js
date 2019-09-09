@@ -1,27 +1,34 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
 import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
+import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
+import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
+import logo from '../../assets/build360-logo.svg'
+
+const MailChimpRedirect = () => {
+  window.location = 'https://mailchi.mp/97cbc6715227/build360io'
+  return null
+}
 
 const routes = [
   {
     to: '/',
-    display: 'Home',
     exact: true,
+    component: MailChimpRedirect
+  },
+  {
+    to: '/debut',
+    display: 'Home',
     component: HomePage
   },
   {
     to: '/about',
     display: 'About',
-    component: ComingSoonPage
-  },
-  {
-    to: '/services',
-    display: 'Services',
     component: ComingSoonPage
   },
   {
@@ -34,15 +41,24 @@ const routes = [
     component: BuilderPage
   },
   {
-    to: '/buyers',
-    display: 'Buyers',
+    to: '/floorplans',
+    display: 'Floorplans',
+    component: FloorplanSearchPage
+  },
+  {
+    to: '/floorplan/:id',
+    component: FloorplanPage
+  },
+  {
+    to: '/homeowners',
+    display: 'Homeowners',
     component: ComingSoonPage
   },
   {
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=https://build360.io`
+      window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=http://build360.io`
       return <LoginPage />
     }
   }
@@ -54,7 +70,8 @@ class Navigation extends React.Component {
     return (
       <nav className="Navigation">
         <ul>
-          <li>
+          <li><img src={logo} alt="Build360 logo" className="w-32" /></li>
+          {/* <li>
             <select onChange={onThemeChange}>
               <option value="">Select a theme</option>
               {
@@ -63,7 +80,7 @@ class Navigation extends React.Component {
                 )
               }
             </select>
-          </li>
+          </li> */}
           {
             routes
               .filter(({display}) => Boolean(display))
@@ -80,5 +97,12 @@ class Navigation extends React.Component {
     )
   }
 }
+
+/**
+ * Change navigation to be a side nav
+ * Builders should go to a page for builders
+ * Buyers -> Homeowners
+ * remove about and services, about is already on homepage, there are no services
+ */
 
 export { Navigation, routes }

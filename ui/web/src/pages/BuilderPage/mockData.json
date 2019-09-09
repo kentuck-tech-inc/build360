@@ -1,0 +1,47 @@
+{
+  "id": "???",
+  "companyName": "Doe Construction",
+  "owner": "john doe",
+  "associations": [
+    "LTHBA",
+    "NHBA"
+  ],
+  "yearEstablished": 1999,
+  "description": "Hi, my name is Bob Builder, Central Kentucky's most elite...",
+  "bbbRating": "A",
+  "portfolio": [
+    {
+      "blueprint_id": "blueprintUUID1",
+      "orderId": 1
+    },
+    {
+      "blueprint_id": "blueprintUUID2",
+      "orderId": 2
+    }
+  ],
+  "contactInfo": {
+    "addressStreet1": "1234 High Rise Avenue",
+    "adressStreet2": "",
+    "addressCity": "Elizabethtown",
+    "addressState": "Kentucky",
+    "addressZip": 42701,
+    "primaryPhone": "270-777-7777",
+    "primaryEmail": "test@test.com",
+    "socialMedia": {
+      "twitter": "bobBuilderLLC",
+      "facebook": "facebook.com/bobBuilderLLC"
+    }
+  },
+  "feedback": {
+    "communication": 1,
+    "professionalism": 0.99,
+    "job site cleanliness": 0.8,
+    "budget mindful": 0.7,
+    "quality of materials": 0.01,
+    "deadlines": 0.98,
+    "quality of worksmanship": 0.5,
+    "finished product": 1,
+    "accuracy of quote and allowances": 1,
+    "overall": 0.98
+  }
+}

@@ -96,6 +96,8 @@ function searchBlueprints(db, res) {
         whereStatement.floors = {[Op.gte]: res.queryString.floors};
     if (res.queryString.sqft)
         whereStatement.totalSqFeet = {[Op.gte]: res.queryString.sqft};
+    if (res.queryString.style)
+        whereStatement.style = res.queryString.style;
     return new Promise(
         (resolve, reject) => {
             db.blueprints.findAll({

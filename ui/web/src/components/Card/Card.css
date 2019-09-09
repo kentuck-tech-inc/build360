@@ -1,0 +1,21 @@
+.Card {
+  margin: 0;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.Card.dark {
+  background-color: #00000080;
+}
+
+.Card.light {
+  background-color: #ffffff80;
+}
+
+.Card > .first {
+  margin-top: 0;
+}
+
+.Card > .last {
+  margin-bottom: 0;
+}
