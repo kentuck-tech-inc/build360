@@ -6,6 +6,7 @@ import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisibl
 import { Image } from '../../components/Image/Image'
 import { Link } from '../../components/Link/Link'
 import { RandomImage } from '../../components/RandomImage/RandomImage'
+import { RecentBlogs } from '../../components/RecentBlogs/RecentBlogs'
 import { Tabs } from '../../components/Tabs/Tabs'
 import house1 from '../../assets/houses/modern/house-1.jpg'
 import house2 from '../../assets/houses/contemporary/house-2.jpg'
@@ -108,7 +109,7 @@ class HomePage extends React.Component {
                 }
               />
             </div>
-            <Link className="block mt-4" to="/blueprints">View more plans</Link>
+            <Link className="block mt-4" to="/floorplans">View more plans</Link>
           </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
@@ -130,8 +131,8 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section">
           <h2>Building 101 Blog</h2>
-          <p><i>Three posts with read more</i></p>
-          <Link to="/blog">View more posts</Link>
+          <RecentBlogs />
+          <Link className="block mt-4" to="/blogs">View more blogs</Link>
         </FadeInOnVisible>
       </section>
     )

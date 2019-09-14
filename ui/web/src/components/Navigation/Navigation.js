@@ -3,6 +3,8 @@ import { Link, Redirect } from "react-router-dom"
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
 import { LoginPage } from '../../pages/LoginPage/LoginPage'
+import { BlogPage } from '../../pages/BlogPage/BlogPage'
+import { BlogSearchPage } from '../../pages/BlogSearchPage/BlogSearchPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
@@ -48,6 +50,14 @@ const routes = [
   {
     to: '/floorplan/:id',
     component: FloorplanPage
+  },
+  {
+    to: '/blogs',
+    component: BlogSearchPage
+  },
+  {
+    to: '/blog/:id',
+    component: BlogPage
   },
   {
     to: '/homeowners',

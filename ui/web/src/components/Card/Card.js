@@ -12,7 +12,7 @@ class Card extends React.Component {
     const childrenWithClasses = React.Children.map(children, (child, index) =>
       React.isValidElement(child)
         ? React.cloneElement(child, {
-          className: classnames(child.className, {
+          className: classnames(child.props.className, {
             'first': index === 0,
             'last': index === (childrenLength - 1)
           })
