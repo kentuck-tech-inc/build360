@@ -5,7 +5,6 @@ import {
   calenderCheck,
   checklist,
   constructionType,
-  family,
   idea,
   dollar,
   rating
@@ -56,11 +55,6 @@ class BuilderCard extends React.Component {
                   <td>Avg. Completion Time:</td>
                   <td><b>need data</b></td>
                 </tr>
-                {/* <tr>
-                  <td><Image src={family} className="icon-m"/></td>
-                  <td>Ownership:</td>
-                  <td><b>need data</b></td>
-                </tr> */}
               </tbody>
             </table>
             <table className="inline-block -m-2" cellSpacing={0} cellPadding="8px">

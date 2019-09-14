@@ -2,7 +2,14 @@
 import React from 'react'
 import { WithLink } from '../WithLink/WithLink'
 import './FloorplanCard.css'
-import { RandomImage } from '../RandomImage/RandomImage';
+import { Image } from '../Image/Image'
+import { RandomImage } from '../RandomImage/RandomImage'
+import {
+  bedroom,
+  bathroom,
+  sqFeet,
+  floors
+} from '../../assets/icons'
 
 class FloorplanCard extends React.Component {
   static defaultProps = {
@@ -22,12 +29,12 @@ class FloorplanCard extends React.Component {
           <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
             <tbody>
               <tr>
-                <td>ICON</td>
+                <td><Image src={bedroom} className="icon-m"/></td>
                 <td>Bedrooms:</td>
                 <td>{floorplan.bedrooms}</td>
               </tr>
               <tr>
-                <td>ICON</td>
+                <td><Image src={bathroom} className="icon-m"/></td>
                 <td>Bathrooms:</td>
                 <td>{floorplan.bathrooms}</td>
               </tr>
@@ -36,12 +43,12 @@ class FloorplanCard extends React.Component {
           <table className="inline-block -m-2" cellSpacing={0} cellPadding="8px">
             <tbody>
               <tr>
-                <td>ICON</td>
+                <td><Image src={sqFeet} className="icon-m"/></td>
                 <td>Square footage:</td>
                 <td>{floorplan.totalSqFeet}</td>
               </tr>
               <tr>
-                <td>ICON</td>
+                <td><Image src={floors} className="icon-m"/></td>
                 <td>Floors:</td>
                 <td>{floorplan.floors}</td>
               </tr>
