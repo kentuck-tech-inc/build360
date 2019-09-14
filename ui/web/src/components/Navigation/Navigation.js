@@ -42,7 +42,7 @@ const routes = [
   },
   {
     to: '/floorplans',
-    display: 'Floorplans',
+    display: 'Floor Plans',
     component: FloorplanSearchPage
   },
   {

@@ -1,4 +1,5 @@
 import { builders, buildersById } from './mockBuilders'
+const baseUrl = `https://api.build360.io/builderService`
 
 export function searchBuilders(query) {
   return new Promise((resolve, reject) => {

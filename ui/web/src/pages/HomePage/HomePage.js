@@ -129,7 +129,7 @@ class HomePage extends React.Component {
           </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section">
-          <h2>Blog</h2>
+          <h2>Building 101 Blog</h2>
           <p><i>Three posts with read more</i></p>
           <Link to="/blog">View more posts</Link>
         </FadeInOnVisible>

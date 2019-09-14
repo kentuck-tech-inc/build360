@@ -35,7 +35,7 @@ class FloorplanPage extends React.Component {
       return (
         <section className="FloorplanPage mt-8">
           <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
-          <h2 className="mt-8">Loading floorplan...</h2>
+          <h2 className="mt-8">Loading floor plan...</h2>
         </section>
       )
     }
@@ -45,7 +45,7 @@ class FloorplanPage extends React.Component {
         <section className="FloorplanPage mt-8">
           <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
           <p className="mt-8">
-            There was a problem while loading this floorplan,
+            There was a problem while loading this floor plan,
             please try again later.
           </p>
         </section>
@@ -54,9 +54,9 @@ class FloorplanPage extends React.Component {
 
     return (
       <section className="FloorplanPage mt-8">
-        <Link to="/floorplans" className="text-l">Search for more floorplans</Link>
+        <Link to="/floorplans" className="text-l">Search for more floor plans</Link>
         <FloorplanCard floorplan={floorplan} />
-        <Link className="block mt-8" anchor to={floorplan.imageUrl}>View plan source</Link>
+        <Link className="block mt-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
       </section>
     )
   }
