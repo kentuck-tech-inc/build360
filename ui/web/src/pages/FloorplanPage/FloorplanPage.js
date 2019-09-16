@@ -1,8 +1,9 @@
 import React from 'react'
 import { FloorplanCard } from '../../components/FloorplanCard/FloorplanCard'
-import { getBlueprint } from '../../api/Blueprint'
+import { getBlueprint, fakeMap } from '../../api/Blueprint'
 import { Link } from '../../components/Link/Link';  
 import './FloorplanPage.css'
+import { FloorplanCustomization } from '../../vr/FloorplanCustomization';
 
 class FloorplanPage extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class FloorplanPage extends React.Component {
     const { id } = this.props.match.params
     if(id) {
       getBlueprint(id).then(floorplan => {
+        floorplan.map = fakeMap;
         this.setState({
           floorplan,
           loading: false
@@ -56,7 +58,8 @@ class FloorplanPage extends React.Component {
       <section className="FloorplanPage mt-8">
         <Link to="/floorplans" className="text-l">Search for more floor plans</Link>
         <FloorplanCard floorplan={floorplan} />
-        <Link className="block mt-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
+        <Link className="block my-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
+        <FloorplanCustomization floorplan={floorplan} />
       </section>
     )
   }

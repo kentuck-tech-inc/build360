@@ -1,4 +1,7 @@
 import React from 'react'
+
+// TODO: add images to blog pages
+
 const blogsById = {
   '0': {
     id: '0',

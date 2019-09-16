@@ -1,3 +1,5 @@
+import { ftToMeters } from '../utils/numberUtils'
+
 const baseUrl = 'https://d8zwbjo2i6.execute-api.us-east-1.amazonaws.com/latest/blueprints'
 
 export function getBlueprints() {
@@ -23,4 +25,63 @@ export function getBlueprint(id) {
       ? responseJSON[0]
       : {}
   })
+}
+
+export const fakeMap = {
+  floors: [{
+    name: 'Ground Floor',
+    level: 0,
+    rooms: [{
+      name: 'Living Room',
+      id: '0',
+      walls: [
+        {
+          start: {
+            x: -5,
+            z: -5
+          },
+          end: {
+            x: 5,
+            z: -5
+          }
+        },
+        {
+          start: {
+            x: 5,
+            z: -5
+          },
+          end: {
+            x: 5,
+            z: 5
+          }
+        },
+        {
+          start: {
+            x: 5,
+            z: 5
+          },
+          end: {
+            x: -5,
+            z: 5
+          }
+        },
+        {
+          start: {
+            x: -5,
+            z: 5
+          },
+          end: {
+            x: -5,
+            z: -5
+          }
+        }
+      ].map((wall) => {
+        wall.start.x = ftToMeters(wall.start.x)
+        wall.start.z = ftToMeters(wall.start.z)
+        wall.end.x = ftToMeters(wall.end.x)
+        wall.end.z = ftToMeters(wall.end.z)
+        return wall
+      })
+    }]
+  }]
 }
