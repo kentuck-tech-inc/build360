@@ -9,6 +9,8 @@ class FloorplanPage extends React.Component {
   state = {
     loading: true,
     error: false,
+    customize: false,
+    sent: false,
     floorplan: {}
   }
 
@@ -30,8 +32,18 @@ class FloorplanPage extends React.Component {
     }
   }
 
+  onCustomizeClick = () => {
+    if(!this.state.customize) {
+      this.setState({ customize: true })
+    }
+  }
+
+  sendQuote = () => {
+    this.setState({ sent: true });
+  }
+
   render() {
-    const { loading, error, floorplan } = this.state
+    const { loading, error, floorplan, customize, sent } = this.state
 
     if(loading) {
       return (
@@ -59,7 +71,12 @@ class FloorplanPage extends React.Component {
         <Link to="/floorplans" className="text-l">Search for more floor plans</Link>
         <FloorplanCard floorplan={floorplan} />
         <Link className="block my-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
-        <FloorplanCustomization floorplan={floorplan} />
+        <div>
+          <button className="btn mb-8" onClick={this.onCustomizeClick}>Customize & Quote</button>
+          { customize && <button className="btn mb-8 ml-8" onClick={this.sendQuote}>Send Build to Builders</button> }
+          { sent && <p className="mb-8">Build sent!</p>}
+          { customize && <FloorplanCustomization floorplan={floorplan} /> }
+        </div>
       </section>
     )
   }

@@ -11,13 +11,14 @@ AFRAME.registerGeometry('custom', {
   init: function (data) {
     var geometry = new THREE.Geometry();
     geometry.vertices = data.vertices.map(function (vertex) {
-        var points = vertex.split(' ').map(function(x){return parseInt(x);});
+        var points = vertex.split(' ').map(function(x){return parseFloat(x);});
         return new THREE.Vector3(points[0], points[1], points[2]);
     });
     geometry.computeBoundingBox();
     for(let i = 0; i < geometry.vertices.length; i += 3) {
       geometry.faces.push(new THREE.Face3(i, i+1, i+2));
     }
+    geometry.uvsNeedUpdate = true;
     geometry.mergeVertices();
     geometry.computeFaceNormals();
     geometry.computeVertexNormals();

@@ -1,4 +1,5 @@
 import React from 'react'
+import '../CustomizeOnClick/CustomizeOnClick'
 
 const Wall = ({
   floorName,
@@ -14,6 +15,9 @@ const Wall = ({
   customizations,
 }) => {
   return <a-box
+    customize-on-click
+    customizeType="wall"
+    data-clickable
     position={position}
     height={height}
     width={width}
