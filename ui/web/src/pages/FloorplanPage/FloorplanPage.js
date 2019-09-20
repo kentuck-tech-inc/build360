@@ -1,13 +1,16 @@
 import React from 'react'
 import { FloorplanCard } from '../../components/FloorplanCard/FloorplanCard'
-import { getBlueprint } from '../../api/Blueprint'
+import { getBlueprint, fakeMap } from '../../api/Blueprint'
 import { Link } from '../../components/Link/Link';  
 import './FloorplanPage.css'
+import { FloorplanCustomization } from '../../vr/FloorplanCustomization';
 
 class FloorplanPage extends React.Component {
   state = {
     loading: true,
     error: false,
+    customize: false,
+    sent: false,
     floorplan: {}
   }
 
@@ -15,6 +18,7 @@ class FloorplanPage extends React.Component {
     const { id } = this.props.match.params
     if(id) {
       getBlueprint(id).then(floorplan => {
+        floorplan.map = fakeMap;
         this.setState({
           floorplan,
           loading: false
@@ -28,8 +32,18 @@ class FloorplanPage extends React.Component {
     }
   }
 
+  onCustomizeClick = () => {
+    if(!this.state.customize) {
+      this.setState({ customize: true })
+    }
+  }
+
+  sendQuote = () => {
+    this.setState({ sent: true });
+  }
+
   render() {
-    const { loading, error, floorplan } = this.state
+    const { loading, error, floorplan, customize, sent } = this.state
 
     if(loading) {
       return (
@@ -56,7 +70,13 @@ class FloorplanPage extends React.Component {
       <section className="FloorplanPage mt-8">
         <Link to="/floorplans" className="text-l">Search for more floor plans</Link>
         <FloorplanCard floorplan={floorplan} />
-        <Link className="block mt-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
+        <Link className="block my-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
+        <div>
+          <button className="btn mb-8" onClick={this.onCustomizeClick}>Customize & Quote</button>
+          { customize && <button className="btn mb-8 ml-8" onClick={this.sendQuote}>Send Build to Builders</button> }
+          { sent && <p className="mb-8">Build sent!</p>}
+          { customize && <FloorplanCustomization floorplan={floorplan} /> }
+        </div>
       </section>
     )
   }
