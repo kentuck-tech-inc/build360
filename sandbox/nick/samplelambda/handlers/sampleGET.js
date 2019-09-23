@@ -1,9 +1,22 @@
 const mockData = require('../data/mock1.json')
 
-function sampleGet(){
 
-    return mockData
-
+/**
+ * @swagger
+ * /SampleGet:
+ *   get:
+ *     tags:
+ *       - Puppies
+ *     description: Returns all puppies
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */
+exports.SampleGet =function(){
+    return mockData;
 }
 
-module.exports = sampleGet
+exports.SamplePost = function(){
+    return true;
+}

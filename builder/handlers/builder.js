@@ -11,7 +11,42 @@ const pool = mariadb.createPool({host: process.env.DB_HOST,
                                  user: process.env.DB_USER,
                                  password: process.env.DB_PASS, 
                                  connectionLimit: 5});
-                                 
+  /**
+   * @swagger
+   * definitions:
+   *   builder:
+   *     properties:
+   *       UUID:
+   *         type: string
+   *       CompanyName:
+   *         type: string
+   *       Owner:
+   *         type: string
+   *       Associations:
+   *         type: array
+   *         items:
+   *          type: string
+   *       Description:
+   *         type: string
+   *       bbbRating:
+   *         type: string
+   *       portfolioURI:
+   *         type: string
+   *       contactURI:
+   *         type: string
+   *       feebackURI:
+   *         type: string
+   *       locationURI:
+   *         type: string
+   *       contactInfo:
+   *        $ref: '#/definitions/Contact'
+   *       feedback:
+   *        $ref: '#/definitions/Feedback'
+   *       portfolio:
+   *        $ref: '#/definitions/Portfolio'
+   *       location:
+   *        $ref: '#/definitions/Location'
+   */                                 
 const builder = {
   UUID : "",
   CompanyName : "",
@@ -48,31 +83,60 @@ const feedback = {
        AccuracyOfQuoteAllowancePercent:0.0,
        OverallPercent:0.0
 }
-                         
+
+const locations = {
+  BuilderUUID="",
+       AddressLine1="",
+       AddressLine2="",
+       AddressLine3="",
+       AddressLine4="",
+       City="",
+       State="",
+       Zip5=12345,
+       Zip4=1234
+}
+
+function mapRowToBuilder(builderRow){
+  var b = null;
+
+  var b = Object.create(builder)
+                b.CompanyName = res.CompanyName;
+                b.UUID = res.UUID;
+                b.Owner = res.OwnerName;
+                b.Associations = res.Associations.split(",");
+                b.Description = res.Description;
+                b.bbbRating = res.BBBRating;
+
+                b.portfolioURI = "/builder/" + b.UUID  + "/po servicingZipcode mediumint unsignedrtfolio";
+                b.contactURI = "/builder/" + b.UUID  + "/contact";
+                b.feedbackURI = "/builder/" + b.UUID  + "/feedback";
+                b.location = "/builder/" + b.UUID  + "/location";
+
+  return b;
+}
+
+/**
+ * @swagger
+ * /builders/{zip}:
+ *   get:
+ *     description: Returns all builders that work in a given zip code
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */                        
 exports.GetBuildersByZipcode = function(zipcode=40272){
   return pool.getConnection()
         .then(conn => {
         
-          conn.query("SELECT * from builder.servicingZipcodes inner join builder.builderEntity on builder.servicingZipcodes.builderUUID = bilder.builderEntity.builderUUID  where zipcode=(?)",[zipcode])
+          conn.query("SELECT * from builder.servicingZipcodes inner join builder.builderEntity on builder.servicingZipcodes.builderUUID = builder.builderEntity.builderUUID  where zipcode=(?)",[zipcode])
             .then((res) => {
               var builders = [];
               console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
               conn.end();
 
               res.forEach(element => {
-                var b = Object.create(builder)
-                b.CompanyName = res.CompanyName;
-                b.UUID = res.UUID;
-                b.Owner = res.OwnerName;
-                b.Associations = res.Associations.split(",");
-                b.Description = res.Description;
-                b.bbbRating = res.BBBRating;
-
-                b.portfolioURI = "/builder/" + b.UUID  + "/portfolio";
-                b.contactURI = "/builder/" + b.UUID  + "/contact";
-                b.feedbackURI = "/builder/" + b.UUID  + "/feedback";
-                b.location = "/builder/" + b.UUID  + "/location";
-
+                var b = mapRowToBuilder(element);
                 builders.push(b);
               });
 
@@ -90,29 +154,28 @@ exports.GetBuildersByZipcode = function(zipcode=40272){
         });
 }
 
+/**
+ * @swagger
+ * /builders/:
+ *   get:
+ *     description: Returns all builders
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */  
 exports.GetBuilders = function(){
   return pool.getConnection()
         .then(conn => {
         
-          conn.query("SELECT * from builder.builderEntity")
+          conn.query("SELECT * from builder.builderEntityccc")
             .then((res) => {
               var builders = [];
               console.log(res);
               conn.end();
 
               res.forEach(element => {
-                var b = Object.create(builder)
-                b.CompanyName = res.CompanyName;
-                b.UUID = res.UUID;
-                b.Owner = res.OwnerName;
-                b.Associations = res.Associations.split(",");
-                b.Description = res.Description;
-                b.bbbRating = res.BBBRating;
-
-                b.portfolioURI = "/builder/" + b.UUID  + "/portfolio";
-                b.contactURI = "/builder/" + b.UUID  + "/contact";
-                b.feedbackURI = "/builder/" + b.UUID  + "/feedback";
-                b.location = "/builder/" + b.UUID  + "/location";
+                var b = mapRowToBuilder(element);
 
                 builders.push(b);
               });
@@ -131,6 +194,16 @@ exports.GetBuilders = function(){
         });
 }
 
+/**
+ * @swagger
+ * /builders/{builderUUID}:
+ *   get:
+ *     description: Returns builder of a given id
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */  
 exports.GetBuilderByUUID = function(builderUUID){
   console.log('builder.getBuilderByUUID entered');
   return pool.getConnection()
@@ -140,18 +213,7 @@ exports.GetBuilderByUUID = function(builderUUID){
         .then((rows) => {
           console.log(rows); //[ {val: 1}, meta: ... ]
 
-          b = Object.create(builder)
-          b.CompanyName = rows[0].CompanyName;
-          b.UUID = rows[0].UUID;
-          b.Owner = rows[0].OwnerName;
-          b.Associations = rows[0].Associations.split(",");
-          b.Description = rows[0].Description;
-          b.bbbRating = rows[0].BBBRating;
-
-          b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
-          b.contactURI = "/builder/" + builderUUID + "/contact";
-          b.feedbackURI = "/builder/" + builderUUID + "/feedback";
-          b.location = "/builder/" + builderUUID + "/location";
+          var b = mapRowToBuilder(rows[0]);
           console.log(b);
 
           conn.end();
@@ -179,19 +241,7 @@ exports.GetBuilderByName = function(builderName, convertToUUID=false){
               conn.query("SELECT * from builder.builderEntity where UUID= unhex(?)",[uid])
               .then((rows) => {
                 console.log(rows); //[ {val: 1}, meta: ... ]
-                
-                b = Object.create(builder)
-                b.CompanyName = rows[0].CompanyName;
-                b.UUID = rows[0].UUID;
-                b.Owner = rows[0].OwnerName;
-                b.Associations = rows[0].Associations.split(",");
-                b.Description = rows[0].Description;
-                b.bbbRating = rows[0].BBBRating;
-
-                b.portfolioURI = "/builder/" + builderUUID + "/portfolio";
-                b.contactURI = "/builder/" + builderUUID + "/contact";
-                b.feedbackURI = "/builder/" + builderUUID + "/feedback";
-                b.location = "/builder/" + builderUUID + "/location";
+                var b = mapRowToBuilder(rows[0]);
                 console.log(b);
 
                 conn.end();
@@ -222,6 +272,17 @@ exports.GetBuilderByName = function(builderName, convertToUUID=false){
         });
 }
 
+
+/**
+ * @swagger
+ * /builder/{id}/contact:
+ *   get:
+ *     description: Returns builder contact info
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */  
 exports.GetBuilderContact = function(builderUUID){
   console.log('builder.GetBuilderContact entered');
   return pool.getConnection()
@@ -257,6 +318,17 @@ exports.GetBuilderContact = function(builderUUID){
     });
 }
 
+
+/**
+ * @swagger
+ * /builder/{id}/feedback:
+ *   get:
+ *     description: Returns builder feedback
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */  
 exports.GetBuilderFeedback = function(builderUUID){
   console.log('builder.GetBuilderFeedback entered');
   return pool.getConnection()
@@ -289,6 +361,61 @@ exports.GetBuilderFeedback = function(builderUUID){
 
           conn.end();
           return feedback;
+        })
+        .catch(err => {
+          //handle error
+          conn.end();
+          console.log(err);
+          return err;
+        })
+        
+    }).catch(err => {
+      //not connected
+      console.log(err);
+      return err;
+    });
+}
+
+/**
+ * @swagger
+ * /builder/{id}/location:
+ *   get:
+ *     description: Returns builder locations
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ */  
+exports.GetBuilderLocation = function(builderUUID){
+  console.log('builder.GetBuilderLocation entered');
+  return pool.getConnection()
+    .then(conn => {    
+        console.log('builder.GetBuilderLocation - ' + builderUUID);    
+        
+        conn.query("SELECT * from builder.builderLocations where UUID=unhex(?)",[builderUUID])
+        .then((rows) => {
+          var locs = [];
+          console.log(rows); //[ {val: 1}, meta: ... ]
+
+          rows.forEach(element => {
+            var b = Object.create(locations);
+
+            b.BuilderUUID=element.BuilderUUID;
+            b.AddressLine1=element.AddressLine1;
+            b.AddressLine2=element.AddressLine2;
+            b.AddressLine3=element.AddressLine3;
+            b.AddressLine4=element.AddressLine4;
+            b.City=element.City;
+            b.State=element.State;
+            b.Zip5=element.Zip5;
+            b.Zip4=elemtn.Zip4;
+
+            console.log(b);
+            locs.push(b);
+          });
+
+          conn.end();
+          return locs;
         })
         .catch(err => {
           //handle error
