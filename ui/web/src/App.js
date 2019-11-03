@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import cx from 'classnames'
 
 import { Navigation, routes } from './components/Navigation/Navigation'
+import { Footer } from './components/Footer/Footer'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import themes from './generated/color-options.json'
+import './tailwind.css';
 import './App.css'
 
 class App extends React.Component {
@@ -19,6 +22,7 @@ class App extends React.Component {
     const {theme} = this.state
     return (
       <Router>
+        <ScrollToTop />
         <main className={cx('App', theme)}>
           <Navigation onThemeChange={this.handleThemeChange} themes={themes} />
 
@@ -26,13 +30,21 @@ class App extends React.Component {
             {
               routes
                 .filter(({component}) => Boolean(component))
-                .map(({path, to, exact, component}, index) => <Route key={index} path={path || to} exact={exact} component={component} />)
+                .map(({path, to, exact, component, render}, index) => component
+                  ? <Route key={index} path={path || to} exact={exact} component={component} />
+                  : <Route key={index} path={path || to} exact={exact} render={render} />
+                )
             }
           </section>
+          <Footer />
         </main>
       </Router>
     )
   }
 }
+
+/**
+ * Center legal copy and email
+ */
 
 export default App

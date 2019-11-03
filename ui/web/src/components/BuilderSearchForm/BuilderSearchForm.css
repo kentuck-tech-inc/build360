@@ -6,12 +6,13 @@
 .BuilderSearchForm .input-wrapper {
   display: flex;
   width: 100%;
-  margin: 2em 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .BuilderSearchForm input {
   flex-grow: 1;
-  font-size: 1em;
+  font-size: 1.5rem;
   border: none;
   background-color: white;
   color: black;
@@ -22,14 +23,23 @@
   border-bottom-left-radius: 4px;
 }
 
-.BuilderSearchForm button {
-  font-size: 1em;
-  border: none;
-  background-color: var(--accent-color);
+.BuilderSearchForm button.btn {
+  font-size: 1.5rem;
+  box-shadow: none;
   color: white;
   padding: 0 32px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.BuilderSearchForm button.btn:hover, .BuilderSearchForm button.btn:focus {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.BuilderSearchForm button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 @media (min-width: 1024px) {
@@ -38,11 +48,11 @@
   }
 
   .BuilderSearchForm input {
-    font-size: 2em;
+    font-size: 1.75em;
   }
 
   .BuilderSearchForm button {
-    font-size: 2em;
+    font-size: 1.75em;
     padding: 0 64px;
   }
 }

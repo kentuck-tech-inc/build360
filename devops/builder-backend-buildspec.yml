@@ -11,13 +11,14 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - npm run build
+      - npm build
   post_build:
     commands:
       # copy the contents of /build to S3
-      - aws s3 cp build/ s3://builder-service-s3 --recursive
+      #- aws s3 cp build/ s3://builder-service-s3 --recursive
+      # - npm run-script claudia-dev
 artifacts:
   files:
     - '**/*'
-  base-directory: builder/build
+  base-directory: builder
 

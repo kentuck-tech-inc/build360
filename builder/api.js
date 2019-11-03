@@ -8,8 +8,13 @@ const healthCheck = require('./handlers/healthcheck')
 
 api.get('/', () => Date.now())
 
-api.get('/builder', (request) => {return builder.GetBuilders()})
-api.get('/builder/{id}', (request) => {return builder.GetBuilderByUUID(request.pathParameters.id)})
-api.get('/heartbeat', () => {return healthCheck()})
+api.get('/builders', (request) => {return builder.GetBuilders()})
+api.get('/builders/{zip}', (request) => {return builder.GetBuildersByZipcode(request.pathParams.zip)})
+api.get('/builder/{id}', (request) => {return builder.GetBuilderByUUID(request.pathParams.id)})
+api.get('/builder/{id}/portfolio', (request) => {return builder.GetBuilderPortfolio()})
+api.get('/builder/{id}/contact', (request) => {return builder.GetBuilderContact()})
+api.get('/builder/{id}/feedback', (request) => {return builder.GetBuilderFeedback()})
+api.get('/builder/{id}/location', (request) => {return builder.GetbuilderLocation()})
+api.get('/heartbeat', () => {return healthCheck.healthcheckGET()})
 
 module.exports = api
