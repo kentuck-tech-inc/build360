@@ -81,9 +81,10 @@ AFRAME.registerSystem('customize-on-click', {
     const filledSelection = new Array(pageSize).fill().map((_, i) =>
       currentSelection[i] || 'color: #808080; src: ;'
     )
-    filledSelection.forEach((material, index) =>
+    filledSelection.forEach((material, index) => {
+      this.menu.elements[`select-${index}`].removeAttribute('material')
       this.menu.elements[`select-${index}`].setAttribute('material', material)
-    )
+    })
   },
   addClickableToMenu: function() {
     Object.entries(this.menu.elements).forEach(([id, el]) => {
