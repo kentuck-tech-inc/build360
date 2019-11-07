@@ -10,6 +10,7 @@ import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
 import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
 import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
+import { PricingPage } from '../../pages/PricingPage/PricingPage'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -71,6 +72,10 @@ const routes = [
       window.location = `https://auth.build360.io/login?response_type=code&client_id=6bt5bebmgnteqe9hhuljqtcrta&redirect_uri=http://build360.io`
       return <LoginPage />
     }
+  },
+  {
+    to: '/pricing',
+    component: PricingPage
   }
 ]
 

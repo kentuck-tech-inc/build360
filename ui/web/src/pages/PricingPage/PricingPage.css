@@ -1,0 +1,45 @@
+.PricingPage .PricingTable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.PricingPage .PricingTable th {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.PricingPage .PricingTable .price {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.PricingPage .PricingTable .frequency {
+  display: block;
+  text-align: center;
+}
+
+.PricingPage .PricingTable td {
+  text-align: center;
+  padding: 1rem;
+}
+
+.PricingPage .PricingTable td:nth-child(1) {
+  text-align: left;
+}
+
+.PricingPage .PricingTable .yes {
+  color: hsl(120, 70%, 70%);
+  font-weight: bold;
+}
+
+.PricingPage .PricingTable .no {
+  color: hsl(0, 70%, 70%);
+  font-weight: bold;
+}
+
+/* .PricingPage .PricingTable tr {
+  border-bottom: 1px solid black;
+} */
