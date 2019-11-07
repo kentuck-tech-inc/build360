@@ -18,13 +18,13 @@ const MailChimpRedirect = () => {
 }
 
 const routes = [
+  // {
+  //   to: '/',
+  //   exact: true,
+  //   component: MailChimpRedirect
+  // },
   {
     to: '/',
-    exact: true,
-    component: MailChimpRedirect
-  },
-  {
-    to: '/debut',
     display: 'Home',
     component: HomePage
   },
