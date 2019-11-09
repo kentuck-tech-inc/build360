@@ -25,6 +25,7 @@ const routes = [
   },
   {
     to: '/',
+    exact: true,
     display: 'Home',
     component: HomePage
   },
