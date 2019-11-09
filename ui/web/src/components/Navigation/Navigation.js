@@ -69,7 +69,7 @@ const routes = [
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?client_id=1p10vpd0elj1hjcateptptm9s6&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://www.build360.io/`
+      window.location = `https://auth.build360.io/login?client_id=4mn7teeu4ojrg0tsi5chuargdr&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://www.build360.io/`
       return <LoginPage />
     }
   }
