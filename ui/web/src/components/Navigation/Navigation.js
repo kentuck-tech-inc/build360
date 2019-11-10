@@ -11,6 +11,8 @@ import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
 import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
 import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
 import { PricingPage } from '../../pages/PricingPage/PricingPage'
+import { ChatPage } from '../../pages/ChatPage/ChatPage'
+import { WithAuth } from '../../components/WithAuth/WithAuth'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -30,11 +32,11 @@ const routes = [
     display: 'Home',
     component: HomePage
   },
-  {
-    to: '/about',
-    display: 'About',
-    component: ComingSoonPage
-  },
+  // {
+  //   to: '/about',
+  //   display: 'About',
+  //   component: ComingSoonPage
+  // },
   {
     to: '/builders',
     display: 'Builders',
@@ -61,16 +63,23 @@ const routes = [
     to: '/blog/:id',
     component: BlogPage
   },
+  // {
+  //   to: '/homeowners',
+  //   display: 'Homeowners',
+  //   component: ComingSoonPage
+  // },
   {
-    to: '/homeowners',
-    display: 'Homeowners',
-    component: ComingSoonPage
+    to: '/chat',
+    display: 'Chat',
+    component: (props) => <WithAuth>
+      <ChatPage {...props}/>
+    </WithAuth>
   },
   {
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?client_id=4mn7teeu4ojrg0tsi5chuargdr&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://www.build360.io/`
+      window.location = `https://auth.build360.io/login?client_id=4mn7teeu4ojrg0tsi5chuargdr&response_type=code&scope=email+openid+phone+profile&redirect_uri=${encodeURIComponent(window.location)}`
       return <LoginPage />
     }
   },

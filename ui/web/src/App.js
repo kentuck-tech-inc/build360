@@ -5,6 +5,7 @@ import cx from 'classnames'
 import { Navigation, routes } from './components/Navigation/Navigation'
 import { Footer } from './components/Footer/Footer'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import UserCodeSaver from './components/UserCodeSaver/UserCodeSaver'
 import themes from './generated/color-options.json'
 import './tailwind.css';
 import './App.css'
@@ -23,6 +24,7 @@ class App extends React.Component {
     return (
       <Router>
         <ScrollToTop />
+        <UserCodeSaver />
         <main className={cx('App', theme)}>
           <Navigation onThemeChange={this.handleThemeChange} themes={themes} />
 
