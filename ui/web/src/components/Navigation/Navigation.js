@@ -12,7 +12,9 @@ import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSe
 import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
 import { PricingPage } from '../../pages/PricingPage/PricingPage'
 import { ChatPage } from '../../pages/ChatPage/ChatPage'
-import { WithAuth } from '../../components/WithAuth/WithAuth'
+import { getLoginUrl } from '../../utils/authUtils'
+import WithAuth from '../../components/WithAuth/WithAuth'
+import Authorize from '../../components/Authorize/Authorize'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -63,6 +65,12 @@ const routes = [
     to: '/blog/:id',
     component: BlogPage
   },
+  ,
+  {
+    to: '/pricing',
+    display: 'Pricing',
+    component: PricingPage
+  },
   // {
   //   to: '/homeowners',
   //   display: 'Homeowners',
@@ -79,13 +87,13 @@ const routes = [
     to: '/login',
     display: 'Log in',
     component: () => {
-      window.location = `https://auth.build360.io/login?client_id=4mn7teeu4ojrg0tsi5chuargdr&response_type=code&scope=email+openid+phone+profile&redirect_uri=${encodeURIComponent(window.location)}`
+      window.location = getLoginUrl()
       return <LoginPage />
     }
   },
   {
-    to: '/pricing',
-    component: PricingPage
+    to: '/auth',
+    component: Authorize
   }
 ]
 

@@ -14,7 +14,7 @@ class ChatPage extends React.Component {
     const chatTargetId = this.query.with
     return (
       <p className="ChatPage">
-        You are: {user}
+        You are: {JSON.stringify(user)}
         Chatting with id: {chatTargetId}
       </p>
     )
