@@ -2,12 +2,18 @@ import { withRouter } from 'react-router-dom'
 import { getAuth } from '../../utils/authUtils'
 
 function Authorize({ location, history }) {
-  const params = new URLSearchParams(location.search)
-  const access_token = params.get('access_token')
-  const id_token = params.get('id_token')
-  const token_type = params.get('token_type')
-  const expires_in = params.get('expires_in')
-  const redirect_url = params.get('redirect_url') || '/'
+  var hash = location.hash.substr(1)
+  const params = hash.split('&').reduce(function (result, item) {
+    var parts = item.split('=');
+    result[parts[0]] = parts[1];
+    return result;
+}, {});
+//  const params = new URLSearchParams(location.search)
+  const access_token = params['access_token']
+  const id_token = params.get('id_token']
+  const token_type = params['token_type']
+  const expires_in = params['expires_in']
+  const redirect_url = params['redirect_url'] || '/'
   const currentAuth = getAuth()
 
   const invalidParams = !access_token
