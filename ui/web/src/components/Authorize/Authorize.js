@@ -10,7 +10,7 @@ function Authorize({ location, history }) {
 }, {});
 //  const params = new URLSearchParams(location.search)
   const access_token = params['access_token']
-  const id_token = params.['id_token']
+  const id_token = params['id_token']
   const token_type = params['token_type']
   const expires_in = params['expires_in']
   const redirect_url = params['redirect_url'] || '/'
