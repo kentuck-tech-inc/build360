@@ -43,8 +43,4 @@ class App extends React.Component {
   }
 }
 
-/**
- * Center legal copy and email
- */
-
 export default App

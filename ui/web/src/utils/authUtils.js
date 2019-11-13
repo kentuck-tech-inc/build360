@@ -6,7 +6,6 @@ const userPool = {
 
 export function getLoginUrl() {
   const url = new URL(window.location)
-//  const authRedirect = `${url.origin}/auth?redirect_url=${encodeURIComponent(url.pathname + url.search)}`
   const authRedirect = `${url.origin}/auth`
   return `https://auth.build360.io/login?client_id=${userPool.ClientId}&response_type=token&scope=email+openid+phone+profile&redirect_uri=${authRedirect}`
 }
