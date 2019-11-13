@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom';
-import { getUser, getLoginUrl } from '../../utils/authUtils.js'
+import { getUser, login } from '../../utils/authUtils.js'
 
 class WithAuth extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class WithAuth extends React.Component {
     const user = getUser()
 
     if(!user) {
-      window.location = getLoginUrl()
+      login()
       return <p>Redirecting to login..</p>
     }
 

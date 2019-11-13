@@ -11,6 +11,11 @@ export function getLoginUrl() {
   return `https://auth.build360.io/login?client_id=${userPool.ClientId}&response_type=token&scope=email+openid+phone+profile&redirect_uri=${authRedirect}`
 }
 
+export function login() {
+  localStorage.setItem('redirect_url', window.location)
+  window.location = getLoginUrl()
+}
+
 export function getAuth() {
   const currentAuthStr = localStorage.getItem('auth')
   let currentAuth;
