@@ -14,6 +14,7 @@ import { ChatPage } from '../../pages/ChatPage/ChatPage'
 import WithAuth from '../../components/WithAuth/WithAuth'
 import Authorize from '../../components/Authorize/Authorize'
 import { ProfileButton } from '../../components/ProfileButton/ProfileButton'
+import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -68,9 +69,19 @@ const routes = [
   {
     to: '/chat',
     display: 'Chat',
-    component: (props) => <WithAuth>
-      <ChatPage {...props}/>
-    </WithAuth>
+    component: (props) => (
+      <WithAuth>
+        <ChatPage {...props} />
+      </WithAuth>
+    )
+  },
+  {
+    to: '/profile',
+    component: (props) => (
+      <WithAuth>
+        <ProfilePage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/auth',
@@ -96,7 +107,9 @@ class Navigation extends React.Component {
                 </li>
               ))
           }
-          <ProfileButton />
+          <li>
+            <ProfileButton />
+          </li>
         </ul>
       </nav>
     )
