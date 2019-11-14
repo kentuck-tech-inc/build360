@@ -16,7 +16,7 @@ class ProfileButton extends React.Component {
     }
 
     return (
-      <Link to="/profile" className="ProfileButton link">
+      <Link to="/profile" className="ProfileButton">
         Account Details
       </Link>
     )

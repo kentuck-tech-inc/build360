@@ -9,6 +9,7 @@ class PricingPage extends React.Component {
           <thead>
             <tr>
               <th></th>
+              <th>Basic</th>
               <th>Professional</th>
               <th>Enterprise</th>
               <th>Premium</th>
@@ -17,6 +18,10 @@ class PricingPage extends React.Component {
           <tbody>
             <tr>
               <td></td>
+              <td>
+                <span className="price">$99</span>
+                <span className="frequency">per Month</span>
+              </td>
               <td>
                 <span className="price">$199</span>
                 <span className="frequency">per Month</span>
@@ -33,11 +38,13 @@ class PricingPage extends React.Component {
             <tr>
               <td>VR Custom Quoting</td>
               <td className="no">No</td>
+              <td className="no">No</td>
               <td className="yes">Yes</td>
               <td className="yes">Yes</td>
             </tr>
             <tr>
               <td>Number of States</td>
+              <td>1</td>
               <td>1</td>
               <td>5</td>
               <td>All</td>
@@ -45,6 +52,7 @@ class PricingPage extends React.Component {
             <tr>
               <td>Top of Listings</td>
               <td className="no">No</td>
+              <td>In 1 Zip Code</td>
               <td>In 3 Zip Codes</td>
               <td className="yes">Yes</td>
             </tr>
@@ -53,9 +61,11 @@ class PricingPage extends React.Component {
               <td className="yes">Yes</td>
               <td className="yes">Yes</td>
               <td className="yes">Yes</td>
+              <td className="yes">Yes</td>
             </tr>
             <tr>
               <td>Commerial &amp; Industrial</td>
+              <td className="no">No</td>
               <td className="no">No</td>
               <td className="no">No</td>
               <td className="yes">Yes</td>
@@ -64,16 +74,24 @@ class PricingPage extends React.Component {
               <td>Monthly Blog Listing</td>
               <td className="no">No</td>
               <td className="no">No</td>
+              <td className="no">No</td>
               <td className="yes">Yes</td>
             </tr>
             <tr>
               <td>Maximum quotes per month</td>
+              <td>3</td>
               <td>25</td>
               <td>100</td>
               <td>Unlimited</td>
             </tr>
             <tr>
               <td></td>
+              <td>
+                <form action="/purchase">
+                  <input hidden name="type" value="basic"/>
+                  <button className="btn">Purchase<br/>Basic</button>
+                </form>
+              </td>
               <td>
                 <form action="/purchase">
                   <input hidden name="type" value="professional"/>
