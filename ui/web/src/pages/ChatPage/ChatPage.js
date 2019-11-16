@@ -26,16 +26,16 @@ class ChatPage extends React.Component {
     const chatTargetId = this.query.with
 
     return (
-      <section className="ChatPage">
-        <ChatkitProvider
-          instanceLocator={instanceLocator}
-          tokenProvider={tokenProvider}
-          userId={'raedwa01'}
-        >
+      <ChatkitProvider
+        instanceLocator={instanceLocator}
+        tokenProvider={tokenProvider}
+        userId={'raedwa01'}
+      >
+        <section className="ChatPage">
           <UserList userId={'raedwa01'}/>
           <Chat otherUserId={'jane'} />
-        </ChatkitProvider>
-      </section>
+        </section>
+      </ChatkitProvider>
     )
   }
 }
