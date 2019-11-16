@@ -6,8 +6,8 @@ const toArray = (arr, item) => arr.concat(item)
 export const WALL_HEIGHT = ftToMeters(9)
 export const WALL_THICKNESS = 0.05
 export const defaultMaterial = 'color: white'
-export const defaultWallMaterial = "shader: standard; color: #fff; src: #brick; repeat: 1.5, 0.75; roughness: 0.9;"
-export const defaultFloorMaterial = "shader: standard; color: #fff; src: #wood; repeat: 2, 2; roughness: 0.8;"
+export const defaultWallMaterial = "shader: standard; color: #fff; src: #brick; repeat: 6, 3; roughness: 0.9; normalMap: #brickNorm; normalTextureRepeat: 6, 3;"
+export const defaultFloorMaterial = "shader: standard; color: #fff; src: #oakPlanks; repeat: 8, 8; roughness: 0.8; normalMap: #brickNorm; normalTextureRepeat: 8, 8;"
 export const defaultCeilingMaterial = "shader: standard; color: #fff; src: #stucco; repeat: 4, 4; roughness: 0.8;"
 
 export function getAllWalls(floorplan) {
