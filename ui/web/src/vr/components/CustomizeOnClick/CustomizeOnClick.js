@@ -116,6 +116,7 @@ AFRAME.registerSystem('customize-on-click', {
         opacity: 0.3,
         color: 'cyan',
       })
+      selectionIndicator.setAttribute('class', 'selection-indicator')
 
       this.state.selectionIndicator = selectionIndicator
       this.el.append(selectionIndicator)
@@ -168,6 +169,7 @@ AFRAME.registerSystem('customize-on-click', {
   },
   select: function(el, intersection) {
     const value = parseInt(el.getAttribute('data-value'))
+    this.state.el.removeAttribute('material')
     this.state.el.setAttribute('material', el.getAttribute('material'))
   }
 });

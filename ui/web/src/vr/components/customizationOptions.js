@@ -1,3 +1,41 @@
+export const idToName = {
+  'dryWall': 'dry wall',
+  'brick': 'brick',
+  'hexbump': 'carpet',
+  'whiteTiles': 'tile',
+  'oakPlanks': 'wood',
+  'stucco': 'stucco'
+}
+
+
+// costs per square meter
+export const materialCost = {
+  'dry wall': {
+    min: 16.15,
+    max: 26.9
+  },
+  'brick': {
+    min: 70,
+    max: 107.64
+  },
+  'carpet': {
+    min: 75.35,
+    max: 129.17
+  },
+  'tile': {
+    min: 75.35,
+    max: 258.33
+  },
+  'wood': {
+    min: 64.58,
+    max: 247.57
+  },
+  'stucco': {
+    min: 21.53,
+    max: 53.82
+  }
+}
+
 export const wallOptions = [
   {
     color: '#FFF8E7',

@@ -26,6 +26,7 @@ const Floor = ({
   //   material={material}
   // ></a-entity>
   return <a-box
+    class="vr-floor"
     customize-on-click
     customizeType="floor"
     data-clickable

@@ -13,11 +13,11 @@ import * as ceilings from '../assets/vr/ceiling';
 
 class FloorplanCustomization extends React.Component {
   render() {
-    const { floorplan: { map: floorplanMap } = {} } = this.props;
+    const { floorplan: { map: floorplanMap } = {}, sceneRef } = this.props;
 
     return (
       <div className="FloorplanCustomization">
-        <a-scene embedded customize-on-click cursor="rayOrigin: mouse" raycaster="interval: 100; objects: [data-clickable]">
+        <a-scene ref={sceneRef} embedded customize-on-click cursor="rayOrigin: mouse" raycaster="interval: 30; objects: [data-clickable]">
           <a-assets>
             {
               Object.entries(walls).map(([name, src]) => (

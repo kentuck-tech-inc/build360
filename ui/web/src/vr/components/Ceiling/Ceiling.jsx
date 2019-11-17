@@ -26,6 +26,7 @@ const Ceiling = ({
   //   material={material}
   // ></a-entity>
   return <a-box
+    class="vr-ceiling"
     customize-on-click
     customizeType="ceiling"
     data-clickable

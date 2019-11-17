@@ -1,5 +1,6 @@
 import earcut from 'earcut';
 import { radToDeg, distance, ftToMeters } from '../utils/numberUtils'
+import { idToName, materialCost } from './components/customizationOptions.js'
 
 const toArray = (arr, item) => arr.concat(item)
 
@@ -129,4 +130,57 @@ export function getRoomShape(walls) {
 
     return points
   }, [])
+}
+
+// returns information relating to specifications for builders
+// spec is also used in estimation
+export function getWallSpecs(wallEl) {
+  return {
+    type: wallEl.getAttribute('class'),
+    width: parseFloat(wallEl.getAttribute('width')),
+    height: parseFloat(wallEl.getAttribute('height')),
+    material: idToName[wallEl.getAttribute('material').src.id]
+  }
+}
+
+// takes a scene element and returns a specification object to send to a builder
+export function getSpecFromScene(sceneEl) {
+  const wallEls = sceneEl.querySelectorAll('.vr-wall')
+    const floorEls = sceneEl.querySelectorAll('.vr-floor')
+    const ceilingEls = sceneEl.querySelectorAll('.vr-ceiling')
+    const wallSpecs = Array.from(wallEls).map(getWallSpecs)
+    const floorSpecs = Array.from(floorEls).map(getWallSpecs)
+    const ceilingSpecs = Array.from(ceilingEls).map(getWallSpecs)
+
+    return {
+      walls: wallSpecs,
+      floors: floorSpecs,
+      ceilings: ceilingSpecs
+    }
+}
+
+export function getWallEstimate({minSum, maxSum}, wall) {
+  const area = wall.width * wall.height
+  const minCost = materialCost[wall.material].min
+  const maxCost = materialCost[wall.material].max
+  return {
+    minSum: minSum + (minCost * area),
+    maxSum: maxSum + (maxCost * area)
+  }
+}
+
+// returns an estimate for the specification passed in
+export function getEstimateFromSpec(spec) {
+  const {walls = [], floors = [], ceilings = []} = spec
+  const wallEstimate = walls.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const floorEstimate = floors.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const ceilingEstimate = ceilings.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const estimateTotal = [wallEstimate, floorEstimate, ceilingEstimate]
+    .reduce((estimateSum, estimate) => {
+      estimateSum.min += estimate.minSum
+      estimateSum.max += estimate.maxSum
+      return estimateSum
+    }, {min: 0, max: 0})
+  
+  return estimateTotal
 }

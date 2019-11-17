@@ -1,9 +1,11 @@
 import React from 'react'
 import { FloorplanCard } from '../../components/FloorplanCard/FloorplanCard'
 import { getBlueprint, fakeMap } from '../../api/Blueprint'
-import { Link } from '../../components/Link/Link';  
+import { Link } from '../../components/Link/Link'
+import { FloorplanCustomization } from '../../vr/FloorplanCustomization'
+import { Estimate } from '../../components/Estimate/Estimate'
+import { getSpecFromScene, getEstimateFromSpec }  from '../../vr/utils'
 import './FloorplanPage.css'
-import { FloorplanCustomization } from '../../vr/FloorplanCustomization';
 
 class FloorplanPage extends React.Component {
   state = {
@@ -13,6 +15,8 @@ class FloorplanPage extends React.Component {
     sent: false,
     floorplan: {}
   }
+
+  sceneRef = React.createRef()
 
   componentDidMount() {
     const { id } = this.props.match.params
@@ -39,6 +43,12 @@ class FloorplanPage extends React.Component {
   }
 
   sendQuote = () => {
+    if(!this.sceneRef.current) return;
+    const spec = getSpecFromScene(this.sceneRef.current)
+    const estimate = getEstimateFromSpec(spec)
+
+    console.log(spec, estimate)
+
     this.setState({ sent: true });
   }
 
@@ -74,8 +84,9 @@ class FloorplanPage extends React.Component {
         <div>
           <button className="btn mb-8" onClick={this.onCustomizeClick}>Customize & Quote</button>
           { customize && <button className="btn mb-8 ml-8" onClick={this.sendQuote}>Send Build to Builders</button> }
+          { customize && <Estimate className="mb-8" sceneRef={this.sceneRef} /> }
           { sent && <p className="mb-8">Build sent!</p>}
-          { customize && <FloorplanCustomization floorplan={floorplan} /> }
+          { customize && <FloorplanCustomization floorplan={floorplan} sceneRef={this.sceneRef} /> }
         </div>
       </section>
     )
