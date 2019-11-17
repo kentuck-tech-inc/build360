@@ -32,39 +32,71 @@ const routes = [
     to: '/',
     exact: true,
     display: 'Home',
-    component: HomePage
+    component: (props) => (
+      <WithAuth>
+        <HomePage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/builders',
     display: 'Builders',
-    component: BuilderSearchPage
+    component: (props) => (
+      <WithAuth>
+        <BuilderSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/builder/:slug/:id',
-    component: BuilderPage
+    component: (props) => (
+      <WithAuth>
+        <BuilderPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/floorplans',
     display: 'Floor Plans',
-    component: FloorplanSearchPage
+    component: (props) => (
+      <WithAuth>
+        <FloorplanSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/floorplan/:id',
-    component: FloorplanPage
+    component: (props) => (
+      <WithAuth>
+        <FloorplanPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/blogs',
-    component: BlogSearchPage
+    component: (props) => (
+      <WithAuth>
+        <BlogSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/blog/:id',
-    component: BlogPage
+    component: (props) => (
+      <WithAuth>
+        <BlogPage {...props} />
+      </WithAuth>
+    )
   },
   ,
   {
     to: '/pricing',
     display: 'Pricing',
-    component: PricingPage
+    component: (props) => (
+      <WithAuth>
+        <PricingPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/chat',
