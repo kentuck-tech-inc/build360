@@ -10,15 +10,28 @@
   margin-bottom: 1.5rem;
 }
 
-.BuilderEntry input {
+.BuilderEntry .Input {
   flex-grow: 1;
   font-size: 1.5rem;
   border: none;
   background-color: white;
   color: black;
   margin: 0;
-  padding: 16px;
+  margin-left: 10px;
   padding-right: 0px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-radius: 4px;
+}
+
+.BuilderEntry .InputArea {
+  width: 600px;
+  height: 120px;
+  font-size: 1.5rem;
+  border: none;
+  background-color: white;
+  color: black;
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-right: 0px;
+  border-radius: 4px;
 }

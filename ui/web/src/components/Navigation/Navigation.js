@@ -16,6 +16,7 @@ import Authorize from '../../components/Authorize/Authorize'
 import { ProfileButton } from '../../components/ProfileButton/ProfileButton'
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
 import logo from '../../assets/build360-logo.svg'
+import { BuilderEntry } from '../BuilderEntry/BuilderEntry'
 
 const MailChimpRedirect = () => {
   window.location = 'https://mailchi.mp/97cbc6715227/build360io'
@@ -42,6 +43,10 @@ const routes = [
   {
     to: '/builder/:slug/:id',
     component: BuilderPage
+  },
+  {
+    to: '/builder/addEdit',
+    component: BuilderEntry
   },
   {
     to: '/floorplans',
