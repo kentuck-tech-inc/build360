@@ -15,6 +15,12 @@ export function login() {
   window.location = getLoginUrl()
 }
 
+export function logout() {
+  localStorage.removeItem('auth')
+  const url = new URL(window.location)
+  window.location = url.origin
+}
+
 export function getAuth() {
   const currentAuthStr = localStorage.getItem('auth')
   let currentAuth;

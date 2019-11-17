@@ -15,6 +15,7 @@ import WithAuth from '../../components/WithAuth/WithAuth'
 import Authorize from '../../components/Authorize/Authorize'
 import { ProfileButton } from '../../components/ProfileButton/ProfileButton'
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
+import { getUser, logout } from '../../utils/authUtils'
 import logo from '../../assets/build360-logo.svg'
 
 const MailChimpRedirect = () => {
@@ -33,9 +34,7 @@ const routes = [
     exact: true,
     display: 'Home',
     component: (props) => (
-      <WithAuth>
-        <HomePage {...props} />
-      </WithAuth>
+      <HomePage {...props} />
     )
   },
   {
@@ -124,6 +123,8 @@ const routes = [
 class Navigation extends React.Component {
   render () {
     const {onThemeChange, themes} = this.props
+    const user = getUser()
+
     return (
       <nav className="Navigation">
         <ul>
@@ -142,6 +143,13 @@ class Navigation extends React.Component {
           <li>
             <ProfileButton />
           </li>
+          {
+            user && <li>
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            </li>
+          }
         </ul>
       </nav>
     )
