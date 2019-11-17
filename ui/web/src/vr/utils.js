@@ -169,12 +169,27 @@ export function getWallEstimate({minSum, maxSum}, wall) {
   }
 }
 
+const laborCost = {
+  min: 1076.39,
+  max: 1345.49
+}
+export function getLaborEstimate({minSum, maxSum}, floor) {
+  const area = floor.width * floor.height
+  const minCost = laborCost.min
+  const maxCost = laborCost.max
+  return {
+    minSum: minSum + (minCost * area),
+    maxSum: maxSum + (maxCost * area)
+  }
+}
+
 // returns an estimate for the specification passed in
 export function getEstimateFromSpec(spec) {
   const {walls = [], floors = [], ceilings = []} = spec
   const wallEstimate = walls.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
   const floorEstimate = floors.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
   const ceilingEstimate = ceilings.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const laborEstimate = floors.reduce(getLaborEstimate, {minSum: 0, maxSum: 0})
   const estimateTotal = [wallEstimate, floorEstimate, ceilingEstimate]
     .reduce((estimateSum, estimate) => {
       estimateSum.min += estimate.minSum

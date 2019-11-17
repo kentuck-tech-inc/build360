@@ -8,6 +8,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import themes from './generated/color-options.json'
 import './tailwind.css';
 import './App.css'
+import WithAuth from './components/WithAuth/WithAuth'
 
 class App extends React.Component {
   state = {
@@ -24,19 +25,21 @@ class App extends React.Component {
       <Router>
         <ScrollToTop />
         <main className={cx('App', theme)}>
-          <Navigation onThemeChange={this.handleThemeChange} themes={themes} />
+          <WithAuth>
+            <Navigation onThemeChange={this.handleThemeChange} themes={themes} />
 
-          <section className="content">
-            {
-              routes
-                .filter(({component}) => Boolean(component))
-                .map(({path, to, exact, component, render}, index) => component
-                  ? <Route key={index} path={path || to} exact={exact} component={component} />
-                  : <Route key={index} path={path || to} exact={exact} render={render} />
-                )
-            }
-          </section>
-          <Footer />
+            <section className="content">
+              {
+                routes
+                  .filter(({component}) => Boolean(component))
+                  .map(({path, to, exact, component, render}, index) => component
+                    ? <Route key={index} path={path || to} exact={exact} component={component} />
+                    : <Route key={index} path={path || to} exact={exact} render={render} />
+                  )
+              }
+            </section>
+            <Footer />
+          </WithAuth>
         </main>
       </Router>
     )
