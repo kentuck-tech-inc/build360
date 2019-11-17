@@ -53,9 +53,37 @@ class Estimate extends React.Component {
     return (
       <section className={classnames("Estimate", className)}>
         <button className="btn mb-4" onClick={this.calculateEstimate}>Calculate Estimate</button>
-        <article>
-          <p className="mb-4">Minimum Cost: {this.displayMoney(estimate.min, 0)}</p>
-          <p className="mb-4">Maximum Cost: {this.displayMoney(estimate.max, 0)}</p>
+        <article className="Estimate-grid">
+          <article className="Estimate-grid">
+            <h3>Estimated Minimum</h3>
+            <output></output>
+
+            <label>Material Cost:</label>
+            <output>{this.displayMoney(estimate.materialEstimateTotal.min, 0)}</output>
+
+            <label>Labor Cost:</label>
+            <output>{this.displayMoney(estimate.laborEstimate.minSum, 0)}</output>
+
+            <label>Total Cost:</label>
+            <output>
+              {this.displayMoney(estimate.materialEstimateTotal.min + estimate.laborEstimate.minSum, 0)}
+            </output>
+          </article>
+          <article className="ml-8 Estimate-grid">
+            <h3>Estimated Maximum</h3>
+            <output></output>
+
+            <label>Material Cost:</label>
+            <output>{this.displayMoney(estimate.materialEstimateTotal.max, 0)}</output>
+
+            <label>Labor Cost:</label>
+            <output>{this.displayMoney(estimate.laborEstimate.maxSum, 0)}</output>
+
+            <label>Total Cost:</label>
+            <output>
+              {this.displayMoney(estimate.materialEstimateTotal.max + estimate.laborEstimate.maxSum, 0)}
+            </output>
+          </article>
         </article>
       </section>
     )

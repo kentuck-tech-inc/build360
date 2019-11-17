@@ -190,12 +190,15 @@ export function getEstimateFromSpec(spec) {
   const floorEstimate = floors.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
   const ceilingEstimate = ceilings.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
   const laborEstimate = floors.reduce(getLaborEstimate, {minSum: 0, maxSum: 0})
-  const estimateTotal = [wallEstimate, floorEstimate, ceilingEstimate]
+  const materialEstimateTotal = [wallEstimate, floorEstimate, ceilingEstimate]
     .reduce((estimateSum, estimate) => {
       estimateSum.min += estimate.minSum
       estimateSum.max += estimate.maxSum
       return estimateSum
     }, {min: 0, max: 0})
   
-  return estimateTotal
+  return {
+    materialEstimateTotal,
+    laborEstimate
+  }
 }
