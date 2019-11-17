@@ -21,19 +21,29 @@ class ChatPage extends React.Component {
   }
   render() {
     const { user } = this.props
-    const primaryIdentity = user.identities.find(ident => ident.primary === 'true')
-    const userId = primaryIdentity.userId
+    const primaryIdentity = user.identities &&
+      user.identities.find(ident => ident.primary === 'true')
+    const userId = primaryIdentity && primaryIdentity.userId
     const chatTargetId = this.query.with
+    const groups = user['cognito:groups']
+    const isBuilder = groups.find(group => group === 'Builders')
+
+    const testUserId = isBuilder
+      ? 'jane'
+      : 'raedwa01'
+    const testOtherUserId = isBuilder
+      ? 'raedwa01'
+      : 'jane'
 
     return (
       <ChatkitProvider
         instanceLocator={instanceLocator}
         tokenProvider={tokenProvider}
-        userId={'raedwa01'}
+        userId={testUserId}
       >
         <section className="ChatPage">
           {/* <UserList userId={'raedwa01'}/> */}
-          <Chat otherUserId={'jane'} />
+          <Chat otherUserId={testOtherUserId} />
         </section>
       </ChatkitProvider>
     )
