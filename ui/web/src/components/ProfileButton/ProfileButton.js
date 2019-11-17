@@ -1,6 +1,6 @@
 import React from 'react'
 import { getUser, login } from '../../utils/authUtils'
-import { Link } from '../Link/Link'
+import { Link } from "react-router-dom"
 import './ProfileButton.css'
 
 class ProfileButton extends React.Component {
@@ -17,7 +17,7 @@ class ProfileButton extends React.Component {
 
     return (
       <Link to="/profile" className="ProfileButton">
-        Account Details
+        Profile
       </Link>
     )
   }

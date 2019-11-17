@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
+import classnames from 'classnames'
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
 import { BlogPage } from '../../pages/BlogPage/BlogPage'
@@ -16,7 +17,9 @@ import Authorize from '../../components/Authorize/Authorize'
 import { ProfileButton } from '../../components/ProfileButton/ProfileButton'
 import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
 import { getUser, logout } from '../../utils/authUtils'
+import { Image } from '../../components/Image/Image'
 import logo from '../../assets/build360-logo.svg'
+import { menu } from '../../assets/icons'
 
 const MailChimpRedirect = () => {
   window.location = 'https://mailchi.mp/97cbc6715227/build360io'
@@ -121,20 +124,38 @@ const routes = [
 ]
 
 class Navigation extends React.Component {
+  state = {
+    isOpen: false
+  }
+
+  toggleNav = () => {
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  closeNav = () => {
+    this.setState({ isOpen: false })
+  }
+
   render () {
     const {onThemeChange, themes} = this.props
+    const {isOpen} = this.state
     const user = getUser()
 
     return (
       <nav className="Navigation">
-        <ul>
-          <li><img src={logo} alt="Build360 logo" className="w-32" /></li>
+        <ul className={classnames({ 'is-open': isOpen })}>
+          <li className="LogoItem">
+            <button className="mr-4 MenuButton" onClick={this.toggleNav}>
+              <Image src={menu} className="icon-m"/>
+            </button>
+            <img src={logo} alt="Build360 logo" className="w-32" />
+          </li>
           {
             routes
               .filter(({display}) => Boolean(display))
               .map(({to, display}, index) => (
                 <li key={index}>
-                  <Link to={to}>
+                  <Link to={to} onClick={this.closeNav}>
                     {display}
                   </Link>
                 </li>
