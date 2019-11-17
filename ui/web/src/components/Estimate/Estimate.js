@@ -15,6 +15,7 @@ class Estimate extends React.Component {
     const spec = getSpecFromScene(scene)
     const estimate = getEstimateFromSpec(spec)
 
+    this.props.onEstimate(spec)
     this.setState({ estimate })
   }
 

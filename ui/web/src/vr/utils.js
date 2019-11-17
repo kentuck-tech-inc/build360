@@ -139,6 +139,7 @@ export function getWallSpecs(wallEl) {
     type: wallEl.getAttribute('class'),
     width: parseFloat(wallEl.getAttribute('width')),
     height: parseFloat(wallEl.getAttribute('height')),
+    depth: parseFloat(wallEl.getAttribute('depth')),
     material: idToName[wallEl.getAttribute('material').src.id]
   }
 }
@@ -201,4 +202,36 @@ export function getEstimateFromSpec(spec) {
     materialEstimateTotal,
     laborEstimate
   }
+}
+
+// returns the total floor area for the given floors
+export function getTotalSurfaceArea(surfaces) {
+  if(!Array.isArray(surfaces)) return getTotalSurfaceArea([surfaces]);
+
+  return surfaces.reduce((sum, surface) => sum + getSurfaceArea(surface), 0)
+}
+
+export function getSurfaceArea(surface) {
+  switch(surface.type) {
+    case 'vr-floor':
+    case 'vr-ceiling':
+      return surface.width * surface.depth
+    default:
+      return surface.width * surface.height
+  }
+}
+
+export function getAreasByMaterial(surfaces) {
+  if(!Array.isArray(surfaces)) return getAreasByMaterial([surfaces]);
+
+  return surfaces.reduce((byMaterial, surface) => {
+    const currentArea = byMaterial[surface.material]
+    const surfaceArea = getSurfaceArea(surface)
+
+    byMaterial[surface.material] = currentArea
+      ? currentArea + surfaceArea
+      : surfaceArea
+
+    return byMaterial
+  }, {})
 }

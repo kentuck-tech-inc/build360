@@ -29,6 +29,10 @@ export function ftToMeters(ft) {
   return ft * 0.3048
 }
 
+export function sqMetersToSqFt(meters) {
+  return `${(meters * 10.76391).toFixed(2)}ft²`
+}
+
 export function distance(startX, startY, endX, endY) {
   return Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2))
 }

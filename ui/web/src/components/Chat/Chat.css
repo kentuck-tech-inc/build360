@@ -99,7 +99,7 @@
 
 .Chat__messages__message__arrow.alt:after {
   transform: rotate(45deg) scaleY(-1);
-  border-top: 9px solid #542182;
+  border-top: 9px solid #005b94;
 }
 
 .Chat__messages__message--other {
@@ -108,7 +108,7 @@
 }
 
 .Chat__messages__message--self {
-  background: #542182;
+  background: #005b94;
   color: #ffffff;
 }
 
@@ -136,4 +136,8 @@
   padding: 1rem;
   border-radius: 4px;
   width: 100%;
+}
+
+.Chat__messages__message__content .formattedMessage .word {
+  margin-left: 0.25rem;
 }

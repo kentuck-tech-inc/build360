@@ -25,6 +25,26 @@ function ChatEl(props) {
     setPendingMessage('');
   };
 
+  const formatMessage = (text) => {
+    return (
+      <span className="formattedMessage">
+        {
+          text
+            .split('\n')
+            .map(line => (
+              <span className="line">
+                {
+                  line
+                    .split(' ')
+                    .map(word => <span className="word">{word}</span>)
+                }<br />
+              </span>
+            ))
+        }
+      </span>
+    )
+  }
+
   useEffect(() => {
     messageList.current.scrollTop = messageList.current.scrollHeight;
   });
@@ -36,19 +56,23 @@ function ChatEl(props) {
       // This will only work with simple messages.
       // To learn more about displaying multi-part messages see
       // https://pusher.com/docs/chatkit/reference/javascript#messages
-      textContent: m.parts[0].payload.content,
+      textContent: formatMessage(m.parts[0].payload.content),
   }));
+
   return (
     <div className="Chat">
       <div className="Chat__titlebar">
-        <img
+        {/* <img
           className="Chat__titlebar__avatar"
           alt="avatar"
-        />
+        /> */}
         <div className="Chat__titlebar__details">
-          <span>{props.chatkit.isLoading
-                  ? 'Loading...'
-                  : props.chatkit.otherUser.name}
+          <span>
+            {
+              props.chatkit.isLoading
+                ? 'Loading...'
+                : 'Builder' || props.chatkit.otherUser.name
+            }
           </span>
         </div>
       </div>

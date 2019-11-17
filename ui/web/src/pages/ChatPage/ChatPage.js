@@ -32,7 +32,7 @@ class ChatPage extends React.Component {
         userId={'raedwa01'}
       >
         <section className="ChatPage">
-          <UserList userId={'raedwa01'}/>
+          {/* <UserList userId={'raedwa01'}/> */}
           <Chat otherUserId={'jane'} />
         </section>
       </ChatkitProvider>
