@@ -23,7 +23,7 @@ const BlogCards = ({ blogs }) => blogs
   ))
 
 const RecentBlogs = () => (
-  <section className="RecentBlogs mt-4 grid-column-3 grid-gap-4">
+  <section className="RecentBlogs mt-4 content-grid grid-gap-4">
     <FetchData fetcher={getMostRecent} dataName="blogs">
       <BlogCards />
     </FetchData>
