@@ -30,6 +30,8 @@ class CustomizationMenu extends React.Component {
           color="red"
           scale="0.1 0.1 0.02"
           position="0.4 0.4 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         ><a-text align="center" position="0 0 0.6" value="X" width="20"></a-text></a-box>
 
         <a-box
@@ -40,6 +42,8 @@ class CustomizationMenu extends React.Component {
           color="white"
           scale="0.1 0.1 0.02"
           position="-0.4 0 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         ><a-text color="black" align="center" position="0 0 0.6" value="<" width="20"></a-text></a-box>
 
         <a-box
@@ -50,6 +54,8 @@ class CustomizationMenu extends React.Component {
           color="white"
           scale="0.1 0.1 0.02"
           position="0.4 0 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         ><a-text color="black" align="center" position="0 0 0.6" value=">" width="20"></a-text></a-box>
 
         <a-box
@@ -61,6 +67,8 @@ class CustomizationMenu extends React.Component {
           scale="0.1 0.1 0.02"
           width="3"
           position="0 -0.4 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         ><a-text color="black" align="center" baseline="center" position="0 0 0.6" value=". . ." width="20"></a-text></a-box>
 
         <a-plane
@@ -72,6 +80,8 @@ class CustomizationMenu extends React.Component {
           color="black"
           scale="0.275 0.275 0.02"
           position="-0.1625 0.1625 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         >
         </a-plane>
 
@@ -84,6 +94,8 @@ class CustomizationMenu extends React.Component {
           color="black"
           scale="0.275 0.275 0.02"
           position="0.1625 0.1625 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         >
         </a-plane>
 
@@ -96,6 +108,8 @@ class CustomizationMenu extends React.Component {
           color="black"
           scale="0.275 0.275 0.02"
           position="-0.1625 -0.1625 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         >
         </a-plane>
 
@@ -108,6 +122,8 @@ class CustomizationMenu extends React.Component {
           color="black"
           scale="0.275 0.275 0.02"
           position="0.1625 -0.1625 0.01"
+          animation__mouseenter="startEvents: mouseenter; property: object3D.position.z; from: 0.01; to: 0.02; dur: 100; easing: easeInCubic;"
+          animation__mouseleave="startEvents: mouseleave; property: object3D.position.z; from: 0.02; to: 0.01; dur: 100; easing: easeInCubic;"
         >
         </a-plane>
       </a-plane>

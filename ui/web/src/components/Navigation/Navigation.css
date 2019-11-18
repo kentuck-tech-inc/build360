@@ -9,20 +9,29 @@
 
 .Navigation ul {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
   margin: 0;
-  padding: 32px;
+  padding: 16px;
   list-style: none;
+  height: 4.5rem;
+  overflow-y: hidden;
+}
+
+.Navigation ul.is-open {
+  height: auto;
 }
 
 .Navigation ul li {
   margin: 0;
   padding: 0;
+  white-space: nowrap;
 }
 
 .Navigation ul li+li {
-  padding-left: 32px;
+  padding-top: 16px;
+  padding-left: 0;
 }
 
 .Navigation ul li a {
@@ -36,4 +45,34 @@
 
 .Navigation ul li a:hover {
   border-color: var(--secondary-color);
+}
+
+.Navigation .LogoItem {
+  display: flex;
+}
+
+.Navigation .LogoItem .MenuButton {
+  display: inline-block;
+}
+
+@media only screen and (min-width: 900px) {
+  .Navigation ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 32px;
+    list-style: none;
+    height: auto;
+  }
+
+  .Navigation ul li+li {
+    padding-left: 32px;
+    padding-top: 0;
+  }
+
+  .Navigation .LogoItem .MenuButton {
+    display: none;
+  }
 }

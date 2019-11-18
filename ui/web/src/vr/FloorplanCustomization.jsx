@@ -7,29 +7,33 @@ import { Floors } from './components/Floor/Floors'
 import { Ceilings } from './components/Ceiling/Ceilings'
 import { CustomizationMenu } from './components/CustomizationMenu/CustomizationMenu'
 import './FloorplanCustomization.css'
-import selectionBorder from '../assets/vr/selection-border.png'
-import dryWall from '../assets/vr/wall/dry-wall.png'
-import whiteTiles from '../assets/vr/wall/white-tiles.png'
-import brick from '../assets/vr/wall/brick.jpg'
-import wood from '../assets/vr/floor/wood.png'
-import hexbump from '../assets/vr/floor/hexbump.png'
-import stucco from '../assets/vr/ceiling/stucco.png'
+import * as walls from '../assets/vr/wall';
+import * as floors from '../assets/vr/floor';
+import * as ceilings from '../assets/vr/ceiling';
 
 class FloorplanCustomization extends React.Component {
   render() {
-    const { floorplan: { map: floorplanMap } = {} } = this.props;
+    const { floorplan: { map: floorplanMap } = {}, sceneRef } = this.props;
 
     return (
       <div className="FloorplanCustomization">
-        <a-scene embedded customize-on-click cursor="rayOrigin: mouse" raycaster="interval: 100; objects: [data-clickable]">
+        <a-scene ref={sceneRef} embedded customize-on-click cursor="rayOrigin: mouse" raycaster="interval: 30; objects: [data-clickable]">
           <a-assets>
-            <img id="selection-border" src={selectionBorder} />
-            <img id="dry-wall" src={dryWall} />
-            <img id="wood" src={wood} />
-            <img id="white-tiles" src={whiteTiles} />
-            <img id="brick" src={brick} />
-            <img id="stucco" src={stucco} />
-            <img id="hexbump" src={hexbump} />
+            {
+              Object.entries(walls).map(([name, src]) => (
+                <img id={name} src={src} />
+              ))
+            }
+            {
+              Object.entries(floors).map(([name, src]) => (
+                <img id={name} src={src} />
+              ))
+            }
+            {
+              Object.entries(ceilings).map(([name, src]) => (
+                <img id={name} src={src} />
+              ))
+            }
           </a-assets>
           <a-sky color="#16161d"></a-sky>
           <a-sphere

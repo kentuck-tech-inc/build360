@@ -1,9 +1,12 @@
 import React from 'react'
 import { FloorplanCard } from '../../components/FloorplanCard/FloorplanCard'
 import { getBlueprint, fakeMap } from '../../api/Blueprint'
-import { Link } from '../../components/Link/Link';  
+import { Link } from '../../components/Link/Link'
+import { FloorplanCustomization } from '../../vr/FloorplanCustomization'
+import { Estimate } from '../../components/Estimate/Estimate'
+import { SendQuote } from '../../components/SendQuote/SendQuote'
+import { getSpecFromScene, getEstimateFromSpec }  from '../../vr/utils'
 import './FloorplanPage.css'
-import { FloorplanCustomization } from '../../vr/FloorplanCustomization';
 
 class FloorplanPage extends React.Component {
   state = {
@@ -13,6 +16,8 @@ class FloorplanPage extends React.Component {
     sent: false,
     floorplan: {}
   }
+
+  sceneRef = React.createRef()
 
   componentDidMount() {
     const { id } = this.props.match.params
@@ -39,11 +44,17 @@ class FloorplanPage extends React.Component {
   }
 
   sendQuote = () => {
-    this.setState({ sent: true });
+    if(!this.sceneRef.current) return;
+
+    this.setState({ sent: true })
+  }
+
+  saveSpec = (spec) => {
+    this.setState({spec})
   }
 
   render() {
-    const { loading, error, floorplan, customize, sent } = this.state
+    const { loading, error, floorplan, customize, sent, spec } = this.state
 
     if(loading) {
       return (
@@ -73,9 +84,10 @@ class FloorplanPage extends React.Component {
         <Link className="block my-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
         <div>
           <button className="btn mb-8" onClick={this.onCustomizeClick}>Customize & Quote</button>
-          { customize && <button className="btn mb-8 ml-8" onClick={this.sendQuote}>Send Build to Builders</button> }
+          { customize && <SendQuote className="btn mb-8 ml-8" onClick={this.sendQuote} spec={spec} /> }
+          { customize && <Estimate className="mb-8" sceneRef={this.sceneRef} onEstimate={this.saveSpec} /> }
           { sent && <p className="mb-8">Build sent!</p>}
-          { customize && <FloorplanCustomization floorplan={floorplan} /> }
+          { customize && <FloorplanCustomization floorplan={floorplan} sceneRef={this.sceneRef} /> }
         </div>
       </section>
     )

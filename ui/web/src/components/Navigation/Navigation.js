@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
+import classnames from 'classnames'
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
-import { LoginPage } from '../../pages/LoginPage/LoginPage'
 import { BlogPage } from '../../pages/BlogPage/BlogPage'
 import { BlogSearchPage } from '../../pages/BlogSearchPage/BlogSearchPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
@@ -10,7 +10,16 @@ import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
 import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
 import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
 import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
+import { PricingPage } from '../../pages/PricingPage/PricingPage'
+import { ChatPage } from '../../pages/ChatPage/ChatPage'
+import WithAuth from '../../components/WithAuth/WithAuth'
+import Authorize from '../../components/Authorize/Authorize'
+import { ProfileButton } from '../../components/ProfileButton/ProfileButton'
+import { ProfilePage } from '../../pages/ProfilePage/ProfilePage'
+import { getUser, logout } from '../../utils/authUtils'
+import { Image } from '../../components/Image/Image'
 import logo from '../../assets/build360-logo.svg'
+import { menu } from '../../assets/icons'
 
 const MailChimpRedirect = () => {
   window.location = 'https://mailchi.mp/97cbc6715227/build360io'
@@ -27,93 +36,145 @@ const routes = [
     to: '/',
     exact: true,
     display: 'Home',
-    component: HomePage
-  },
-  {
-    to: '/about',
-    display: 'About',
-    component: ComingSoonPage
+    component: (props) => (
+      <HomePage {...props} />
+    )
   },
   {
     to: '/builders',
     display: 'Builders',
-    component: BuilderSearchPage
+    component: (props) => (
+      <WithAuth>
+        <BuilderSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/builder/:slug/:id',
-    component: BuilderPage
+    component: (props) => (
+      <WithAuth>
+        <BuilderPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/floorplans',
     display: 'Floor Plans',
-    component: FloorplanSearchPage
+    component: (props) => (
+      <WithAuth>
+        <FloorplanSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/floorplan/:id',
-    component: FloorplanPage
+    component: (props) => (
+      <WithAuth>
+        <FloorplanPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/blogs',
-    component: BlogSearchPage
+    component: (props) => (
+      <WithAuth>
+        <BlogSearchPage {...props} />
+      </WithAuth>
+    )
   },
   {
     to: '/blog/:id',
-    component: BlogPage
+    component: (props) => (
+      <WithAuth>
+        <BlogPage {...props} />
+      </WithAuth>
+    )
+  },
+  ,
+  {
+    to: '/pricing',
+    display: 'Pricing',
+    component: (props) => (
+      <WithAuth>
+        <PricingPage {...props} />
+      </WithAuth>
+    )
   },
   {
-    to: '/homeowners',
-    display: 'Homeowners',
-    component: ComingSoonPage
+    to: '/chat',
+    display: 'Chat',
+    component: (props) => (
+      <WithAuth>
+        <ChatPage {...props} />
+      </WithAuth>
+    )
   },
   {
-    to: '/login',
-    display: 'Log in',
-    component: () => {
-      window.location = `https://auth.build360.io/login?client_id=4mn7teeu4ojrg0tsi5chuargdr&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://www.build360.io/`
-      return <LoginPage />
-    }
+    to: '/profile',
+    component: (props) => (
+      <WithAuth>
+        <ProfilePage {...props} />
+      </WithAuth>
+    )
+  },
+  {
+    to: '/auth',
+    component: Authorize
   }
 ]
 
 class Navigation extends React.Component {
+  state = {
+    isOpen: false
+  }
+
+  toggleNav = () => {
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  closeNav = () => {
+    this.setState({ isOpen: false })
+  }
+
   render () {
     const {onThemeChange, themes} = this.props
+    const {isOpen} = this.state
+    const user = getUser()
+
     return (
       <nav className="Navigation">
-        <ul>
-          <li><img src={logo} alt="Build360 logo" className="w-32" /></li>
-          {/* <li>
-            <select onChange={onThemeChange}>
-              <option value="">Select a theme</option>
-              {
-                themes.map(({name, value}, index) => (
-                  <option key={index} value={value}>{name}</option>)
-                )
-              }
-            </select>
-          </li> */}
+        <ul className={classnames({ 'is-open': isOpen })}>
+          <li className="LogoItem">
+            <button className="mr-4 MenuButton" onClick={this.toggleNav}>
+              <Image src={menu} className="icon-m"/>
+            </button>
+            <img src={logo} alt="Build360 logo" className="w-32" />
+          </li>
           {
             routes
               .filter(({display}) => Boolean(display))
               .map(({to, display}, index) => (
                 <li key={index}>
-                  <Link to={to}>
+                  <Link to={to} onClick={this.closeNav}>
                     {display}
                   </Link>
                 </li>
               ))
+          }
+          <li>
+            <ProfileButton />
+          </li>
+          {
+            user && <li>
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            </li>
           }
         </ul>
       </nav>
     )
   }
 }
-
-/**
- * Change navigation to be a side nav
- * Builders should go to a page for builders
- * Buyers -> Homeowners
- * remove about and services, about is already on homepage, there are no services
- */
 
 export { Navigation, routes }

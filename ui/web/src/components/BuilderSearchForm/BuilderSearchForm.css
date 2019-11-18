@@ -12,15 +12,14 @@
 
 .BuilderSearchForm input {
   flex-grow: 1;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border: none;
   background-color: white;
   color: black;
   margin: 0;
-  padding: 16px;
+  padding: 8px;
   padding-right: 0px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-radius: 4px;
 }
 
 .BuilderSearchForm button.btn {
@@ -40,6 +39,17 @@
 .BuilderSearchForm button:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .BuilderSearchForm input {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 16px;
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 1024px) {

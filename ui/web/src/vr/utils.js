@@ -1,13 +1,14 @@
 import earcut from 'earcut';
 import { radToDeg, distance, ftToMeters } from '../utils/numberUtils'
+import { idToName, materialCost } from './components/customizationOptions.js'
 
 const toArray = (arr, item) => arr.concat(item)
 
 export const WALL_HEIGHT = ftToMeters(9)
 export const WALL_THICKNESS = 0.05
 export const defaultMaterial = 'color: white'
-export const defaultWallMaterial = "shader: standard; color: #fff; src: #brick; repeat: 1.5, 0.75; roughness: 0.9;"
-export const defaultFloorMaterial = "shader: standard; color: #fff; src: #wood; repeat: 2, 2; roughness: 0.8;"
+export const defaultWallMaterial = "shader: standard; color: #fff; src: #brick; repeat: 6, 3; roughness: 0.9; normalMap: #brickNorm; normalTextureRepeat: 6, 3;"
+export const defaultFloorMaterial = "shader: standard; color: #fff; src: #oakPlanks; repeat: 8, 8; roughness: 0.8; normalMap: #brickNorm; normalTextureRepeat: 8, 8;"
 export const defaultCeilingMaterial = "shader: standard; color: #fff; src: #stucco; repeat: 4, 4; roughness: 0.8;"
 
 export function getAllWalls(floorplan) {
@@ -129,4 +130,108 @@ export function getRoomShape(walls) {
 
     return points
   }, [])
+}
+
+// returns information relating to specifications for builders
+// spec is also used in estimation
+export function getWallSpecs(wallEl) {
+  return {
+    type: wallEl.getAttribute('class'),
+    width: parseFloat(wallEl.getAttribute('width')),
+    height: parseFloat(wallEl.getAttribute('height')),
+    depth: parseFloat(wallEl.getAttribute('depth')),
+    material: idToName[wallEl.getAttribute('material').src.id]
+  }
+}
+
+// takes a scene element and returns a specification object to send to a builder
+export function getSpecFromScene(sceneEl) {
+  const wallEls = sceneEl.querySelectorAll('.vr-wall')
+    const floorEls = sceneEl.querySelectorAll('.vr-floor')
+    const ceilingEls = sceneEl.querySelectorAll('.vr-ceiling')
+    const wallSpecs = Array.from(wallEls).map(getWallSpecs)
+    const floorSpecs = Array.from(floorEls).map(getWallSpecs)
+    const ceilingSpecs = Array.from(ceilingEls).map(getWallSpecs)
+
+    return {
+      walls: wallSpecs,
+      floors: floorSpecs,
+      ceilings: ceilingSpecs
+    }
+}
+
+export function getWallEstimate({minSum, maxSum}, wall) {
+  const area = wall.width * wall.height
+  const minCost = materialCost[wall.material].min
+  const maxCost = materialCost[wall.material].max
+  return {
+    minSum: minSum + (minCost * area),
+    maxSum: maxSum + (maxCost * area)
+  }
+}
+
+const laborCost = {
+  min: 1076.39,
+  max: 1345.49
+}
+export function getLaborEstimate({minSum, maxSum}, floor) {
+  const area = floor.width * floor.height
+  const minCost = laborCost.min
+  const maxCost = laborCost.max
+  return {
+    minSum: minSum + (minCost * area),
+    maxSum: maxSum + (maxCost * area)
+  }
+}
+
+// returns an estimate for the specification passed in
+export function getEstimateFromSpec(spec) {
+  const {walls = [], floors = [], ceilings = []} = spec
+  const wallEstimate = walls.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const floorEstimate = floors.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const ceilingEstimate = ceilings.reduce(getWallEstimate, {minSum: 0, maxSum: 0})
+  const laborEstimate = floors.reduce(getLaborEstimate, {minSum: 0, maxSum: 0})
+  const materialEstimateTotal = [wallEstimate, floorEstimate, ceilingEstimate]
+    .reduce((estimateSum, estimate) => {
+      estimateSum.min += estimate.minSum
+      estimateSum.max += estimate.maxSum
+      return estimateSum
+    }, {min: 0, max: 0})
+  
+  return {
+    materialEstimateTotal,
+    laborEstimate
+  }
+}
+
+// returns the total floor area for the given floors
+export function getTotalSurfaceArea(surfaces) {
+  if(!Array.isArray(surfaces)) return getTotalSurfaceArea([surfaces]);
+
+  return surfaces.reduce((sum, surface) => sum + getSurfaceArea(surface), 0)
+}
+
+export function getSurfaceArea(surface) {
+  switch(surface.type) {
+    case 'vr-floor':
+    case 'vr-ceiling':
+      return surface.width * surface.depth
+    default:
+      return surface.width * surface.height
+  }
+}
+
+export function getAreasByMaterial(surfaces) {
+  if(!Array.isArray(surfaces)) return getAreasByMaterial([surfaces]);
+
+  return surfaces.reduce((byMaterial, surface) => {
+    const currentArea = byMaterial[surface.material]
+    const surfaceArea = getSurfaceArea(surface)
+
+    byMaterial[surface.material] = currentArea
+      ? currentArea + surfaceArea
+      : surfaceArea
+
+    return byMaterial
+  }, {})
 }

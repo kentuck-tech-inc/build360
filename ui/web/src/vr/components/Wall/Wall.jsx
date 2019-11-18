@@ -15,6 +15,7 @@ const Wall = ({
   customizations,
 }) => {
   return <a-box
+    class="vr-wall"
     customize-on-click
     customizeType="wall"
     data-clickable

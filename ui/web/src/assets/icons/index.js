@@ -7,8 +7,9 @@ import dollar from './dollar.svg'
 import family from './family.svg'
 import floors from './floors.svg'
 import idea from './idea.svg'
+import menu from './menu.svg'
 import money from './money.svg'
 import rating from './rating.png'
 import sqFeet from './sq-feet.svg'
 
-export { bathroom, bedroom, calenderCheck, checklist, constructionType, dollar, family, floors, idea, money, rating, sqFeet }
+export { bathroom, bedroom, calenderCheck, checklist, constructionType, dollar, family, floors, idea, menu, money, rating, sqFeet }

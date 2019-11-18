@@ -81,9 +81,10 @@ AFRAME.registerSystem('customize-on-click', {
     const filledSelection = new Array(pageSize).fill().map((_, i) =>
       currentSelection[i] || 'color: #808080; src: ;'
     )
-    filledSelection.forEach((material, index) =>
+    filledSelection.forEach((material, index) => {
+      this.menu.elements[`select-${index}`].removeAttribute('material')
       this.menu.elements[`select-${index}`].setAttribute('material', material)
-    )
+    })
   },
   addClickableToMenu: function() {
     Object.entries(this.menu.elements).forEach(([id, el]) => {
@@ -115,6 +116,7 @@ AFRAME.registerSystem('customize-on-click', {
         opacity: 0.3,
         color: 'cyan',
       })
+      selectionIndicator.setAttribute('class', 'selection-indicator')
 
       this.state.selectionIndicator = selectionIndicator
       this.el.append(selectionIndicator)
@@ -167,6 +169,7 @@ AFRAME.registerSystem('customize-on-click', {
   },
   select: function(el, intersection) {
     const value = parseInt(el.getAttribute('data-value'))
+    this.state.el.removeAttribute('material')
     this.state.el.setAttribute('material', el.getAttribute('material'))
   }
 });

@@ -1,0 +1,10 @@
+
+.Estimate .Estimate-grid {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 0.5rem 1rem;
+}
+
+.Estimate .Estimate-grid output {
+  text-align: right;
+}

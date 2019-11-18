@@ -1,6 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { wrappingModulus } from '../../utils/numberUtils'
+import { Link } from '../Link/Link'
 import './BuilderDetails.css'
 
 const currentYear = new Date().getFullYear()
@@ -33,9 +34,14 @@ class BuilderDetails extends React.Component {
     const bio = bios[wrappingModulus(parseInt(builder.id), bios.length)](builder)
 
     return (
-      <p className={classname}>
-        {bio}
-      </p>
+      <>
+        <p className={classname}>
+          {bio}
+        </p>
+        <Link className="block mt-4" to={`/chat?with=${builder.id}`}>
+          Chat with {builder.owner}
+        </Link>
+      </>
     )
   }
 }

@@ -27,8 +27,8 @@ class HomePage extends React.Component {
         <div className="top-content">
           <img className="HomePage-img" src={house2} />
           <Card className="hover-content">
-            <p className="flex justify-center -mt-8">
-              <img src={logo} alt="Build360 logo" className="w-128" />
+            <p className="flex justify-center">
+              <img src={logo} alt="Build360 logo" className="max-w-lg" />
             </p>
             <h2>Smarter Building. Simplified.</h2>
             <BuilderSearchForm advancedSearch={false} />
@@ -61,26 +61,24 @@ class HomePage extends React.Component {
           </Card>
         </FadeInOnVisible>
 
-        <FadeInOnVisible className="next-section">
-          <div className="grid-column-2">
-            <Image src={house1} alt="build360 image" />
-            <section>
-              <h2 id="about" className="mt-0">About Build360</h2>
-              <p className="mt-4">
-                Build360 is an online builder marketplace that allows you to browse all area home builders that complete projects in your local neighborhoods.
-                The builder, or construction company, displays their profile, house plans they build along with the types of homes and features they specialize in. 
-                To complete the offering, real photos of current and completed jobs are displayed in their portfolio.
-              </p>
-              <form className="mt-8" action="/register">
-                <input hidden name="type" value="user"/>
-                <button className="btn">Sign Up Now</button>
-              </form>
-            </section>
-          </div>
+        <FadeInOnVisible className="next-section grid-column-2">
+          <Image src={house1} alt="build360 image" />
+          <section>
+            <h2 id="about" className="mt-0">About Build360</h2>
+            <p className="mt-4">
+              Build360 is an online builder marketplace that allows you to browse all area home builders that complete projects in your local neighborhoods.
+              The builder, or construction company, displays their profile, house plans they build along with the types of homes and features they specialize in. 
+              To complete the offering, real photos of current and completed jobs are displayed in their portfolio.
+            </p>
+            <form className="mt-8" action="/register">
+              <input hidden name="type" value="user"/>
+              <button className="btn">Sign Up Now</button>
+            </form>
+          </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
           <section>
-            <h2 id="browse-builders">Browse Builders</h2>
+            <h2 className="offset-header" id="browse-builders">Browse Builders</h2>
             <p className="mt-4">View all home builders that currently build homes in your neighborhoods. Search by name, business name, zip code and filter by BBB Rating, Build360 Score, Year Established and more! Every builder showcases their work on their profile, full of client feedback, photos of their jobs, a short biography of them and house plans they have built.</p>
             <Link className="block mt-4" to="/builders">Search for builders</Link>
           </section>
@@ -89,7 +87,7 @@ class HomePage extends React.Component {
         <FadeInOnVisible className="next-section grid-column-2">
           <Image className="self-center" src={floorplan} alt="floorplan image" />
           <section>
-            <h2 id="view-plans">View Plans</h2>
+            <h2 className="offset-header" id="view-plans">View Plans</h2>
             <p className="mt-4">Search thousands of house plans for free. Found a favorite, but not "just right"? Customize that plan in virtual reality to get the exact features you want! Taller ceilings, larger master bath, bigger garage, the list goes on.</p>
             <div className="mt-4">
               <Tabs
@@ -114,7 +112,7 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
           <section>
-            <h2 id="receive-quotes">Recieve quotes</h2>
+            <h2 className="offset-header" id="receive-quotes">Recieve quotes</h2>
             <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. If your quote comes back high, easily go back to that plan to make changes to get that quote in your budget.</p>
           </section>
           <Image src={receiveQuotes} alt="Quote image" />
@@ -130,9 +128,11 @@ class HomePage extends React.Component {
           </section>
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section">
-          <h2>Building 101 Blog</h2>
-          <RecentBlogs />
-          <Link className="block mt-4" to="/blogs">View more blogs</Link>
+          <section>
+            <h2>Building 101 Blog</h2>
+            <RecentBlogs />
+            <Link className="block mt-4" to="/blogs">View more blogs</Link>
+          </section>
         </FadeInOnVisible>
       </section>
     )
