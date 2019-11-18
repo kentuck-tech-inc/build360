@@ -10,6 +10,7 @@ class FloorplanSearchForm extends React.Component {
   render() {
     return (
       <form className="FloorplanSearchForm" action="/floorplans">
+        <h2 className="mb-4">Browse our directory of current house plans provided by our builders</h2>
         <div className="inputs">
           <label>
             Bedrooms

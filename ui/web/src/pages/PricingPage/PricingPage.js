@@ -20,19 +20,19 @@ class PricingPage extends React.Component {
               <td></td>
               <td>
                 <span className="price">$99</span>
-                <span className="frequency">per Month</span>
+                <span className="frequency">Per Month</span>
               </td>
               <td>
                 <span className="price">$199</span>
-                <span className="frequency">per Month</span>
+                <span className="frequency">Per Month</span>
               </td>
               <td>
                 <span className="price">$299</span>
-                <span className="frequency">per Month</span>
+                <span className="frequency">Per Month</span>
               </td>
               <td>
                 <span className="price">$499</span>
-                <span className="frequency">per Month</span>
+                <span className="frequency">Per Month</span>
               </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@ class PricingPage extends React.Component {
             <tr>
               <td>Number of States</td>
               <td>1</td>
-              <td>1</td>
+              <td>2</td>
               <td>5</td>
               <td>All</td>
             </tr>
@@ -54,7 +54,7 @@ class PricingPage extends React.Component {
               <td className="no">No</td>
               <td>In 1 Zip Code</td>
               <td>In 3 Zip Codes</td>
-              <td className="yes">Yes</td>
+              <td className="yes">All Zip Codes</td>
             </tr>
             <tr>
               <td>Residential</td>

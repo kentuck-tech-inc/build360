@@ -78,7 +78,7 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
           <section>
-            <h2 id="browse-builders">Browse Builders</h2>
+            <h2 className="offset-header" id="browse-builders">Browse Builders</h2>
             <p className="mt-4">View all home builders that currently build homes in your neighborhoods. Search by name, business name, zip code and filter by BBB Rating, Build360 Score, Year Established and more! Every builder showcases their work on their profile, full of client feedback, photos of their jobs, a short biography of them and house plans they have built.</p>
             <Link className="block mt-4" to="/builders">Search for builders</Link>
           </section>
@@ -87,7 +87,7 @@ class HomePage extends React.Component {
         <FadeInOnVisible className="next-section grid-column-2">
           <Image className="self-center" src={floorplan} alt="floorplan image" />
           <section>
-            <h2 id="view-plans">View Plans</h2>
+            <h2 className="offset-header" id="view-plans">View Plans</h2>
             <p className="mt-4">Search thousands of house plans for free. Found a favorite, but not "just right"? Customize that plan in virtual reality to get the exact features you want! Taller ceilings, larger master bath, bigger garage, the list goes on.</p>
             <div className="mt-4">
               <Tabs
@@ -112,7 +112,7 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
           <section>
-            <h2 id="receive-quotes">Recieve quotes</h2>
+            <h2 className="offset-header" id="receive-quotes">Recieve quotes</h2>
             <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. If your quote comes back high, easily go back to that plan to make changes to get that quote in your budget.</p>
           </section>
           <Image src={receiveQuotes} alt="Quote image" />

@@ -72,6 +72,15 @@
   max-height: 100%;
 }
 
+.HomePage .offset-header:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: 5em;
+  margin-top: -5em
+}
+
 @media (max-width: 900px) {
   .HomePage .hover-content {
     margin-top: calc(var(--gutter-width) / 2);
