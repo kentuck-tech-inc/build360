@@ -14,7 +14,7 @@ class BuilderGallary extends React.Component {
 
   componentDidMount() {
     getBlueprints().then(blueprints => {
-      this.setState({ blueprints, loading: false })
+      this.setState({ blueprints: blueprints || [], loading: false })
     }).catch((error) => {
       console.log(`[BuilderGallary] Problem getting blueprints: `, error)
       this.setState({ loading: false, error: true })
@@ -23,7 +23,7 @@ class BuilderGallary extends React.Component {
 
   render() {
     const { className } = this.props
-    const { blueprints, loading, error } = this.state
+    const { blueprints = [], loading, error } = this.state
     const classname = classnames(
       'BuilderGallary',
       {

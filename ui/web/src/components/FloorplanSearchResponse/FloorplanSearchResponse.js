@@ -14,7 +14,7 @@ class FloorplanSearchResponse extends React.Component {
 
   componentDidMount() {
     searchBlueprints(this.props.params).then(floorplans => {
-      this.setState({ floorplans, loading: false, error: false })
+      this.setState({ floorplans: floorplans || [], loading: false, error: false })
     })
     .catch(() => {
       this.setState({ loading: false, error: true })
@@ -23,7 +23,7 @@ class FloorplanSearchResponse extends React.Component {
 
   render() {
     const { className } = this.props
-    const { floorplans, loading, error } = this.state
+    const { floorplans = [], loading, error } = this.state
     const classname = classnames(
       'FloorplanSearchResponse',
       {

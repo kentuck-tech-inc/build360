@@ -11,7 +11,7 @@ class BuilderSearchResponse extends React.Component {
 
   componentDidMount() {
     searchBuilders(this.props.query).then(builders => {
-      this.setState({ builders, loading: false, error: false })
+      this.setState({ builders: builders || [], loading: false, error: false })
     })
     .catch(() => {
       this.setState({ loading: false, error: true })
@@ -20,7 +20,7 @@ class BuilderSearchResponse extends React.Component {
 
   render() {
     const { className } = this.props
-    const { builders, loading, error } = this.state
+    const { builders = [], loading, error } = this.state
     const classname = classnames(
       'BuilderSearchResponse',
       {
