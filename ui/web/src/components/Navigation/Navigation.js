@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import './Navigation.css'
 import { HomePage } from '../../pages/HomePage/HomePage'
 import { BlogPage } from '../../pages/BlogPage/BlogPage'
+import { InfoUserPage } from '../../pages/InfoUser/InfoUser'
 import { BlogSearchPage } from '../../pages/BlogSearchPage/BlogSearchPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
@@ -20,6 +21,7 @@ import { getUser, logout } from '../../utils/authUtils'
 import { Image } from '../../components/Image/Image'
 import logo from '../../assets/build360-logo.svg'
 import { menu } from '../../assets/icons'
+import WithRole from '../WithRole/WithRole';
 
 const MailChimpRedirect = () => {
   window.location = 'https://mailchi.mp/97cbc6715227/build360io'
@@ -28,29 +30,45 @@ const MailChimpRedirect = () => {
 
 const routes = [
   {
+    to: '/',
+    exact: true,
+    component: (props) => (<ComingSoonPage {...props} />)
+  },
+  {
     to: '/launch',
     exact: true,
     component: MailChimpRedirect
   },
   {
-    to: '/',
+    to: '/Home',
     exact: true,
     display: 'Home',
+    role: 'Demo',
     component: (props) => (
       <HomePage {...props} />
     )
   },
   {
+    to: '/InfoUser',
+    exact: true,
+    component: (props) => (
+      <InfoUserPage {...props} />
+    )
+  },
+  {
     to: '/builders',
     display: 'Builders',
+    role: 'Demo',
     component: (props) => (
-      <WithAuth>
+      <WithAuth><WithRole Role="Admin">
         <BuilderSearchPage {...props} />
-      </WithAuth>
+      </WithRole></WithAuth>
     )
   },
   {
     to: '/builder/:slug/:id',
+    display: 'Builder Profile',
+    role: 'Builder',
     component: (props) => (
       <WithAuth>
         <BuilderPage {...props} />
@@ -60,6 +78,7 @@ const routes = [
   {
     to: '/floorplans',
     display: 'Floor Plans',
+    role: 'Demo',
     component: (props) => (
       <WithAuth>
         <FloorplanSearchPage {...props} />
@@ -68,6 +87,7 @@ const routes = [
   },
   {
     to: '/floorplan/:id',
+    role: 'Demo',
     component: (props) => (
       <WithAuth>
         <FloorplanPage {...props} />
@@ -76,6 +96,7 @@ const routes = [
   },
   {
     to: '/blogs',
+    role: 'Admin',
     component: (props) => (
       <WithAuth>
         <BlogSearchPage {...props} />
@@ -94,6 +115,7 @@ const routes = [
   {
     to: '/pricing',
     display: 'Pricing',
+    role: 'Demo',
     component: (props) => (
       <WithAuth>
         <PricingPage {...props} />
@@ -103,6 +125,7 @@ const routes = [
   {
     to: '/chat',
     display: 'Chat',
+    isLoggedIn: true,
     component: (props) => (
       <WithAuth>
         <ChatPage {...props} />
@@ -111,6 +134,8 @@ const routes = [
   },
   {
     to: '/profile',
+    display: 'User profile',
+    isLoggedIn: true,
     component: (props) => (
       <WithAuth>
         <ProfilePage {...props} />
@@ -141,6 +166,12 @@ class Navigation extends React.Component {
     const {isOpen} = this.state
     const user = getUser()
 
+    var userRole = [];
+
+    if(user!=null && user!=undefined) {
+      userRole = user["cognito:groups"]
+    }
+
     return (
       <nav className="Navigation">
         <ul className={classnames({ 'is-open': isOpen })}>
@@ -152,7 +183,7 @@ class Navigation extends React.Component {
           </li>
           {
             routes
-              .filter(({display}) => Boolean(display))
+              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role))))
               .map(({to, display}, index) => (
                 <li key={index}>
                   <Link to={to} onClick={this.closeNav}>
