@@ -60,7 +60,7 @@ const routes = [
     display: 'Builders',
     role: 'demo',
     component: (props) => (
-      <WithAuth><WithRole Role="admin">
+      <WithAuth><WithRole Role="demo">
         <BuilderSearchPage {...props} />
       </WithRole></WithAuth>
     )
