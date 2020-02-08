@@ -9,10 +9,12 @@ class WithRole extends React.Component {
     const user = getUser()
 
     if(!user) {
+      console.log("user not set")
       return ""
     }
 
     if(!user["cognito:groups"].includes(props.Role)){
+      console.log(user["cognito:groups"])
         return ""
     }
 

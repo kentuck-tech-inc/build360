@@ -43,7 +43,7 @@ const routes = [
     to: '/Home',
     exact: true,
     display: 'Home',
-    role: 'Demo',
+    role: 'demo',
     component: (props) => (
       <HomePage {...props} />
     )
@@ -58,9 +58,9 @@ const routes = [
   {
     to: '/builders',
     display: 'Builders',
-    role: 'Demo',
+    role: 'demo',
     component: (props) => (
-      <WithAuth><WithRole Role="Admin">
+      <WithAuth><WithRole Role="admin">
         <BuilderSearchPage {...props} />
       </WithRole></WithAuth>
     )
@@ -68,7 +68,7 @@ const routes = [
   {
     to: '/builder/:slug/:id',
     display: 'Builder Profile',
-    role: 'Builder',
+    role: 'builder',
     component: (props) => (
       <WithAuth>
         <BuilderPage {...props} />
@@ -78,7 +78,7 @@ const routes = [
   {
     to: '/floorplans',
     display: 'Floor Plans',
-    role: 'Demo',
+    role: 'demo',
     component: (props) => (
       <WithAuth>
         <FloorplanSearchPage {...props} />
@@ -87,7 +87,7 @@ const routes = [
   },
   {
     to: '/floorplan/:id',
-    role: 'Demo',
+    role: 'demo',
     component: (props) => (
       <WithAuth>
         <FloorplanPage {...props} />
@@ -96,7 +96,7 @@ const routes = [
   },
   {
     to: '/blogs',
-    role: 'Admin',
+    role: 'admin',
     component: (props) => (
       <WithAuth>
         <BlogSearchPage {...props} />
@@ -115,7 +115,7 @@ const routes = [
   {
     to: '/pricing',
     display: 'Pricing',
-    role: 'Demo',
+    role: 'demo',
     component: (props) => (
       <WithAuth>
         <PricingPage {...props} />
@@ -126,9 +126,9 @@ const routes = [
     to: '/chat',
     display: 'Chat',
     isLoggedIn: true,
-    role: 'Admin',
+    role: 'admin',
     component: (props) => (
-      <WithAuth><WithRole Role="Admin">
+      <WithAuth><WithRole Role="admin">
         <ChatPage {...props} />
       </WithRole></WithAuth>
     )
