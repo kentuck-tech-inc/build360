@@ -13,8 +13,10 @@ class WithRole extends React.Component {
       return ""
     }
 
+    console.log('searching for ' + props.Role)
+    console.log(user["cognito:groups"])
+
     if(!user["cognito:groups"].includes(props.Role)){
-      console.log(user["cognito:groups"])
         return ""
     }
 
