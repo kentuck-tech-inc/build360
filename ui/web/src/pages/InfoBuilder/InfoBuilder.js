@@ -10,7 +10,7 @@ import calc from '../../assets/calculator.jpg'
 
 import './InfoBuilder.css'
 
-class InfoBuilder extends React.Component {
+class InfoBuilderPage extends React.Component {
   render () {
     return (
       <section className="InfoBuilder">        

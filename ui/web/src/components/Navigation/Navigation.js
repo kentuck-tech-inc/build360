@@ -56,6 +56,13 @@ const routes = [
     )
   },
   {
+    to: '/InfoBuilder',
+    exact: true,
+    component: (props) => (
+      <InfoBuilderPage {...props} />
+    )
+  },
+  {
     to: '/builders',
     display: 'Builders',
     role: 'demo',
