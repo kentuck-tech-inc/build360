@@ -126,10 +126,11 @@ const routes = [
     to: '/chat',
     display: 'Chat',
     isLoggedIn: true,
+    role: 'Admin',
     component: (props) => (
-      <WithAuth>
+      <WithAuth><WithRole Role="Admin">
         <ChatPage {...props} />
-      </WithAuth>
+      </WithRole></WithAuth>
     )
   },
   {
