@@ -180,7 +180,7 @@ class Navigation extends React.Component {
             <button className="mr-4 MenuButton" onClick={this.toggleNav}>
               <Image src={menu} className="icon-m"/>
             </button>
-            <img src={logo} alt="Build360 logo" className="w-32" />
+            <a href="/"> <img src={logo} alt="Build360 logo" className="w-32" /></a>
           </li>
           {
             routes
