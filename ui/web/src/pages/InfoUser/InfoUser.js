@@ -42,7 +42,6 @@ class InfoUserPage extends React.Component {
           <section>
             <h2 className="offset-header" id="browse-builders">Browse Builders</h2>
             <p className="mt-4">View all home builders that currently build homes in your neighborhoods. Search by name, business name, zip code and filter by BBB Rating, Build360 Score, Year Established and more! Every builder showcases their work on their profile, full of client feedback, photos of their jobs, a short biography of them and house plans they have built.</p>
-            <Link className="block mt-4" to="/builders">Search for builders</Link>
           </section>
           <Image src={builder1} alt="builder image" />
         </FadeInOnVisible>
