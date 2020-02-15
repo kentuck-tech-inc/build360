@@ -56,11 +56,18 @@ const routes = [
     )
   },
   {
+    to: '/InfoBuilder',
+    exact: true,
+    component: (props) => (
+      <InfoBuilderPage {...props} />
+    )
+  },
+  {
     to: '/builders',
     display: 'Builders',
     role: 'demo',
     component: (props) => (
-      <WithAuth><WithRole Role="admin">
+      <WithAuth><WithRole Role="demo">
         <BuilderSearchPage {...props} />
       </WithRole></WithAuth>
     )
