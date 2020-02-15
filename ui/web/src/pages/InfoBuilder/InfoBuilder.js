@@ -7,6 +7,7 @@ import { Link } from '../../components/Link/Link'
 import newHome from '../../assets/new-home.jpg'
 import tech from '../../assets/technology.jpg'
 import calc from '../../assets/calculator.jpg' 
+import Carousel from 'react-bootstrap/Carousel';
 
 import './InfoBuilder.css'
 
@@ -87,4 +88,4 @@ class InfoBuilderPage extends React.Component {
   }
 }
 
-export { ComingSoonPage }
+export { InfoBuilderPage }
