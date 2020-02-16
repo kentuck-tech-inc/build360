@@ -23,6 +23,7 @@ import { Image } from '../../components/Image/Image'
 import logo from '../../assets/build360-logo.svg'
 import { menu } from '../../assets/icons'
 import WithRole from '../WithRole/WithRole';
+import { isLocalDev } from '../../utils/envUtils'
 
 const MailChimpRedirect = () => {
   window.location = 'https://mailchi.mp/97cbc6715227/build360io'
@@ -192,7 +193,7 @@ class Navigation extends React.Component {
           </li>
           {
             routes
-              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role))))
+              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (isLocalDev() || (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role)))))
               .map(({to, display}, index) => (
                 <li key={index}>
                   <Link to={to} onClick={this.closeNav}>
