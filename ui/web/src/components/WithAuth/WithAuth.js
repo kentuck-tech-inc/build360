@@ -10,7 +10,7 @@ class WithAuth extends React.Component {
     console.log(location)
     const user = getUser()
 
-    if(!user && !isLocalDev) {
+    if(!user && !isLocalDev()) {
       login()
       return <p>Redirecting to login..</p>
     }

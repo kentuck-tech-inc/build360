@@ -193,7 +193,7 @@ class Navigation extends React.Component {
           </li>
           {
             routes
-              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (isLocalDev || (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role)))))
+              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (isLocalDev() || (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role)))))
               .map(({to, display}, index) => (
                 <li key={index}>
                   <Link to={to} onClick={this.closeNav}>

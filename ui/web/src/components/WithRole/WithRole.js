@@ -9,7 +9,7 @@ class WithRole extends React.Component {
     console.log(location)
     const user = getUser()
 
-    if(!user && !isLocalDev) {
+    if(!user && !isLocalDev()) {
       console.log("user not set")
       return ""
     }
@@ -17,7 +17,7 @@ class WithRole extends React.Component {
     //console.log('searching for ' + props.Role)
     //console.log(user["cognito:groups"])
 
-    if(isLocalDev){
+    if(isLocalDev()){
       console.log('local dev - skipping role check');
     } else if(!user["cognito:groups"].includes(props.Role)){
         return ""
