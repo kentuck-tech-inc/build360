@@ -6,6 +6,8 @@ import { BuilderRating } from '../../components/BuilderRating/BuilderRating'
 import { getBuilder } from '../../api/Builder'
 import { Link } from '../../components/Link/Link'
 import './BuilderPage.css'
+import  {BuilderMaterialCalculator}  from '../../components/BuilderMaterialCalculator/BuilderMaterialCalculator'
+
 
 class BuilderPage extends React.Component {
   state = {
@@ -59,7 +61,8 @@ class BuilderPage extends React.Component {
     return (
       <article className="BuilderPage mt-8">
         <Link to="/builders" className="text-l">Search for more builders</Link>
-        <BuilderCard className="mt-8" builder={builder} />
+        <BuilderCard className="mt-8" builder={builder} />        
+        <BuilderMaterialCalculator />   
         <BuilderDetails className="mt-8" builder={builder} />
         <BuilderGallary className="mt-8" builder={builder} />
         <BuilderRating className="mt-8" builder={builder} />

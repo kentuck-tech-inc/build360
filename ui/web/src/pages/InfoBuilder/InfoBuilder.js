@@ -9,10 +9,13 @@ import businessman from '../../assets/businessman.jpg'
 import meeting from '../../assets/meeting.jpg'
 import stop from '../../assets/stop.jpg' 
 
-import './InfoBuilder.css'
+import './InfoBuilder.css' 
+import { isLocalDev } from '../../utils/envUtils';
 
 class InfoBuilderPage extends React.Component {
-  render () {
+  render () { 
+    console.log('is local test')
+    console.log(isLocalDev())
     return (
       <section className="InfoBuilder">        
         <div className="top-content">  

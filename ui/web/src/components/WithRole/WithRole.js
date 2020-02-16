@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { getUser, login } from '../../utils/authUtils.js'
+import { isLocalDev } from '../../utils/envUtils.js';
 
 class WithRole extends React.Component {
   render() {
@@ -8,15 +9,17 @@ class WithRole extends React.Component {
     console.log(location)
     const user = getUser()
 
-    if(!user) {
+    if(!user && !isLocalDev) {
       console.log("user not set")
       return ""
     }
 
-    console.log('searching for ' + props.Role)
-    console.log(user["cognito:groups"])
+    //console.log('searching for ' + props.Role)
+    //console.log(user["cognito:groups"])
 
-    if(!user["cognito:groups"].includes(props.Role)){
+    if(isLocalDev){
+      console.log('local dev - skipping role check');
+    } else if(!user["cognito:groups"].includes(props.Role)){
         return ""
     }
 

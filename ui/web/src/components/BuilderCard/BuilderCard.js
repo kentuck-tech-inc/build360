@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import {
   calenderCheck,
@@ -13,15 +13,19 @@ import { Image } from '../Image/Image'
 import { RandomImage } from '../RandomImage/RandomImage'
 import { WithLink } from '../WithLink/WithLink'
 import './BuilderCard.css'
-
+import { Card } from '../../components/Card/Card'
+import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisible'
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
 function slug(name) {
   return encodeURIComponent(name.split(' ').join('-'));
-}
+} 
 
 class BuilderCard extends React.Component {
   render() {
     const { builder, isLink, className } = this.props
     const currentYear = new Date().getFullYear()
+
     return builder ? (
       <section className={classnames('BuilderCard', className)}>
         <WithLink isLink={isLink} to={`/builder/${slug(builder.companyName)}/${builder.id}`}>
@@ -57,7 +61,7 @@ class BuilderCard extends React.Component {
                 </tr>
               </tbody>
             </table>
-            <table className="inline-block -m-2" cellSpacing={0} cellPadding="8px">
+            <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
               <tbody>
                 <tr>
                   <td><Image src={idea} className="icon-m"/></td>
@@ -75,7 +79,7 @@ class BuilderCard extends React.Component {
                   <td><b>need data</b></td>
                 </tr>
               </tbody>
-            </table>
+            </table> 
           </div>
         </article>
       </section>

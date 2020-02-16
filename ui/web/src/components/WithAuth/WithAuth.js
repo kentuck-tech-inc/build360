@@ -2,6 +2,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { getUser, login } from '../../utils/authUtils.js'
+import { isLocalDev } from '../../utils/envUtils.js';
 
 class WithAuth extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class WithAuth extends React.Component {
     console.log(location)
     const user = getUser()
 
-    if(!user) {
+    if(!user && !isLocalDev) {
       login()
       return <p>Redirecting to login..</p>
     }
