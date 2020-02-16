@@ -93,7 +93,7 @@ button.btn {
   border-radius: 4px;
   border: solid 1px white;
   background-color: transparent;
-  color: black;
+  color: white;
   box-shadow: 0 3px white;
   transition: all 0.1s ease-in;
 }
