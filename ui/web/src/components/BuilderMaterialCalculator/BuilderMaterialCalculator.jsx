@@ -21,6 +21,13 @@ export class BuilderMaterialCalculator extends React.Component {
             totalSqft: 1000,
             totalFinSqft: 1000,
             totalBedNumber:2,
+            floorplan:{},
+        }
+
+        if(this.props.floorplan!=undefined){
+            this.state.totalBedNumber = this.props.floorplan.bedrooms;
+            this.state.totalFinSqft = this.props.floorplan.totalSqFeet;
+            this.state.totalSqft = this.props.floorplan.totalSqFeet;
         }
     
         this.handleMaterialCostChange = this.handleMaterialCostChange.bind(this); 
@@ -218,38 +225,64 @@ export class BuilderMaterialCalculator extends React.Component {
                         </div>
                     </Card> 
                     <Card className="flex flex-col items-left">
-                        <h2 className="offset-header" id="view-plans">Estimater</h2> 
+                        <h2 className="offset-header" id="view-plans">Estimator</h2> 
                         
                         <form action="#">
                             <br /><br />
-                            <label>Material Cost:</label>
-                            <input type="text" id="materialCost" 
-                                name="materialCost"                             
-                                value = {this.state.materialCost} 
-                                onChange = {this.handleMaterialCostChange}
-                                readOnly />
-                            <br /><br />
-                            <label>Total Squarefootage:</label>
-                            <input type="text" id="totalSqft"
-                                name="totalSqft"
-                                value = {this.state.totalSqft}
-                                onChange = {this.handleTotalSqftChange} />
-                            <br /><br />     
-                            <label>Total Finished Squarefootage:</label>
-                            <input type="text" id="totalFinSqft"
-                                name="totalFinSqft"
-                                value = {this.state.totalFinSqft}
-                                onChange = {this.handleTotalFinSqftChange} />
-                            <br /><br />                  
-                            <label>Number of bed rooms:</label>
-                            <input type="text" id="bedNumber"
-                                name="bedNumber"
-                                value = {this.state.totalBedNumber}
-                                onChange = {this.handleBedChange} />
-                            <br /><br />                            
-                            <input type="submit" value="Submit"  onClick={this.handleSubmit}/>
+                            
+                            <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label>Material Cost:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="materialCost"
+                                                name="materialCost"                             
+                                                value = {this.state.materialCost} 
+                                                onChange = {this.handleMaterialCostChange}
+                                                readOnly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Total Squarefootage:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="totalSqft"
+                                                name="totalSqft"
+                                                value = {this.state.totalSqft}
+                                                onChange = {this.handleTotalSqftChange} />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Total Finished Squarefootage:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="totalFinSqft"
+                                                name="totalFinSqft"
+                                                value = {this.state.totalFinSqft}
+                                                onChange = {this.handleTotalFinSqftChange} /> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>Number of bed rooms:</label>
+                                        </td>   
+                                        <td>             
+                                            <input type="text" id="bedNumber"
+                                                name="bedNumber"
+                                                value = {this.state.totalBedNumber}
+                                                onChange = {this.handleBedChange} />
+                                        </td>
+                                    </tr>       
+                                </tbody>
+                            </table>    
+                            <br /> <br />                       
+                            <input type="submit" value="Calculate"  onClick={this.handleSubmit}/>
                         </form>
-                        <label> Estimated cost: ${this.state.estimate}</label>
+                        <label> Starting cost: ${this.state.estimate}</label>
                         
                     </Card>
                 </FadeInOnVisible> 
