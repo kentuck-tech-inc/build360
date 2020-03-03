@@ -6,6 +6,8 @@ import Tab from 'react-bootstrap/Tab'
 import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisible'
 import './BuilderMaterialCalculator.css'
 import { Card } from '../../components/Card/Card'
+import { searchBuilders } from '../../api/Builder'
+import FilteredMultiSelect from 'react-filtered-multiselect'
 
 export class BuilderMaterialCalculator extends React.Component {
 
@@ -13,6 +15,13 @@ export class BuilderMaterialCalculator extends React.Component {
         super(props)
 
         this.cost = {'good': 125, 'better': 150, 'best': 180};
+
+        this.BOOTSTRAP_CLASSES = {
+            filter: 'form-control',
+            select: 'form-control',
+            button: 'btn btn btn-block btn-default',
+            buttonActive: 'btn btn btn-block btn-primary',
+          }
 
         this.state = {
             key: 'better',
@@ -22,6 +31,10 @@ export class BuilderMaterialCalculator extends React.Component {
             totalFinSqft: 1000,
             totalBedNumber:2,
             floorplan:{},
+            selectedOptions: [],
+            builders: [{name:'none'}],
+            loading: false,
+            error: false,            
         }
 
         if(this.props.floorplan!=undefined){
@@ -35,6 +48,10 @@ export class BuilderMaterialCalculator extends React.Component {
         this.handleTotalFinSqftChange = this.handleTotalFinSqftChange.bind(this);
         this.handleTotalSqftChange = this.handleTotalSqftChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleBuilderSearch = this.handleBuilderSearch.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
+        this.handleDeselect = this.handleDeselect.bind(this);
+        this.handleZipCodeSearch = this.handleZipCodeSearch.bind(this);
     }
 
     handleMaterialCostChange(event) {
@@ -60,6 +77,10 @@ export class BuilderMaterialCalculator extends React.Component {
         this.state.totalBedNumber = event.target.value;
         console.log(this.state.totalBedNumber)
     }
+    handleZipCodeSearch(event){
+        console.log('handleZipCodeSearch')
+        this.state.zipCodeSearch = event.target.value;
+    }
     
     handleSubmit(event) {    
         const {materialCost, totalFinSqft} = this.state    
@@ -69,6 +90,52 @@ export class BuilderMaterialCalculator extends React.Component {
         this.setState({estimate : materialCost * totalFinSqft});
         console.log('estimate updated')
     }
+
+    handleBuilderSearch(event){  
+        event.preventDefault();
+        console.log('handleBuilderSearch')
+        console.log(this.state.zipCodeSearch)
+
+        this.setState({loading: true});
+
+        searchBuilders(this.state.zipCodeSearch).then(builders => {
+            console.log('search succeded')
+            console.log(builders)
+
+            var tempB = builders.map(b=>{
+                console.log(b);
+                const c = {};
+                c.id = b.id;
+                c.name = b.companyName;
+                c.email = '';
+
+                return c;
+            });
+
+            console.log(tempB);
+
+            this.setState({ builders: tempB || [], loading: false, error: false })
+        })
+        .catch(() => {
+            console.log('search failed')
+          this.setState({ loading: false, error: true })
+        })
+    }
+    
+    
+    handleDeselect = (deselectedOptions) => {
+        var selectedOptions = this.state.selectedOptions.slice()
+        deselectedOptions.forEach(option => {
+        selectedOptions.splice(selectedOptions.indexOf(option), 1)
+        })
+        this.setState({selectedOptions})
+    }
+    handleSelect = (selectedOptions) => {
+        selectedOptions.sort((a, b) => a.id - b.id)
+        this.setState({selectedOptions})
+        console.log(this.state.selectedOptions)
+    }
+    
 
     render(){
         return (
@@ -225,7 +292,7 @@ export class BuilderMaterialCalculator extends React.Component {
                         </div>
                     </Card> 
                     <Card className="flex flex-col items-left">
-                        <h2 className="offset-header" id="view-plans">Estimator</h2> 
+                        <h2 className="offset-header">Estimator</h2> 
                         
                         <form action="#">
                             <br /><br />
@@ -284,6 +351,47 @@ export class BuilderMaterialCalculator extends React.Component {
                         </form>
                         <label> Starting cost: ${this.state.estimate}</label>
                         
+                        <br /><br />
+                        <h2 className="offset-header">Select up to 5 builders to get more detailed quotes</h2> 
+                        <br /><br />
+                        
+                        <form className="InlineBuilderSearchForm" action="#">
+                            <div className="input-wrapper">
+                            <input id="BuilderSearch" type="search"       
+                                //value = {this.state.zipCodeSearch} 
+                                onChange = {this.handleZipCodeSearch}
+                                placeholder="Builder By Name or Zip Code" />
+                            <input type="submit" value="Search"  onClick={this.handleBuilderSearch}/>
+                            </div>
+                        </form>
+                        <div className="grid-column-2">
+                            <div className="mt-4">
+                                <FilteredMultiSelect
+                                buttonText="Add"
+                                classNames={this.BOOTSTRAP_CLASSES}
+                                onChange={this.handleSelect}
+                                options={this.state.builders}
+                                selectedOptions={this.state.selectedOptions}
+                                textProp="name"
+                                valueProp="id"
+                                />
+                            </div>
+                            <div className="mt-4">
+                                <FilteredMultiSelect
+                                buttonText="Remove"
+                                classNames={{
+                                    filter: 'form-control',
+                                    select: 'form-control',
+                                    button: 'btn btn btn-block btn-default',
+                                    buttonActive: 'btn btn btn-block btn-danger'
+                                }}
+                                onChange={this.handleDeselect}
+                                options={this.state.selectedOptions}
+                                textProp="name"
+                                valueProp="id"
+                                />
+                            </div>
+                        </div>
                     </Card>
                 </FadeInOnVisible> 
             </div>    
