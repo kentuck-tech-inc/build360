@@ -34,13 +34,18 @@ export class BuilderMaterialCalculator extends React.Component {
             selectedOptions: [],
             builders: [{name:'none'}],
             loading: false,
-            error: false,            
+            error: false,      
+            showBuilderRequest: false,      
         }
 
         if(this.props.floorplan!=undefined){
             this.state.totalBedNumber = this.props.floorplan.bedrooms;
             this.state.totalFinSqft = this.props.floorplan.totalSqFeet;
             this.state.totalSqft = this.props.floorplan.totalSqFeet;
+        }
+
+        if(this.props.showBuilderRequest!=undefined){
+            this.state.showBuilderRequest = this.props.showBuilderRequest;
         }
     
         this.handleMaterialCostChange = this.handleMaterialCostChange.bind(this); 
@@ -52,6 +57,7 @@ export class BuilderMaterialCalculator extends React.Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.handleDeselect = this.handleDeselect.bind(this);
         this.handleZipCodeSearch = this.handleZipCodeSearch.bind(this);
+        this.handleBuilderRequestSubmit = this.handleBuilderRequestSubmit.bind(this)
     }
 
     handleMaterialCostChange(event) {
@@ -89,6 +95,10 @@ export class BuilderMaterialCalculator extends React.Component {
 
         this.setState({estimate : materialCost * totalFinSqft});
         console.log('estimate updated')
+    }
+
+    handleBuilderRequestSubmit(event){
+        console.log('handleBuilderRequestSubmit')
     }
 
     handleBuilderSearch(event){  
@@ -392,6 +402,9 @@ export class BuilderMaterialCalculator extends React.Component {
                                 />
                             </div>
                         </div>
+                        <button className="BuilderButton btn" onClick={this.handleBuilderRequestSubmit}>
+                        Request Estimates
+                        </button>
                     </Card>
                 </FadeInOnVisible> 
             </div>    
