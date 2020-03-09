@@ -61,8 +61,7 @@ class BuilderPage extends React.Component {
     return (
       <article className="BuilderPage mt-8">
         <Link to="/builders" className="text-l">Search for more builders</Link>
-        <BuilderCard className="mt-8" builder={builder} />        
-        <BuilderMaterialCalculator />   
+        <BuilderCard className="mt-8" builder={builder} />      
         <BuilderDetails className="mt-8" builder={builder} />
         <BuilderGallary className="mt-8" builder={builder} />
         <BuilderRating className="mt-8" builder={builder} />
@@ -72,6 +71,20 @@ class BuilderPage extends React.Component {
 }
 
 export { BuilderPage }
+
+
+/*
+return (
+      <article className="BuilderPage mt-8">
+        <Link to="/builders" className="text-l">Search for more builders</Link>
+        <BuilderCard className="mt-8" builder={builder} />        
+        <BuilderMaterialCalculator />   
+        <BuilderDetails className="mt-8" builder={builder} />
+        <BuilderGallary className="mt-8" builder={builder} />
+        <BuilderRating className="mt-8" builder={builder} />
+      </article>
+    )
+*/
 
 /**
  * Builder page will contain a couple of sections

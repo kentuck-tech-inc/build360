@@ -23,10 +23,10 @@ class InfoBuilderPage extends React.Component {
             <Carousel.Item>
               <Image className="d-block w-100" alt="newly built home" src={stop} /> 
               <Carousel.Caption>
+                  <p className="card-text">
                   <h2 className="card-title">
                     Save Time.
                   </h2>
-                  <p className="card-text">
                     No more unnecessary communication between you and your next client - just to have them sign with a competitor. Set clear expectations instantly. Now you can focus on what matters most. Maximum efficiency is here.
                   </p>
               </Carousel.Caption>
@@ -34,10 +34,10 @@ class InfoBuilderPage extends React.Component {
             <Carousel.Item>            
               <img className="d-block w-100" alt="blueprint stock image" src={meeting}/> 
               <Carousel.Caption> 
+                  <p className="card-text">
                   <h2 className="card-title">
                     Deliver Accurate Estimates.
                   </h2>
-                  <p className="card-text">
                     Your next client already knows what home they want to build. From floor to ceiling, finishes are already known in advance. Finally, a solution that eliminates the dreaded "allowances". Stand out from the rest now.
                   </p>
               </Carousel.Caption>
@@ -45,10 +45,10 @@ class InfoBuilderPage extends React.Component {
             <Carousel.Item>
               <img className="d-block w-100" alt="calculator stock image" src={businessman} /> 
               <Carousel.Caption>
+                <p className="card-text">
                 <h2 className="card-title">
                   Generate More Revenue.
                 </h2>
-                <p>
                   Showcase your work with your detailed builder profile, receiving new clients with their home and its finishes already selected. Eliminate wasted time and gain your client's trust with their best possible first impression.
                 </p>
               </Carousel.Caption>
