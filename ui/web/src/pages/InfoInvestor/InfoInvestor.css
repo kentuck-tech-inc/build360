@@ -1,12 +1,12 @@
-.ComingSoon {
+.InfoUser {
 
 }
 
-.ComingSoon .top-content {
+.InfoUser .top-content {
   position: relative;
 }
 
-.ComingSoon .hover-content {
+.InfoUser .hover-content {
   margin-top: calc(var(--gutter-width) / 2);
   position: absolute;
   z-index: 1;
@@ -17,19 +17,19 @@
   padding: calc(var(--gutter-width) / 2);
 }
 
-.ComingSoon-img {
+.InfoUser-img {
   width: calc(100% + (var(--gutter-width) * 2));
   max-width: calc(100% + (var(--gutter-width) * 2));
   margin: 0 calc(-1 * var(--gutter-width));
 }
 
-.ComingSoon .tagline {
+.InfoUser .tagline {
   margin-top: 0;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-.ComingSoon .signup {
+.InfoUser .signup {
   margin-bottom: 0;
   display: block;
   font-size: 0.75em;
@@ -37,16 +37,16 @@
 }
 
 @media (min-width: 1024px) {
-  .ComingSoon .tagline {
+  .InfoUser .tagline {
     font-size: 1.5rem;
   }
 
-  .ComingSoon .signup {
+  .InfoUser .signup {
     font-size: 1.25em;
   }
 }
 
-.ComingSoon .content-grid {
+.InfoUser .content-grid {
   margin-top: calc(var(--gutter-width) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -54,7 +54,7 @@
   margin-bottom: calc(var(--gutter-width) / 2);
 }
 
-.ComingSoon .content-grid .Card form {
+.InfoUser .content-grid .Card form {
   max-width: 320px;
   margin-top: auto;
 }
@@ -72,7 +72,7 @@
   max-height: 100%;
 }
 
-.ComingSoon .offset-header:before {
+.InfoUser .offset-header:before {
   content: '';
   display: block;
   position: relative;
@@ -82,14 +82,14 @@
 }
 
 @media (max-width: 900px) {
-  .ComingSoon .hover-content {
+  .InfoUser .hover-content {
     margin-top: calc(var(--gutter-width) / 2);
     position: relative;
     text-align: center;
     padding: calc(var(--gutter-width) / 2);
   }
 
-  .ComingSoon .content-grid {
+  .InfoUser .content-grid {
     margin-top: calc(var(--gutter-width) / 2);
     margin-bottom: calc(var(--gutter-width) / 2);
     display: flex;

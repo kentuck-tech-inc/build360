@@ -47,9 +47,9 @@ class FloorplanSearchResponse extends React.Component {
 
     return <ul className={classname}>
       {
-        floorplans.map(floorplan => (
+        floorplans.map((floorplan) => (
           <li key={floorplan.id}>
-            <FloorplanCard isLink floorplan={floorplan} />
+            <FloorplanCard className="mt-16" isLink floorplan={floorplan} />
           </li>
         ))
       }

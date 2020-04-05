@@ -7,7 +7,7 @@
 }
 
 .InfoUser .hover-content {
-  margin-top: calc(var(--gutter-width) / 2);
+  margin: calc(var(--gutter-width) / 2) 0;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -59,9 +59,9 @@
   margin-top: auto;
 }
 
-.next-section {
+.InfoUser .next-section {
   position: relative;
-  border-top: 3px solid black;
+  border-top: none;
   margin-left: calc(-1 * var(--gutter-width));
   margin-right: calc(-1 * var(--gutter-width));
   padding: calc(var(--gutter-width) / 2) var(--gutter-width);

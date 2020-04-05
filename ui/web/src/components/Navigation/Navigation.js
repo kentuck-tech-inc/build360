@@ -6,10 +6,11 @@ import { HomePage } from '../../pages/HomePage/HomePage'
 import { BlogPage } from '../../pages/BlogPage/BlogPage'
 import { InfoUserPage } from '../../pages/InfoUser/InfoUser'
 import { InfoBuilderPage } from '../../pages/InfoBuilder/InfoBuilder'
+import { InfoInvestorPage } from '../../pages/InfoInvestor/InfoInvestor'
 import { BlogSearchPage } from '../../pages/BlogSearchPage/BlogSearchPage'
 import { BuilderSearchPage } from '../../pages/BuilderSearchPage/BuilderSearchPage'
 import { BuilderPage } from '../../pages/BuilderPage/BuilderPage'
-import { ComingSoonPage } from '../../pages/ComingSoonPage/ComingSoonPage'
+import { UserTypeSelectPage } from '../../pages/UserTypeSelectPage/UserTypeSelectPage'
 import { FloorplanSearchPage } from '../../pages/FloorplanSearchPage/FloorplanSearchPage'
 import { FloorplanPage } from '../../pages/FloorplanPage/FloorplanPage'
 import { PricingPage } from '../../pages/PricingPage/PricingPage'
@@ -34,7 +35,7 @@ const routes = [
   {
     to: '/',
     exact: true,
-    component: (props) => (<ComingSoonPage {...props} />)
+    component: (props) => (<UserTypeSelectPage {...props} />)
   },
   {
     to: '/launch',
@@ -65,18 +66,26 @@ const routes = [
     )
   },
   {
+    to: '/InfoInvestor',
+    exact: true,
+    component: (props) => (
+      <InfoInvestorPage {...props} />
+    )
+  },
+  {
     to: '/builders',
     display: 'Builders',
     role: 'demo',
     component: (props) => (
-      <WithAuth><WithRole Role="demo">
-        <BuilderSearchPage {...props} />
-      </WithRole></WithAuth>
+      <WithAuth>
+        <WithRole Role="demo">
+          <BuilderSearchPage {...props} />
+        </WithRole>
+      </WithAuth>
     )
   },
   {
     to: '/builder/:slug/:id',
-    display: 'Builder Profile',
     role: 'builder',
     component: (props) => (
       <WithAuth>
@@ -120,7 +129,6 @@ const routes = [
       </WithAuth>
     )
   },
-  ,
   {
     to: '/pricing',
     display: 'Pricing',
@@ -134,7 +142,7 @@ const routes = [
   {
     to: '/chat',
     display: 'Chat',
-    isLoggedIn: true,
+    requiresLogin: true,
     role: 'admin',
     component: (props) => (
       <WithAuth><WithRole Role="admin">
@@ -145,7 +153,7 @@ const routes = [
   {
     to: '/profile',
     display: 'User profile',
-    isLoggedIn: true,
+    requiresLogin: true,
     component: (props) => (
       <WithAuth>
         <ProfilePage {...props} />
@@ -178,7 +186,7 @@ class Navigation extends React.Component {
 
     var userRole = [];
 
-    if(user!=null && user!=undefined) {
+    if(user !== null && user !== undefined) {
       userRole = user["cognito:groups"]
     }
 
@@ -193,7 +201,21 @@ class Navigation extends React.Component {
           </li>
           {
             routes
-              .filter(({display, role, isLoggedIn}) => (Boolean(display) && (isLocalDev() || (!isLoggedIn || user!=undefined) && (role==undefined || userRole.includes(role)))))
+              .filter(({ display, role, requiresLogin }) => {
+                const hasDisplayName = Boolean(display)
+                const meetsLoginRequirement = requiresLogin
+                  ? isLocalDev() || Boolean(user)
+                  : true
+                const meetsRoleRequirement = role
+                  ? isLocalDev() || userRole.includes(role)
+                  : true
+
+                return (
+                  hasDisplayName &&
+                  meetsLoginRequirement &&
+                  meetsRoleRequirement
+                )
+              })
               .map(({to, display}, index) => (
                 <li key={index}>
                   <Link to={to} onClick={this.closeNav}>

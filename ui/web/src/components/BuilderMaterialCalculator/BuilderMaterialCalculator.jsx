@@ -39,14 +39,14 @@ export class BuilderMaterialCalculator extends React.Component {
             showBuilderRequest: false,      
         }
 
-        if(this.props.floorplan!=undefined){
+        if(this.props.floorplan !== undefined){
             this.state.totalBedNumber = this.props.floorplan.bedrooms;
             this.state.totalFinSqft = this.props.floorplan.totalSqFeet;
             this.state.totalSqft = this.props.floorplan.totalSqFeet;
             this.state.totalBathNumber = this.props.floorplan.bathrooms;
         }
 
-        if(this.props.showBuilderRequest!=undefined){
+        if(this.props.showBuilderRequest !== undefined){
             this.state.showBuilderRequest = this.props.showBuilderRequest;
         }
     

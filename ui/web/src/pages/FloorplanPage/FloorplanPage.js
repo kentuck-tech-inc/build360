@@ -78,7 +78,7 @@ class FloorplanPage extends React.Component {
     return (
       <section className="FloorplanPage mt-8">
         <Link to="/floorplans" className="text-l">Search for more floor plans</Link>
-        <FloorplanCard floorplan={floorplan} />
+        <FloorplanCard floorplan={floorplan} className="mt-8"/>
         <Link className="block my-8" anchor to={floorplan.imageUrl}>Floor Plan Layout</Link>
         <BuilderMaterialCalculator floorplan={floorplan} />
       </section>

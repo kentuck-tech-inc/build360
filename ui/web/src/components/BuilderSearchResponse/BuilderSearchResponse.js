@@ -44,9 +44,9 @@ class BuilderSearchResponse extends React.Component {
 
     return <ul className={classname}>
       {
-        builders.map(builder => (
-          <li>
-            <BuilderCard className="mt-8" key={builder.id} isLink builder={builder}/>
+        builders.map((builder) => (
+          <li key={builder.id}>
+            <BuilderCard className="mt-16" key={builder.id} isLink builder={builder}/>
           </li>
         ))
       }

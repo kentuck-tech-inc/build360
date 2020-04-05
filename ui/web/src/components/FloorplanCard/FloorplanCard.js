@@ -1,5 +1,6 @@
 
 import React from 'react'
+import classnames from 'classnames'
 import { WithLink } from '../WithLink/WithLink'
 import './FloorplanCard.css'
 import { Image } from '../Image/Image'
@@ -17,9 +18,9 @@ class FloorplanCard extends React.Component {
     floorplan: {}
   }
   render() {
-    const { isLink, floorplan } = this.props
+    const { className, isLink, floorplan } = this.props
     return (
-      <section className="FloorplanCard mt-8">
+      <section className={classnames('FloorplanCard', className)}>
         <div className="FloorplanCard-title">
           <WithLink isLink={isLink} to={`/floorplan/${floorplan.id}`}>
             <RandomImage index={floorplan.id} from="houses"/>
