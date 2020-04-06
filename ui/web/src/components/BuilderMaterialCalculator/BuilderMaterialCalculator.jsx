@@ -60,7 +60,7 @@ export class BuilderMaterialCalculator extends React.Component {
         this.handleDeselect = this.handleDeselect.bind(this);
         this.handleZipCodeSearch = this.handleZipCodeSearch.bind(this);
         this.handleBuilderRequestSubmit = this.handleBuilderRequestSubmit.bind(this)
-        this.handleBathChange = this.hangleBathChange.bind(this);
+        this.handleBathChange = this.handleBathChange.bind(this);
     }
 
     handleMaterialCostChange(event) {
