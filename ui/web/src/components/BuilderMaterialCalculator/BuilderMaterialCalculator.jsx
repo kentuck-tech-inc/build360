@@ -30,6 +30,7 @@ export class BuilderMaterialCalculator extends React.Component {
             totalSqft: 1000,
             totalFinSqft: 1000,
             totalBedNumber:2,
+            totalBathNumber:2,
             floorplan:{},
             selectedOptions: [],
             builders: [{name:'none'}],
@@ -42,6 +43,7 @@ export class BuilderMaterialCalculator extends React.Component {
             this.state.totalBedNumber = this.props.floorplan.bedrooms;
             this.state.totalFinSqft = this.props.floorplan.totalSqFeet;
             this.state.totalSqft = this.props.floorplan.totalSqFeet;
+            this.state.totalBathNumber = this.props.floorplan.bathrooms;
         }
 
         if(this.props.showBuilderRequest!=undefined){
@@ -58,6 +60,7 @@ export class BuilderMaterialCalculator extends React.Component {
         this.handleDeselect = this.handleDeselect.bind(this);
         this.handleZipCodeSearch = this.handleZipCodeSearch.bind(this);
         this.handleBuilderRequestSubmit = this.handleBuilderRequestSubmit.bind(this)
+        this.handleBathChange = this.hangleBathChange.bind(this);
     }
 
     handleMaterialCostChange(event) {
@@ -82,6 +85,12 @@ export class BuilderMaterialCalculator extends React.Component {
         console.log(event.target.value)
         this.state.totalBedNumber = event.target.value;
         console.log(this.state.totalBedNumber)
+    }
+    handleBathChange(event){
+        console.log('handleBathChange')
+        console.log(event.target.value)
+        this.state.totalBathNumber = event.target.value;
+        console.log(this.state.totalBathNumber)
     }
     handleZipCodeSearch(event){
         console.log('handleZipCodeSearch')
@@ -176,7 +185,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                         <tr>
                                             <td>Kitchen</td>
                                             <td>Vinyl, Laminate</td>
-                                            <td>Laminate, Red Oak, Spruce, Birth cabines with Laminate or Plastic Counter</td> 
+                                            <td>Laminate, Red Oak, Spruce, Birch cabines with Laminate or Plastic Counter</td> 
                                         </tr>
                                         <tr>
                                             <td>Bedrooms</td>
@@ -311,7 +320,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <label>Material Cost:</label>
+                                            <label>Price Per Square Foot:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="materialCost"
@@ -323,7 +332,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Total Squarefootage:</label>
+                                            <label>Total Square Feet:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="totalSqft"
@@ -334,7 +343,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Total Finished Squarefootage:</label>
+                                            <label>Total Finished Square Feet:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="totalFinSqft"
@@ -345,7 +354,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Number of bed rooms:</label>
+                                            <label>Number of bedrooms:</label>
                                         </td>   
                                         <td>             
                                             <input type="text" id="bedNumber"
@@ -353,7 +362,18 @@ export class BuilderMaterialCalculator extends React.Component {
                                                 value = {this.state.totalBedNumber}
                                                 onChange = {this.handleBedChange} />
                                         </td>
-                                    </tr>       
+                                    </tr>   
+                                    <tr>
+                                        <td>
+                                            <label>Number of baths:</label>
+                                        </td>   
+                                        <td>             
+                                            <input type="text" id="bathNumber"
+                                                name="bathNumber"
+                                                value = {this.state.totalBathNumber}
+                                                onChange = {this.handleBathChange} />
+                                        </td>
+                                    </tr>      
                                 </tbody>
                             </table>    
                             <br /> <br />                       
