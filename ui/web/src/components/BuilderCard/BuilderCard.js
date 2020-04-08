@@ -13,10 +13,7 @@ import { Image } from '../Image/Image'
 import { RandomImage } from '../RandomImage/RandomImage'
 import { WithLink } from '../WithLink/WithLink'
 import './BuilderCard.css'
-import { Card } from '../../components/Card/Card'
-import { FadeInOnVisible } from '../../components/FadeInOnVisible/FadeInOnVisible'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+
 function slug(name) {
   return encodeURIComponent(name.split(' ').join('-'));
 } 

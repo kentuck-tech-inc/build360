@@ -1,7 +1,8 @@
 .Tabs {
   list-style: none;
   display: flex;
-  flex-direction: row nowrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: #00000080;
   padding-top: 3px;
   border-top-left-radius: 4px;

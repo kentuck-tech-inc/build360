@@ -22,7 +22,7 @@
     "react-dom": "^16.8.6",
     "react-filtered-multiselect": "^0.5.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "npm run build:style && react-scripts start",
