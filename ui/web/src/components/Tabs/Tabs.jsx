@@ -52,7 +52,6 @@ export class Tabs extends React.Component {
   render() {
     const { tabs, content } = this.props
     const { selectedTab } = this.state
-    const tabContent = content[selectedTab] || null
 
     return (
       <>

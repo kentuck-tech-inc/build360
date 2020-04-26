@@ -102,12 +102,14 @@ button.btn:hover, button.btn:focus {
   transform: translateY(-2px);
   box-shadow: 0 5px white;
   background-color: #00000080;
+  color: white;
 }
 
 button.btn:active {
   transform: translateY(2px);
   box-shadow: 0 1px white;
   background-color: #000000ff;
+  color: white;
 }
 
 
