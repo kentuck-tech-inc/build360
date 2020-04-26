@@ -54,7 +54,7 @@ class BuilderCard extends React.Component {
                 <tr>
                   <td><Image src={calenderCheck} className="icon-m"/></td>
                   <td>Avg. Completion Time:</td>
-                  <td><b>need data</b></td>
+                  <td>{builder.avgCompletionTime}</td>
                 </tr>
               </tbody>
             </table>
@@ -68,12 +68,12 @@ class BuilderCard extends React.Component {
                 <tr>
                   <td><Image src={dollar} className="icon-m"/></td>
                   <td>Price Per Square Foot:</td>
-                  <td><b>need data</b></td>
+                  <td>{builder.pricePerSquareFoot}</td>
                 </tr>
                 <tr>
                   <td><Image src={checklist} className="icon-m"/></td>
                   <td>Units Built:</td>
-                  <td><b>need data</b></td>
+                  <td>{builder.unitsBuilt}</td>
                 </tr>
               </tbody>
             </table> 
