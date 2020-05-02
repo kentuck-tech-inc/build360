@@ -30,12 +30,12 @@ class FloorplanCard extends React.Component {
           <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
             <tbody>
               <tr>
-                <td><Image src={bedroom} className="icon-m"/></td>
+                <td><Image alt="bedroom" src={bedroom} className="icon-m"/></td>
                 <td>Bedrooms:</td>
                 <td>{floorplan.bedrooms}</td>
               </tr>
               <tr>
-                <td><Image src={bathroom} className="icon-m"/></td>
+                <td><Image alt="bathroom" src={bathroom} className="icon-m"/></td>
                 <td>Bathrooms:</td>
                 <td>{floorplan.bathrooms}</td>
               </tr>
@@ -44,12 +44,12 @@ class FloorplanCard extends React.Component {
           <table className="inline-block -m-2" cellSpacing={0} cellPadding="8px">
             <tbody>
               <tr>
-                <td><Image src={sqFeet} className="icon-m"/></td>
+                <td><Image alt="square feet" src={sqFeet} className="icon-m"/></td>
                 <td>Square footage:</td>
                 <td>{floorplan.totalSqFeet}</td>
               </tr>
               <tr>
-                <td><Image src={floors} className="icon-m"/></td>
+                <td><Image alt="floors" src={floors} className="icon-m"/></td>
                 <td>Floors:</td>
                 <td>{floorplan.floors}</td>
               </tr>

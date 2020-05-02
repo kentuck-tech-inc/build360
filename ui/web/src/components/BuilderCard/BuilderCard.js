@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import {
   calenderCheck,
@@ -42,17 +42,17 @@ class BuilderCard extends React.Component {
             <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
               <tbody>
                 <tr>
-                  <td><Image src={rating} className="icon-m"/></td>
+                  <td><Image alt="rating" src={rating} className="icon-m"/></td>
                   <td>Build360 Score:</td>
                   <td>{builder.rating}</td>
                 </tr>
                 <tr>
-                  <td><Image src={constructionType} className="icon-m"/></td>
+                  <td><Image alt="construction" src={constructionType} className="icon-m"/></td>
                   <td>Construction Type:</td>
                   <td>{builder.type}</td>
                 </tr>
                 <tr>
-                  <td><Image src={calenderCheck} className="icon-m"/></td>
+                  <td><Image alt="calendar" src={calenderCheck} className="icon-m"/></td>
                   <td>Avg. Completion Time:</td>
                   <td>{builder.avgCompletionTime}</td>
                 </tr>
@@ -61,17 +61,17 @@ class BuilderCard extends React.Component {
             <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
               <tbody>
                 <tr>
-                  <td><Image src={idea} className="icon-m"/></td>
+                  <td><Image alt="founded" src={idea} className="icon-m"/></td>
                   <td>Years in operation:</td>
                   <td>{currentYear - parseInt(builder.founded)}</td>
                 </tr>
                 <tr>
-                  <td><Image src={dollar} className="icon-m"/></td>
+                  <td><Image alt="cost" src={dollar} className="icon-m"/></td>
                   <td>Price Per Square Foot:</td>
                   <td>{builder.pricePerSquareFoot}</td>
                 </tr>
                 <tr>
-                  <td><Image src={checklist} className="icon-m"/></td>
+                  <td><Image alt="checklist" src={checklist} className="icon-m"/></td>
                   <td>Units Built:</td>
                   <td>{builder.unitsBuilt}</td>
                 </tr>

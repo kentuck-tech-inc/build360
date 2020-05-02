@@ -195,7 +195,7 @@ class Navigation extends React.Component {
         <ul className={classnames({ 'is-open': isOpen })}>
           <li className="LogoItem">
             <button className="mr-4 MenuButton" onClick={this.toggleNav}>
-              <Image src={menu} className="icon-m"/>
+              <Image alt="menu" src={menu} className="icon-m"/>
             </button>
             <a href="/"> <img src={logo} alt="Build360 logo" className="w-32" /></a>
           </li>

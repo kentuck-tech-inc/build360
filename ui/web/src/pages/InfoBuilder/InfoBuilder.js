@@ -32,7 +32,7 @@ class InfoBuilderPage extends React.Component {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>            
-              <img className="d-block w-100" alt="blueprint stock image" src={meeting}/> 
+              <img className="d-block w-100" alt="blueprint" src={meeting} /> 
               <Carousel.Caption> 
                   <p className="card-text">
                   <h2 className="card-title">
@@ -43,7 +43,7 @@ class InfoBuilderPage extends React.Component {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" alt="calculator stock image" src={businessman} /> 
+              <img className="d-block w-100" alt="calculator" src={businessman} /> 
               <Carousel.Caption>
                 <p className="card-text">
                 <h2 className="card-title">

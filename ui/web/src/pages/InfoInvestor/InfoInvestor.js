@@ -16,7 +16,7 @@ class InfoInvestorPage extends React.Component {
     return (
       <section className="InfoUser">        
         <div className="top-content">
-          <img className="HomePage-img" src={house2} />
+          <img alt="house" className="HomePage-img" src={house2} />
           <Card className="hover-content">
             <p className="flex justify-center">
               <img src={logo} alt="Build360 logo" className="max-w-lg" />

@@ -64,8 +64,9 @@ export class RandomImage extends React.Component {
     const {
       from,
       srcSet: _omit_srcSet,
+      index,
       ...props
     } = this.props;
-    return <Image {...props} src={imgSrc} alt={from}/>
+    return <Image {...props} src={imgSrc} alt={`${from} ${index}`}/>
   }
 }

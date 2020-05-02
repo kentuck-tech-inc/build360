@@ -21,17 +21,17 @@ class FloorplanCustomization extends React.Component {
           <a-assets>
             {
               Object.entries(walls).map(([name, src]) => (
-                <img id={name} src={src} />
+                <img alt={`${name}-wall-texture`} id={name} src={src} />
               ))
             }
             {
               Object.entries(floors).map(([name, src]) => (
-                <img id={name} src={src} />
+                <img alt={`${name}-floor-texture`} id={name} src={src} />
               ))
             }
             {
               Object.entries(ceilings).map(([name, src]) => (
-                <img id={name} src={src} />
+                <img alt={`${name}-ceiling-texture`} id={name} src={src} />
               ))
             }
           </a-assets>

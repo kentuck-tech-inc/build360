@@ -25,7 +25,7 @@ class HomePage extends React.Component {
     return (
       <section className="HomePage">
         <div className="top-content">
-          <img className="HomePage-img" src={house2} />
+          <img className="HomePage-img" src={house2} alt="house" />
           <Card className="hover-content">
             <p className="flex justify-center">
               <img src={logo} alt="Build360 logo" className="max-w-lg" />
@@ -62,7 +62,7 @@ class HomePage extends React.Component {
         </FadeInOnVisible>
 
         <FadeInOnVisible className="next-section grid-column-2">
-          <Image src={house1} alt="build360 image" />
+          <Image src={house1} alt="house" />
           <section>
             <h2 id="about" className="mt-0">About Build360</h2>
             <p className="mt-4">
@@ -82,10 +82,10 @@ class HomePage extends React.Component {
             <p className="mt-4">View all home builders that currently build homes in your neighborhoods. Search by name, business name, zip code and filter by BBB Rating, Build360 Score, Year Established and more! Every builder showcases their work on their profile, full of client feedback, photos of their jobs, a short biography of them and house plans they have built.</p>
             <Link className="block mt-4" to="/builders">Search for builders</Link>
           </section>
-          <Image src={builder1} alt="builder image" />
+          <Image src={builder1} alt="builder" />
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
-          <Image className="self-center" src={floorplan} alt="floorplan image" />
+          <Image className="self-center" src={floorplan} alt="floorplan" />
           <section>
             <h2 className="offset-header" id="view-plans">View Plans</h2>
             <p className="mt-4">Search thousands of house plans for free. Found a favorite, but not "just right"? Customize that plan in virtual reality to get the exact features you want! Taller ceilings, larger master bath, bigger garage, the list goes on.</p>
@@ -115,10 +115,10 @@ class HomePage extends React.Component {
             <h2 className="offset-header" id="receive-quotes">Recieve quotes</h2>
             <p className="mt-4">Once you select the plan you like, receive quotes from all the builders you're impressed with. Along with the quote, an anticipated start date so you can see how your builder's schedule is looking. If your quote comes back high, easily go back to that plan to make changes to get that quote in your budget.</p>
           </section>
-          <Image src={receiveQuotes} alt="Quote image" />
+          <Image src={receiveQuotes} alt="quote" />
         </FadeInOnVisible>
         <FadeInOnVisible className="next-section grid-column-2">
-          <Image src={feedback} alt="feedback image" />
+          <Image src={feedback} alt="feedback" />
           <section>
             <h2>Client Feedback</h2>
             <p className="mt-4">
