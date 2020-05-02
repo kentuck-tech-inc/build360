@@ -1,3 +1,40 @@
-input{
-    color: black;
+input {
+  color: black;
+}
+
+.BuilderMaterialCalculator input {
+  padding: 1px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.InlineBuilderSearchForm .input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.InlineBuilderSearchForm input {
+  padding: 1px 16px;
+  font-size: 1rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.InlineBuilderSearchForm button.btn {
+  font-size: 1rem;
+  box-shadow: none;
+  color: white;
+  padding: 0 32px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.InlineBuilderSearchForm button.btn:hover, .InlineBuilderSearchForm button.btn:focus {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.InlineBuilderSearchForm button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }

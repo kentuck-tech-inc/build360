@@ -97,9 +97,9 @@ export class BuilderMaterialCalculator extends React.Component {
         this.state.zipCodeSearch = event.target.value;
     }
     
-    handleSubmit(event) {    
-        const {materialCost, totalFinSqft} = this.state    
+    handleSubmit(event) {
         event.preventDefault();
+        const {materialCost, totalFinSqft} = this.state    
         console.log('handleSubmit')
 
         this.setState({estimate : materialCost * totalFinSqft});
@@ -158,7 +158,7 @@ export class BuilderMaterialCalculator extends React.Component {
 
     render(){
         return (
-            <div className="BuilderCard-info">
+            <div className="BuilderMaterialCalculator">
                 <FadeInOnVisible className="next-section grid-column-2">
                     <Card className="flex flex-col items-left">
                         <div className="mt-4">
@@ -313,7 +313,7 @@ export class BuilderMaterialCalculator extends React.Component {
                     <Card className="flex flex-col items-left">
                         <h2 className="offset-header">Estimator</h2> 
                         
-                        <form action="#">
+                        <form class="mb-4" action="#" onSubmit={this.handleSubmit}>
                             <br /><br />
                             
                             <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
@@ -375,56 +375,54 @@ export class BuilderMaterialCalculator extends React.Component {
                                         </td>
                                     </tr>      
                                 </tbody>
-                            </table>    
-                            <br /> <br />                       
-                            <input type="submit" value="Calculate"  onClick={this.handleSubmit}/>
+                            </table>                  
+                            <button class="btn mt-2">Calculate</button>
                         </form>
                         <label> Starting cost: ${this.state.estimate}</label>
                         
-                        <br /><br />
-                        <h2 className="offset-header">Select up to 5 builders to get more detailed quotes</h2> 
-                        <br /><br />
-                        
-                        <form className="InlineBuilderSearchForm" action="#">
-                            <div className="input-wrapper">
-                            <input id="BuilderSearch" type="search"       
-                                //value = {this.state.zipCodeSearch} 
-                                onChange = {this.handleZipCodeSearch}
-                                placeholder="Builder By Name or Zip Code" />
-                            <input type="submit" value="Search"  onClick={this.handleBuilderSearch}/>
+                        <section className="mt-8">
+                            <h2 className="offset-header">Select up to 5 builders to get more detailed quotes</h2>
+                            <form className="InlineBuilderSearchForm mt-4" action="#">
+                                <div className="input-wrapper">
+                                    <input id="BuilderSearch" type="search"       
+                                        //value = {this.state.zipCodeSearch} 
+                                        onChange = {this.handleZipCodeSearch}
+                                        placeholder="Builder By Name or Zip Code" />
+                                    <button className="btn" onClick={this.handleBuilderSearch}>Search</button>
+                                </div>
+                            </form>
+                            <div className="grid-column-2">
+                                <div className="mt-4">
+                                    <FilteredMultiSelect
+                                    buttonText="Add"
+                                    classNames={this.BOOTSTRAP_CLASSES}
+                                    onChange={this.handleSelect}
+                                    options={this.state.builders}
+                                    selectedOptions={this.state.selectedOptions}
+                                    textProp="name"
+                                    valueProp="id"
+                                    />
+                                </div>
+                                <div className="mt-4">
+                                    <FilteredMultiSelect
+                                    buttonText="Remove"
+                                    classNames={{
+                                        filter: 'form-control',
+                                        select: 'form-control',
+                                        button: 'btn btn btn-block btn-default',
+                                        buttonActive: 'btn btn btn-block btn-danger'
+                                    }}
+                                    onChange={this.handleDeselect}
+                                    options={this.state.selectedOptions}
+                                    textProp="name"
+                                    valueProp="id"
+                                    />
+                                </div>
                             </div>
-                        </form>
-                        <div className="grid-column-2">
-                            <div className="mt-4">
-                                <FilteredMultiSelect
-                                buttonText="Add"
-                                classNames={this.BOOTSTRAP_CLASSES}
-                                onChange={this.handleSelect}
-                                options={this.state.builders}
-                                selectedOptions={this.state.selectedOptions}
-                                textProp="name"
-                                valueProp="id"
-                                />
-                            </div>
-                            <div className="mt-4">
-                                <FilteredMultiSelect
-                                buttonText="Remove"
-                                classNames={{
-                                    filter: 'form-control',
-                                    select: 'form-control',
-                                    button: 'btn btn btn-block btn-default',
-                                    buttonActive: 'btn btn btn-block btn-danger'
-                                }}
-                                onChange={this.handleDeselect}
-                                options={this.state.selectedOptions}
-                                textProp="name"
-                                valueProp="id"
-                                />
-                            </div>
-                        </div>
-                        <button className="BuilderButton btn" onClick={this.handleBuilderRequestSubmit}>
-                        Request Estimates
-                        </button>
+                            <button className="BuilderButton btn w-full mt-4" onClick={this.handleBuilderRequestSubmit}>
+                                Request Estimates
+                            </button>
+                        </section>
                     </Card>
                 </FadeInOnVisible> 
             </div>    
