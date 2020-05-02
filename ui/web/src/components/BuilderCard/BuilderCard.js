@@ -33,6 +33,7 @@ class BuilderCard extends React.Component {
         <article className="BuilderCard-grid mt-4">
           <WithLink isLink={isLink} to={`/builder/${slug(builder.companyName)}/${builder.id}`}>
             <RandomImage
+              alt={builder.companyName}
               className="BuilderCard-profile-img"
               index={parseInt(builder.id)}
               from="builders"

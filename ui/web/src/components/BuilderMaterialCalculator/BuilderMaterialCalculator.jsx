@@ -173,42 +173,42 @@ export class BuilderMaterialCalculator extends React.Component {
                                     <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
                                         <tbody>
                                         <tr>
-                                            <th>Area</th>
-                                            <th>Flooring</th>
-                                            <th>Misc</th>
+                                            <th scope="col">Area</th>
+                                            <th scope="col">Flooring</th>
+                                            <th scope="col">Misc</th>
                                         </tr>
                                         <tr>
-                                            <td>Living Areas</td>
+                                            <th scope="row">Living Areas</th>
                                             <td>Carpet, Laminate</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Kitchen</td>
+                                            <th scope="row">Kitchen</th>
                                             <td>Vinyl, Laminate</td>
                                             <td>Laminate, Red Oak, Spruce, Birch cabines with Laminate or Plastic Counter</td> 
                                         </tr>
                                         <tr>
-                                            <td>Bedrooms</td>
+                                            <th scope="row">Bedrooms</th>
                                             <td>Carpet, Laminate</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Bathrooms</td>
+                                            <th scope="row">Bathrooms</th>
                                             <td>Vinyl, Lineoleum</td>
                                             <td>Fiberglass shower/tub</td> 
                                         </tr>
                                         <tr>
-                                            <td>Basement</td>
+                                            <th scope="row">Basement</th>
                                             <td>Unfinished, None, Studded/Plumbed, Stained Concrete, Carpet</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Exterior</td>
+                                            <th scope="row">Exterior</th>
                                             <td>Vinyl Siding, Engineered Hardwood, Metal Siding, Imitation brick/stone</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Other</td>
+                                            <th scope="row">Other</th>
                                             <td>Back deck, front porch, back porch, seeded lawn</td>
                                             <td>--</td> 
                                         </tr>
@@ -219,42 +219,42 @@ export class BuilderMaterialCalculator extends React.Component {
                                     <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
                                         <tbody>
                                         <tr>
-                                            <th>Area</th>
-                                            <th>Flooring</th>
-                                            <th>Misc</th>
+                                            <th scope="col">Area</th>
+                                            <th scope="col">Flooring</th>
+                                            <th scope="col">Misc</th>
                                         </tr>
                                         <tr>
-                                            <td>Living Areas</td>
+                                            <th scope="row">Living Areas</th>
                                             <td>Engineered hardwood, hardwood, bamboo</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Kitchen</td>
+                                            <th scope="row">Kitchen</th>
                                             <td>Tile, engineered hardwood, hardwood, cork</td>
                                             <td>Maple, cherry, hickory, ash, walnut cabinets with granite counters</td> 
                                         </tr>
                                         <tr>
-                                            <td>Bedrooms</td>
+                                            <th scope="row">Bedrooms</th>
                                             <td>Carpet, engineered hardwood, hardwood, cork, bamboo</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Bathrooms</td>
+                                            <th scope="row">Bathrooms</th>
                                             <td>Tile, vinyl plank</td>
                                             <td>Fiberglass shower/tub</td> 
                                         </tr>
                                         <tr>
-                                            <td>Basement</td>
+                                            <th scope="row">Basement</th>
                                             <td>Unfinished, None, Studded/Plumbed, Stained Concrete, Carpet</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Exterior</td>
+                                            <th scope="row">Exterior</th>
                                             <td>Vinyl Siding, Engineered Hardwood, Metal Siding, Imitation brick/stone</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Other</td>
+                                            <th scope="row">Other</th>
                                             <td>Back deck, front porch, back porch, seeded lawn</td>
                                             <td>--</td> 
                                         </tr>
@@ -265,9 +265,9 @@ export class BuilderMaterialCalculator extends React.Component {
                                     <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
                                         <tbody>
                                         <tr>
-                                            <th>Area</th>
-                                            <th>Flooring</th>
-                                            <th>Misc</th>
+                                            <th scope="col">Area</th>
+                                            <th scope="col">Flooring</th>
+                                            <th scope="col">Misc</th>
                                         </tr>
                                         <tr>
                                             <td>Living Areas</td>
@@ -275,32 +275,32 @@ export class BuilderMaterialCalculator extends React.Component {
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Kitchen</td>
+                                            <th scope="row">Kitchen</th>
                                             <td>Tile, hardwood, natural stone, granite</td>
                                             <td>Maple, cherry, hickory, ash, walnut cabinets with granite counters</td>
                                         </tr>
                                         <tr>
-                                            <td>Bedrooms</td>
+                                            <th scope="row">Bedrooms</th>
                                             <td>Bamboo, carpet, hardwood</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Bathrooms</td>
+                                            <th scope="row">Bathrooms</th>
                                             <td>Tile, natural stone</td>
                                             <td>Walk-in tile shower, jetted tub, garden tub</td> 
                                         </tr>
                                         <tr>
-                                            <td>Basement</td>
+                                            <th scope="row">Basement</th>
                                             <td>Engineered hardwood, stained concrete, vinyl plank, carpet</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Exterior</td>
+                                            <th scope="row">Exterior</th>
                                             <td>Stucco, brick, stone, log, insulated siding, concrete, glass</td>
                                             <td>--</td> 
                                         </tr>
                                         <tr>
-                                            <td>Other</td>
+                                            <th scope="row">Other</th>
                                             <td>Back deck, front porch, back porch, seeded lawn, sodded lawn</td>
                                             <td>--</td> 
                                         </tr>
@@ -311,16 +311,14 @@ export class BuilderMaterialCalculator extends React.Component {
                         </div>
                     </Card> 
                     <Card className="flex flex-col items-left">
-                        <h2 className="offset-header">Estimator</h2> 
+                        <h2 className="offset-header mb-8">Estimator</h2> 
                         
                         <form class="mb-4" action="#" onSubmit={this.handleSubmit}>
-                            <br /><br />
-                            
                             <table className="inline-block -m-2 mr-8" cellSpacing={0} cellPadding="8px">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <label>Price Per Square Foot:</label>
+                                            <label htmlFor="materialCost">Price Per Square Foot:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="materialCost"
@@ -332,7 +330,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Total Square Feet:</label>
+                                            <label htmlFor="totalSqft">Total Square Feet:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="totalSqft"
@@ -343,7 +341,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Total Finished Square Feet:</label>
+                                            <label htmlFor="totalFnSqft">Total Finished Square Feet:</label>
                                         </td>
                                         <td>
                                             <input type="text" id="totalFinSqft"
@@ -354,7 +352,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <label>Number of bedrooms:</label>
+                                            <label htmlFor="bedNumber">Number of bedrooms:</label>
                                         </td>   
                                         <td>             
                                             <input type="text" id="bedNumber"
@@ -365,7 +363,7 @@ export class BuilderMaterialCalculator extends React.Component {
                                     </tr>   
                                     <tr>
                                         <td>
-                                            <label>Number of baths:</label>
+                                            <label htmlFor="bathNumber">Number of baths:</label>
                                         </td>   
                                         <td>             
                                             <input type="text" id="bathNumber"
@@ -385,7 +383,7 @@ export class BuilderMaterialCalculator extends React.Component {
                             <form className="InlineBuilderSearchForm mt-4" action="#">
                                 <div className="input-wrapper">
                                     <input id="BuilderSearch" type="search"       
-                                        //value = {this.state.zipCodeSearch} 
+                                        aria-label="Builder search"
                                         onChange = {this.handleZipCodeSearch}
                                         placeholder="Builder By Name or Zip Code" />
                                     <button className="btn" onClick={this.handleBuilderSearch}>Search</button>
