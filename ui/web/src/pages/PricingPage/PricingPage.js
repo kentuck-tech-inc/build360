@@ -23,15 +23,15 @@ class PricingPage extends React.Component {
                 <span className="frequency">Per Month</span>
               </td>
               <td>
-                <span className="price">$199</span>
-                <span className="frequency">Per Month</span>
-              </td>
-              <td>
                 <span className="price">$299</span>
                 <span className="frequency">Per Month</span>
               </td>
               <td>
                 <span className="price">$499</span>
+                <span className="frequency">Per Month</span>
+              </td>
+              <td>
+                <span className="price">$699</span>
                 <span className="frequency">Per Month</span>
               </td>
             </tr>
