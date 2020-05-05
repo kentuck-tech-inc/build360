@@ -11,7 +11,7 @@ export const Footer = () => (
         kentucktech@gmail.com
       </Link>
       <div className="Legal text-xs">
-        © 2018-2019 Kentuck Tech, Inc. All Rights Reserved. Patent Pending. 
+        © 2018-2020 Kentuck Tech, Inc. All Rights Reserved. Patent Pending. 
       </div>
     </div>
     <img src={logo} alt="Build360 logo" className="w-32" />
