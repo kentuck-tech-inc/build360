@@ -22,7 +22,7 @@
     "mocha": "^6.1.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.488.0",
+    "aws-sdk": "^2.814.0",
     "claudia-api-builder": "^4.1.2",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
