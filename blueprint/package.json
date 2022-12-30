@@ -28,7 +28,7 @@
     "jasmine-core": "^3.4.0",
     "karma-jasmine": "^2.0.1",
     "mariadb": "^2.1.0",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "sequelize": "^5.16.0"
   }
 }
