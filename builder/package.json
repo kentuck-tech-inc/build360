@@ -19,7 +19,7 @@
     "claudia": "^5.5.0",
     "jasmine-core": "^3.4.0",
     "karma-jasmine": "^2.0.1",
-    "mocha": "^6.1.4"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "aws-sdk": "^2.488.0",
